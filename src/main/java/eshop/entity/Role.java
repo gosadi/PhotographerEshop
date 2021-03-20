@@ -47,7 +47,7 @@ public class Role implements Serializable {
     @Size(min = 1, max = 15)
     @Column(name = "name")
     private String name;
-    @ManyToMany(mappedBy = "role", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
     private List<Account> accounts;
 
     public Role() {

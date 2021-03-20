@@ -48,7 +48,7 @@ public class OrderDetails implements Serializable {
     private BigDecimal currentPrice;
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Orderr order;
+    private Orderr orderr;
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
@@ -85,11 +85,11 @@ public class OrderDetails implements Serializable {
     }
 
     public Orderr getOrder() {
-        return order;
+        return orderr;
     }
 
-    public void setOrder(Orderr order) {
-        this.order = order;
+    public void setOrder(Orderr orderr) {
+        this.orderr = orderr;
     }
 
     public Product getProduct() {
