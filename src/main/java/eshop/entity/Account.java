@@ -6,6 +6,7 @@
 package eshop.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -18,7 +19,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,7 +26,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -42,7 +41,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Account.findByLastname", query = "SELECT a FROM Account a WHERE a.lastname = :lastname")
     , @NamedQuery(name = "Account.findByUsername", query = "SELECT a FROM Account a WHERE a.username = :username")
     , @NamedQuery(name = "Account.findByPassword", query = "SELECT a FROM Account a WHERE a.password = :password")
-    , @NamedQuery(name = "Account.findByEmail", query = "SELECT a FROM Account a WHERE a.email = :email")})
+    , @NamedQuery(name = "Account.findByEmail", query = "SELECT a FROM Account a WHERE a.email = :email")
+    , @NamedQuery(name = "Account.findByAddress", query = "SELECT a FROM Account a WHERE a.address = :address")
+    , @NamedQuery(name = "Account.findByCity", query = "SELECT a FROM Account a WHERE a.city = :city")
+    , @NamedQuery(name = "Account.findByPostalcode", query = "SELECT a FROM Account a WHERE a.postalcode = :postalcode")})
 public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -77,6 +79,20 @@ public class Account implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "email")
     private String email;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "address")
+    private String address;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "city")
+    private String city;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "postalcode")
+    private int postalcode;
     @JoinTable(name = "account_has_role", joinColumns = {
         @JoinColumn(name = "account_id", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "role_id", referencedColumnName = "id")})
@@ -84,9 +100,6 @@ public class Account implements Serializable {
     private List<Role> roles;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "account", fetch = FetchType.LAZY)
     private List<Orderr> orderrs;
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Address address;
 
     public Account() {
     }
@@ -95,13 +108,16 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public Account(Integer id, String firstname, String lastname, String username, String password, String email) {
+    public Account(Integer id, String firstname, String lastname, String username, String password, String email, String address, String city, int postalcode) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.address = address;
+        this.city = city;
+        this.postalcode = postalcode;
     }
 
     public Integer getId() {
@@ -152,16 +168,38 @@ public class Account implements Serializable {
         this.email = email;
     }
 
-    @XmlTransient
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getPostalcode() {
+        return postalcode;
+    }
+
+    public void setPostalcode(int postalcode) {
+        this.postalcode = postalcode;
+    }
+
     public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoleList(List<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 
-    @XmlTransient
     public List<Orderr> getOrderrs() {
         return orderrs;
     }
@@ -169,13 +207,12 @@ public class Account implements Serializable {
     public void setOrderrs(List<Orderr> orderrs) {
         this.orderrs = orderrs;
     }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddressId(Address address) {
-        this.address = address;
+    
+    public void AddRole(Role role) {
+        if (roles == null) {
+            roles = new ArrayList();
+        }
+        roles.add(role);
     }
 
     @Override
