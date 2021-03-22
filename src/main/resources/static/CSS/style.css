@@ -64,11 +64,13 @@ p {
     height: min-content;
 }
 .cart{
-    background: none !important;
+    margin: -13% -30%;
+    
 }
 .cart img{
     position: relative;
-    top: 8px;
+    right: 8px;
+    top: 2px;
 }
 
 .col-2 {

@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,7 @@
 
         <div class="container" id="container">
             <div class="form-container sign-up-container">
-                <form:form method="post" action="/register" modelAttribute="accountuser" >
+                <form:form  action="${pageContext.request.contextPath}/register" method="POST" modelAttribute="accountuser" >
                     <h1>Create Account</h1>
                     <form:input type="text" placeholder="Firstname" path="firstname" name="firstname" required="required" />
                     <form:input type="text" placeholder="Lastname" path="lastname" name="lastname" required="required"/>
@@ -25,21 +26,37 @@
                     <form:input type="email" placeholder="Email" path="email" name="email" required="required" />
                     <form:input type="text" placeholder="Address" path="address" name="address" required="required" />
                     <form:input type="text" placeholder="City" path="city" name="city" required="required" />
-                    <input type="number" placeholder="Postal code" path="postacode" name="postalcode" required="required">
+                    <form:input type="number" placeholder="Postal code" path="postalcode" name="postalcode" required="required"/>
                     <form:button type="submit">Sign Up</form:button> 
                 </form:form>
             </div>
-            
+
             <div class="form-container sign-in-container">
                 <form:form action="${pageContext.request.contextPath}/authenticate" method="POST">
+
                     <h1>Sign in</h1>
-                    <input type="text" placeholder="Username" />
-                    <input type="password" placeholder="Password" />
+                    <input type="text" placeholder="Username" name="username"/>
+                    <input type="password" placeholder="Password" name="password"/>
                     <a href="#">Forgot your password?</a>
-                    <button type="submit">Sign In</button>
+                    <button type="Submit" value="Login">Sign In</button>
+                    <br>
+                    <br>
+                    <c:if test="${param.logout != null}">
+                        You have logged out successfully!
+                    </c:if>
+                    <c:if test="${param.error != null}">
+                        <div class="error">
+                            <i>Invalid credentials. Please try again</i>
+                        </div>
+                    </c:if>
+                    <c:if test="${registered != null}">
+                        <div class="registered">
+                            <i>Successfully registered! Please sign in.</i>
+                        </div>
+                    </c:if>
                 </form:form>
             </div>
-            
+
             <div class="overlay-container">
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">

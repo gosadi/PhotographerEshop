@@ -10,7 +10,7 @@ public class HomeController {
     
     @RequestMapping
     public String showHome(){
-        return "index"; //home
+        return "/global/index"; //home
     }
     
 }

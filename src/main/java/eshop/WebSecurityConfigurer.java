@@ -5,7 +5,6 @@
  */
 package eshop;
 
-import eshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -15,13 +14,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import eshop.service.UserService;
 
 
 @EnableWebSecurity
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
     
     @Autowired
-    UserService userService;
+    UserService accountService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -33,11 +33,12 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
        http
                .authorizeRequests()
                .antMatchers("/admin/**").hasRole("ADMIN") //covers admin and anything under this
+               .antMatchers("/user/**").hasRole("USER")
                .antMatchers("/").permitAll()
                
                .and()
                .formLogin()
-               .loginPage("/loginPage") // kanei override tin spring security DEFAULT login page
+               .loginPage("/register") // kanei override tin spring security DEFAULT login page
                .loginProcessingUrl("/authenticate")
                .permitAll()
                
@@ -55,7 +56,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
    @Bean
    public DaoAuthenticationProvider authenticationProvider(){
        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-       provider.setUserDetailsService(userService);
+       provider.setUserDetailsService(accountService);
        provider.setPasswordEncoder(passwordEncoder());        //in case we don't set bcrypt in Workbench
        return provider;
    }

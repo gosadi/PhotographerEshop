@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,20 +9,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
-        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="/CSS/style.css">
     </head>
     <body>
         <div class="wrapper">
             <div class="navbar">
                 <div class="logo">
-                    <img src="Images/logo2.png" width="125px">
+                    <img src="/Images/logo2.png" width="125px">
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="index.html" class="btn">Home</a></li>
-                        <li><a href="products.html" class="btn">Products</a></li>
-                        <li><a href="${pageContext.request.contextPath}/loginPage" class="btn">Register/Sign In</a></li>
-                        <li><a href="cart.html" class="btn cart"><img src="Images/cart.png" alt="" class="cart"></a></li>
+                        <li><a href="${pageContext.request.contextPath}/" class="btn">Home</a></li>
+                        <li><a href="${pageContext.request.contextPath}/products" class="btn">Products</a></li>
+                        <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
+                        <li><a href="#" class="btn">About Us</a></li>
                     </ul>
                 </nav>
             </div>
@@ -40,19 +40,19 @@
                             <input type="radio" name="r" id="r4">
                             <input type="radio" name="r" id="r5">
                             <figure class="slide s1">
-                                <img src="Images/1.jpg">
+                                <img src="/Images/1.jpg">
                             </figure>
                             <figure class="slide">
-                                <img src="Images/2.jpg">
+                                <img src="/Images/2.jpg">
                             </figure>
                             <figure class="slide">
-                                <img src="Images/3.jpeg">
+                                <img src="/Images/3.jpeg">
                             </figure>
                             <figure class="slide">
-                                <img src="Images/4.jpeg">
+                                <img src="/Images/4.jpeg">
                             </figure>
                             <figure class="slide">
-                                <img src="Images/5.jpg">
+                                <img src="/Images/5.jpg">
                             </figure>
                         </div>            
                     </div>
@@ -62,15 +62,15 @@
                 <div class="wrapper2">
                     <div class="row">
                         <figure class="col-3">
-                            <a href="landscapes.html"><img src="Images/landscape.jpg"></a>
+                            <a href="${pageContext.request.contextPath}/products/landscapes"><img src="/Images/landscape.jpg"></a>
                             <h2>Landscapes</h2>
                         </figure>
                         <figure class="col-3">
-                            <a href="animals.html"><img src="Images/moose.jpg"></a>
+                            <a href="${pageContext.request.contextPath}/products/animals"><img src="/Images/moose.jpg"></a>
                             <h2>Animals</h2>
                         </figure>
                         <figure class="col-3">
-                            <a href="people.html"><img src="Images/happyppl.jpg"></a>
+                            <a href="${pageContext.request.contextPath}/products/people"><img src="/Images/happyppl.jpg"></a>
                             <h2>People</h2>
                         </figure>
                     </div>
@@ -90,10 +90,10 @@
                     <div id="pp" class="col-2">
                         <h3>Follow us</h3>
                         <ul>
-                            <li><a href="#" class=""><img src="Images/facebook.png" alt="Facebook"></a></li>
-                            <li><a href="#" class=""><img src="Images/twitter.png" alt="Twitter"></a></li>
-                            <li><a href="#" class=""><img src="Images/instagram.png" alt="Instagram"></a></li>
-                            <li><a href="#" class=""><img src="Images/youtube.png" alt="Youtube"></a></li>
+                            <li><a href="#" class=""><img src="/Images/facebook.png" alt="Facebook"></a></li>
+                            <li><a href="#" class=""><img src="/Images/twitter.png" alt="Twitter"></a></li>
+                            <li><a href="#" class=""><img src="/Images/instagram.png" alt="Instagram"></a></li>
+                            <li><a href="#" class=""><img src="/Images/youtube.png" alt="Youtube"></a></li>
                         </ul>
                     </div>
                     <div id="pp" class="col-2" id="iframe">
@@ -105,7 +105,7 @@
             </div>
             <div class="copyright"><p>Copyright&copy; 2021</p></div>
         </div>
-        <script src="JS/1.js"></script>
+        <script src="/JS/1.js"></script>
     </body>
 </html>
 
