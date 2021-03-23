@@ -33,14 +33,26 @@
                     <div class="row">
                         <figure class="col-4">
                             <a href="#popup"><img src="/Images/pexels-pixabay-220453.jpg">
-                                <h4>'Smile'</h4>
                             </a>
-                            <div class="overlay">
+                            <div class="desc">
+                                <h4>'Smile'
+                                    <div class="dropdown">
+                                        <button class="cartbtn">Add to cart
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <a href="#">S</a>
+                                            <a href="#">L</a>
+                                            <a href="#">XL</a>
+                                        </div>
+                                    </div>
+                                </h4>
+                            </div>
+<!--                            <div class="overlay">
                                 <button onclick="window.location.href = 'Cart.html';" class="cart-button">
                                     Add to cart <i class="fa fa-shopping-cart"></i>
                                 </button>
-                            </div>
-
+                            </div>-->
                         </figure>
                         <div id="popup" class="popup">
                             <div class="popup-content">
@@ -53,13 +65,26 @@
                         </div>
                         <figure class="col-4">
                             <a href="#popup2"><img src="/Images/pexels-photo-935985.jpeg">
-                                <h4>'Metamorphosis'</h4>
                             </a>
-                            <div class="overlay">
+                            <div class="desc">
+                                <h4>'Metamorphosis'
+                                    <div class="dropdown">
+                                        <button class="cartbtn">Add to cart
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <a href="#">S</a>
+                                            <a href="#">L</a>
+                                            <a href="#">XL</a>
+                                        </div>
+                                    </div>
+                                </h4>
+                            </div>
+<!--                            <div class="overlay">
                                 <button onclick="window.location.href = 'Cart.html';" class="cart-button">
                                     Add to cart <i class="fa fa-shopping-cart"></i>
                                 </button>
-                            </div>
+                            </div>-->
                             <div id="popup2" class="popup">
                                 <div class="popup-content">
                                     <!-- Attention! -->
@@ -68,7 +93,7 @@
                                     <a href="#+" class="close-popup">&times;</a>
                                 </div>
                             </div>
-                            <br>
+<!--                            <br>
                             <a href="#popup3"><img src="/Images/pexels-mentatdgt-937481.jpg">
                                 <h4>'Suit'</h4> 
                             </a>
@@ -76,25 +101,38 @@
                                 <button onclick="window.location.href = 'Cart.html';" class="cart-button">
                                     Add to cart <i class="fa fa-shopping-cart"></i>
                                 </button>
-                            </div>
+                            </div>-->
                         </figure>
-                        <div id="popup3" class="popup">
+<!--                        <div id="popup3" class="popup">
                             <div class="popup-content">
                                 <h1>'Suit'</h1>
                                 <img src="/Images/pexels-mentatdgt-937481.jpg" class="modal-image">
                                 <a href="#+" class="close-popup">&times;</a>
                             </div>
-                        </div>
+                        </div>-->
 
                         <figure class="col-4">
                             <a href="#popup4"><img src="/Images/pexels-neemias-seara-3680316.jpg">
-                                <h4>'Braids'</h4>
                             </a>  
-                            <div class="overlay">
+                            <div class="desc">
+                                <h4>'Braids'
+                                    <div class="dropdown">
+                                        <button class="cartbtn">Add to cart
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <a href="#">S</a>
+                                            <a href="#">L</a>
+                                            <a href="#">XL</a>
+                                        </div>
+                                    </div>
+                                </h4>
+                            </div>
+<!--                            <div class="overlay">
                                 <button onclick="window.location.href = 'Cart.html';" class="cart-button">
                                     Add to cart <i class="fa fa-shopping-cart"></i>
                                 </button>
-                            </div>
+                            </div>-->
                         </figure>
                         <div id="popup4" class="popup">
                             <div class="popup-content">
@@ -108,13 +146,26 @@
                     <div class="row">
                         <figure class="col-4">
                             <a href="#popup5"><img src="/Images/pexels-andrea-piacquadio-774909.jpg">
-                                <h4>'Joy'</h4>
                             </a>
-                            <div class="overlay">
+                            <div class="desc">
+                                <h4>'Joy'
+                                    <div class="dropdown">
+                                        <button class="cartbtn">Add to cart
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <a href="#">S</a>
+                                            <a href="#">L</a>
+                                            <a href="#">XL</a>
+                                        </div>
+                                    </div>
+                                </h4>
+                            </div>
+<!--                            <div class="overlay">
                                 <button onclick="window.location.href = 'Cart.html';" class="cart-button">
                                     Add to cart <i class="fa fa-shopping-cart"></i>
                                 </button>
-                            </div>
+                            </div>-->
                         </figure>
                         <div id="popup5" class="popup">
                             <div class="popup-content">
@@ -126,13 +177,26 @@
 
                         <figure class="col-4">
                             <a href="#popup6"><img src="/Images/pexels-daniel-xavier-1239291.jpg">
-                                <h4>'Simplicity'</h4>
                             </a>
-                            <div class="overlay">
+                            <div class="desc">
+                                <h4>'Simplicity'
+                                    <div class="dropdown">
+                                        <button class="cartbtn">Add to cart
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <a href="#">S</a>
+                                            <a href="#">L</a>
+                                            <a href="#">XL</a>
+                                        </div>
+                                    </div>
+                                </h4>
+                            </div>
+<!--                            <div class="overlay">
                                 <button onclick="window.location.href = 'Cart.html';" class="cart-button">
                                     Add to cart <i class="fa fa-shopping-cart"></i>
                                 </button>
-                            </div>
+                            </div>-->
                             <div id="popup6" class="popup">
                                 <div class="popup-content">
                                     <!-- Attention!! -->
@@ -141,7 +205,7 @@
                                     <a href="#+" class="close-popup">&times;</a>
                                 </div>
                             </div>
-                            <br>
+<!--                            <br>
                             <a href="#popup7"><img src="/Images/pexels-yulianto-poitier-1231365.jpg">
                                 <h4>'Happiness'</h4>
                             </a>
@@ -149,25 +213,38 @@
                                 <button onclick="window.location.href = 'Cart.html';" class="cart-button">
                                     Add to cart <i class="fa fa-shopping-cart"></i>
                                 </button>
-                            </div>
+                            </div>-->
                         </figure>
-                        <div id="popup7" class="popup">
+<!--                        <div id="popup7" class="popup">
                             <div class="popup-content">
                                 <h1>'Happiness'</h1>
                                 <img src="/Images/pexels-yulianto-poitier-1231365.jpg" class="modal-image">
                                 <a href="#+" class="close-popup">&times;</a>
                             </div>
-                        </div>
+                        </div>-->
 
                         <figure class="col-4">
                             <a href="#popup8"><img src="/Images/pexels-mentatdgt-1024311.jpg">
-                                <h4>'Confidence'</h4> 
                             </a>
-                            <div class="overlay">
+                            <div class="desc">
+                                <h4>'Confidence'
+                                    <div class="dropdown">
+                                        <button class="cartbtn">Add to cart
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <a href="#">S</a>
+                                            <a href="#">L</a>
+                                            <a href="#">XL</a>
+                                        </div>
+                                    </div>
+                                </h4>
+                            </div>
+<!--                            <div class="overlay">
                                 <button onclick="window.location.href = 'Cart.html';" class="cart-button">
                                     Add to cart <i class="fa fa-shopping-cart"></i>
                                 </button>
-                            </div>
+                            </div>-->
                         </figure>
                         <div id="popup8" class="popup">
                             <div class="popup-content">
@@ -214,6 +291,7 @@
                 </div>
                 <div class="copyright"><p>Copyright&copy; 2021</p></div>
             </div>
+    </div>
             <script src="/JS/2.js"></script>
     </body>
 </html>
