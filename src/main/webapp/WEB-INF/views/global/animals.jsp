@@ -22,10 +22,21 @@
                 </div>
                 <nav>
                     <ul>
+                        <sec:authorize access="hasRole('ADMIN')">
+                            <li><a href="${pageContext.request.contextPath}/admin" class="btn"><sec:authentication property="principal.username"/></a></li>
+                        </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/" class="btn">Home</a></li>
                         <li><a href="${pageContext.request.contextPath}/products" class="btn">Products</a></li>
+                        <sec:authorize access="!hasAnyRole('ADMIN','USER')">
                         <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
-                        <li><a href="cart.html" class="btn">My Cart</a></li>
+                        </sec:authorize>
+                        <li><a href="${pageContext.request.contextPath}/aboutus" class="btn">About Us</a></li>
+                        <sec:authorize access="hasAnyRole('ADMIN','USER')">
+                            <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
+                        </sec:authorize>
+                        <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                            <li><a href="cart.html" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
+                        </sec:authorize>
                     </ul>
                 </nav>
             </div>

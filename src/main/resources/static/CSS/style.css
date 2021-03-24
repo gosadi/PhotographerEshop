@@ -105,6 +105,23 @@ p {
   
 }
 
+.logout input{
+    border: none;
+    font-size: inherit;
+    color: #fff;
+    font-family: 'Dancing Script', cursive;
+    transition: 0.5s;
+    
+    background: black;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+        
+}
+.logout input:hover{
+    background: #563434;
+}
+
 .row {
     margin-top: 80px;
 }

@@ -39,13 +39,13 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
                .and()
                .formLogin()
                .loginPage("/register") // kanei override tin spring security DEFAULT login page
-               .loginProcessingUrl("/authenticate")
+               .loginProcessingUrl("/authenticate") // default tou spring security otan kanei login
                .permitAll()
                
                
        
                .and()
-               .logout()
+               .logout().logoutSuccessUrl("/")
                .permitAll()
        
                .and().exceptionHandling().accessDeniedPage("/access-denied");

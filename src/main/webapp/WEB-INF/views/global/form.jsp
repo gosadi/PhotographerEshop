@@ -41,9 +41,11 @@
                     <button type="Submit" value="Login">Sign In</button>
                     <br>
                     <br>
+<!--                    
                     <c:if test="${param.logout != null}">
                         You have logged out successfully!
                     </c:if>
+                        -->
                     <c:if test="${param.error != null}">
                         <div class="error">
                             <i>Invalid credentials. Please try again</i>
