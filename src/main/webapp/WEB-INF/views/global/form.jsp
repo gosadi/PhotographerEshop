@@ -27,7 +27,7 @@
                     <form:input type="text" placeholder="Address" path="address" name="address" required="required" />
                     <form:input type="text" placeholder="City" path="city" name="city" required="required" />
                     <form:input type="number" placeholder="Postal code" path="postalcode" name="postalcode" required="required"/>
-                    <form:button type="submit">Sign Up</form:button> 
+                    <form:button type="submit">Sign Up</form:button>
                 </form:form>
             </div>
 
@@ -41,16 +41,19 @@
                     <button type="Submit" value="Login">Sign In</button>
                     <br>
                     <br>
-<!--                    
+                    <p>${message}</p>
+                    <!--               
                     <c:if test="${param.logout != null}">
                         You have logged out successfully!
                     </c:if>
-                        -->
+                    -->
+                    
                     <c:if test="${param.error != null}">
                         <div class="error">
-                            <i>Invalid credentials. Please try again</i>
+                            <i  style="color:red;">Invalid credentials. Please try again</i>
                         </div>
                     </c:if>
+                    
                     <c:if test="${registered != null}">
                         <div class="registered">
                             <i>Successfully registered! Please sign in.</i>

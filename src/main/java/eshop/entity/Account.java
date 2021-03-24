@@ -66,7 +66,7 @@ public class Account implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "username")
+    @Column(name = "username",unique = true)
     private String username;
     @Basic(optional = false)
     @NotNull
@@ -77,7 +77,7 @@ public class Account implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "email")
+    @Column(name = "email",unique = true)
     private String email;
     @Basic(optional = false)
     @NotNull
