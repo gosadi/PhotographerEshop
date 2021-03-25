@@ -21,19 +21,19 @@
                     <ul>
                         <sec:authorize access="hasRole('ADMIN')">
                             <li><a href="${pageContext.request.contextPath}/admin" class="btn"><sec:authentication property="principal.username"/></a></li>
-                        </sec:authorize>
+                            </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/" class="btn">Home</a></li>
                         <li><a href="${pageContext.request.contextPath}/products" class="btn">Products</a></li>
-                        <sec:authorize access="!hasAnyRole('ADMIN','USER')">
-                        <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
-                        </sec:authorize>
+                            <sec:authorize access="!hasAnyRole('ADMIN','USER')">
+                            <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
+                            </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/aboutus" class="btn">About Us</a></li>
-                        <sec:authorize access="hasAnyRole('ADMIN','USER')">
+                            <sec:authorize access="hasAnyRole('ADMIN','USER')">
                             <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
-                        </sec:authorize>
-                        <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                            </sec:authorize>
+                            <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><a href="cart.html" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
-                        </sec:authorize>
+                                </sec:authorize>
                     </ul>
                 </nav>
             </div>
@@ -49,14 +49,19 @@
                         <div class="col-3">
                             <a href="${pageContext.request.contextPath}/products/animals"><img src="/Images/moose.jpg"></a>
                             <h2>Animals</h2>
+                            
                         </div>
+                            
                         <div class="col-3">
                             <a href="${pageContext.request.contextPath}/products/people"><img src="/Images/happyppl.jpg"></a>
                             <h2>People</h2>
                         </div>
                     </div>
+                    
                 </div>
+                            
             </div>
+                            
         </div>
         <div class="footer">
             <div class="wrapper">

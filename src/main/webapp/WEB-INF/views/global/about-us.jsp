@@ -82,6 +82,7 @@
                                 </div>
                             </div>
                         </div>
+               <button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h1>Live Chat</h1></a></button>         
                     </div>
                 </div>
             </div>

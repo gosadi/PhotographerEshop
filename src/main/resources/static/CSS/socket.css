@@ -15,10 +15,10 @@ and open the template in the editor.
 
 html,body {
     height: 100%;
-    overflow: hidden;
+    overflow: visible;
 }
 
-body {
+/*body {
     margin: 0;
     padding: 0;
     font-weight: 400;
@@ -28,15 +28,15 @@ body {
     color: #333;
     background-color: #f4f4f4;
     height: 100%;
-}
+}*/
 
 body:before {
     height: 50%;
     width: 100%;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
-    background: #128ff2;
+/*    background: #128ff2;*/
     content: "";
     z-index: 0;
 }
@@ -67,14 +67,14 @@ input {
     outline: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/*h1, h2, h3, h4, h5, h6 {
     margin-top: 20px;
     margin-bottom: 20px;
-}
+}*/
 
-h1 {
+/*h1 {
     font-size: 1.7em;
-}
+}*/
 
 a {
     color: #128ff2;
@@ -129,12 +129,11 @@ button.accent {
     position: relative;
     padding: 35px 55px 35px;
     min-height: 250px;
-    position: absolute;
     top: 50%;
     left: 0;
     right: 0;
     margin: 0 auto;
-    margin-top: -160px;
+    margin-top: 0px;
 }
 
 .username-page-container .username-submit {
@@ -245,10 +244,10 @@ button.accent {
     border-bottom: 1px solid #ececec;
 }
 
-.chat-header h2 {
+/*.chat-header h2 {
     margin: 0;
     font-weight: 500;
-}
+}*/
 
 .connecting {
     padding-top: 5px;
@@ -301,8 +300,8 @@ button.accent {
         top: 60px;
     }
 
-    .chat-header h2 {
+/*    .chat-header h2 {
         font-size: 1.1em;
-    }
+    }*/
 }
 
