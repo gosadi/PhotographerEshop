@@ -250,6 +250,7 @@
                                 <a href="#+" class="close-popup">&times;</a>
                             </div>
                         </div>
+                         <button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h1>Live Chat</h1></a></button>
                         <!-- <div id="modal" onclick="this.style.display='none'">
                             <figure id="modal-content">
                               <img id="img1">

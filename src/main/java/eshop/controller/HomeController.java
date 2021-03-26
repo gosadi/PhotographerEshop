@@ -31,5 +31,11 @@ public class HomeController {
         }
         return "redirect:/";
     }
+    
+        @GetMapping("/chat")
+    public String showChat() {
+        return "/global/websocket";
+    }
 
+    
 }

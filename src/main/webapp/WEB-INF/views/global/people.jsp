@@ -11,7 +11,6 @@
         <title>People</title>
         <link rel="stylesheet" href="/CSS/style.css">
     </head>
-
     <body>
         <div class="wrapper">
             <div class="navbar">
@@ -22,19 +21,19 @@
                     <ul>
                         <sec:authorize access="hasRole('ADMIN')">
                             <li><a href="${pageContext.request.contextPath}/admin" class="btn"><sec:authentication property="principal.username"/></a></li>
-                        </sec:authorize>
+                            </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/" class="btn">Home</a></li>
                         <li><a href="${pageContext.request.contextPath}/products" class="btn">Products</a></li>
-                        <sec:authorize access="!hasAnyRole('ADMIN','USER')">
-                        <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
-                        </sec:authorize>
+                            <sec:authorize access="!hasAnyRole('ADMIN','USER')">
+                            <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
+                            </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/aboutus" class="btn">About Us</a></li>
-                        <sec:authorize access="hasAnyRole('ADMIN','USER')">
+                            <sec:authorize access="hasAnyRole('ADMIN','USER')">
                             <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
-                        </sec:authorize>
-                        <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                            </sec:authorize>
+                            <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><a href="cart.html" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
-                        </sec:authorize>
+                                </sec:authorize>
                     </ul>
                 </nav>
             </div>
@@ -59,11 +58,11 @@
                                     </div>
                                 </h4>
                             </div>
-<!--                            <div class="overlay">
-                                <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                    Add to cart <i class="fa fa-shopping-cart"></i>
-                                </button>
-                            </div>-->
+                            <!--                            <div class="overlay">
+                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
+                                                                Add to cart <i class="fa fa-shopping-cart"></i>
+                                                            </button>
+                                                        </div>-->
                         </figure>
                         <div id="popup" class="popup">
                             <div class="popup-content">
@@ -91,11 +90,11 @@
                                     </div>
                                 </h4>
                             </div>
-<!--                            <div class="overlay">
-                                <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                    Add to cart <i class="fa fa-shopping-cart"></i>
-                                </button>
-                            </div>-->
+                            <!--                            <div class="overlay">
+                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
+                                                                Add to cart <i class="fa fa-shopping-cart"></i>
+                                                            </button>
+                                                        </div>-->
                             <div id="popup2" class="popup">
                                 <div class="popup-content">
                                     <!-- Attention! -->
@@ -104,23 +103,23 @@
                                     <a href="#+" class="close-popup">&times;</a>
                                 </div>
                             </div>
-<!--                            <br>
-                            <a href="#popup3"><img src="/Images/pexels-mentatdgt-937481.jpg">
-                                <h4>'Suit'</h4> 
-                            </a>
-                            <div class="overlay">
-                                <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                    Add to cart <i class="fa fa-shopping-cart"></i>
-                                </button>
-                            </div>-->
+                            <!--                            <br>
+                                                        <a href="#popup3"><img src="/Images/pexels-mentatdgt-937481.jpg">
+                                                            <h4>'Suit'</h4> 
+                                                        </a>
+                                                        <div class="overlay">
+                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
+                                                                Add to cart <i class="fa fa-shopping-cart"></i>
+                                                            </button>
+                                                        </div>-->
                         </figure>
-<!--                        <div id="popup3" class="popup">
-                            <div class="popup-content">
-                                <h1>'Suit'</h1>
-                                <img src="/Images/pexels-mentatdgt-937481.jpg" class="modal-image">
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>-->
+                        <!--                        <div id="popup3" class="popup">
+                                                    <div class="popup-content">
+                                                        <h1>'Suit'</h1>
+                                                        <img src="/Images/pexels-mentatdgt-937481.jpg" class="modal-image">
+                                                        <a href="#+" class="close-popup">&times;</a>
+                                                    </div>
+                                                </div>-->
 
                         <figure class="col-4">
                             <a href="#popup4"><img src="/Images/pexels-neemias-seara-3680316.jpg">
@@ -139,11 +138,11 @@
                                     </div>
                                 </h4>
                             </div>
-<!--                            <div class="overlay">
-                                <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                    Add to cart <i class="fa fa-shopping-cart"></i>
-                                </button>
-                            </div>-->
+                            <!--                            <div class="overlay">
+                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
+                                                                Add to cart <i class="fa fa-shopping-cart"></i>
+                                                            </button>
+                                                        </div>-->
                         </figure>
                         <div id="popup4" class="popup">
                             <div class="popup-content">
@@ -172,11 +171,11 @@
                                     </div>
                                 </h4>
                             </div>
-<!--                            <div class="overlay">
-                                <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                    Add to cart <i class="fa fa-shopping-cart"></i>
-                                </button>
-                            </div>-->
+                            <!--                            <div class="overlay">
+                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
+                                                                Add to cart <i class="fa fa-shopping-cart"></i>
+                                                            </button>
+                                                        </div>-->
                         </figure>
                         <div id="popup5" class="popup">
                             <div class="popup-content">
@@ -203,11 +202,11 @@
                                     </div>
                                 </h4>
                             </div>
-<!--                            <div class="overlay">
-                                <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                    Add to cart <i class="fa fa-shopping-cart"></i>
-                                </button>
-                            </div>-->
+                            <!--                            <div class="overlay">
+                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
+                                                                Add to cart <i class="fa fa-shopping-cart"></i>
+                                                            </button>
+                                                        </div>-->
                             <div id="popup6" class="popup">
                                 <div class="popup-content">
                                     <!-- Attention!! -->
@@ -216,23 +215,23 @@
                                     <a href="#+" class="close-popup">&times;</a>
                                 </div>
                             </div>
-<!--                            <br>
-                            <a href="#popup7"><img src="/Images/pexels-yulianto-poitier-1231365.jpg">
-                                <h4>'Happiness'</h4>
-                            </a>
-                            <div class="overlay">
-                                <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                    Add to cart <i class="fa fa-shopping-cart"></i>
-                                </button>
-                            </div>-->
+                            <!--                            <br>
+                                                        <a href="#popup7"><img src="/Images/pexels-yulianto-poitier-1231365.jpg">
+                                                            <h4>'Happiness'</h4>
+                                                        </a>
+                                                        <div class="overlay">
+                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
+                                                                Add to cart <i class="fa fa-shopping-cart"></i>
+                                                            </button>
+                                                        </div>-->
                         </figure>
-<!--                        <div id="popup7" class="popup">
-                            <div class="popup-content">
-                                <h1>'Happiness'</h1>
-                                <img src="/Images/pexels-yulianto-poitier-1231365.jpg" class="modal-image">
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>-->
+                        <!--                        <div id="popup7" class="popup">
+                                                    <div class="popup-content">
+                                                        <h1>'Happiness'</h1>
+                                                        <img src="/Images/pexels-yulianto-poitier-1231365.jpg" class="modal-image">
+                                                        <a href="#+" class="close-popup">&times;</a>
+                                                    </div>
+                                                </div>-->
 
                         <figure class="col-4">
                             <a href="#popup8"><img src="/Images/pexels-mentatdgt-1024311.jpg">
@@ -251,11 +250,11 @@
                                     </div>
                                 </h4>
                             </div>
-<!--                            <div class="overlay">
-                                <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                    Add to cart <i class="fa fa-shopping-cart"></i>
-                                </button>
-                            </div>-->
+                            <!--                            <div class="overlay">
+                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
+                                                                Add to cart <i class="fa fa-shopping-cart"></i>
+                                                            </button>
+                                                        </div>-->
                         </figure>
                         <div id="popup8" class="popup">
                             <div class="popup-content">
@@ -264,7 +263,7 @@
                                 <a href="#+" class="close-popup">&times;</a>
                             </div>
                         </div>
-
+                        <button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h1>Live Chat</h1></a></button>
                         <!-- <div id="modal" onclick="this.style.display='none'">
                             <figure id="modal-content">
                               <img id="img1">
@@ -302,7 +301,7 @@
                 </div>
                 <div class="copyright"><p>Copyright&copy; 2021</p></div>
             </div>
-    </div>
-            <script src="/JS/2.js"></script>
+        </div>
+        <script src="/JS/2.js"></script>
     </body>
 </html>

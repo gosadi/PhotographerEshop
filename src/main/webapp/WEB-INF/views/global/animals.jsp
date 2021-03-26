@@ -96,10 +96,10 @@
                                                                 <a href="#+" class="close-popup">&times;</a>
                                                             </div>
                                                         </div>-->
-                            <a href="#popup3"><img src="/Images/pexels-david-dibert-635499.jpg">
+                            <a href="#popup3"><img src="/Images/pexels-flickr-145962.jpg">
                             </a>
                             <div class="desc">
-                                <h4>'Freedom'
+                                <h4>'Eagle'
                                     <div class="dropdown">
                                         <button class="cartbtn">Add to cart
                                             <i class="fa fa-caret-down"></i>
@@ -119,8 +119,8 @@
 
                         <div id="popup3" class="popup">
                             <div class="popup-content">
-                                <h1>'Freedom'</h1>
-                                <img src="/Images/pexels-david-dibert-635499.jpg" class="modal-image">
+                                <h1>'Eagle'</h1>
+                                <img src="/Images/pexels-flickr-145962.jpg" class="modal-image">
                                 <a href="#+" class="close-popup">&times;</a>
                             </div>
                         </div>
@@ -186,13 +186,13 @@
                         </div>
 
                         <figure class="col-4">
-                            <a href="#popup6"><img src="/Images/pexels-flickr-145962.jpg">
+                            <a href="#popup6"><img src="/Images/pexels-david-dibert-635499.jpg">
                                 <!--                                <div class="overlay">
                                                                     <button class="cart-button">Add to cart <i class="fa fa-shopping-cart"></i></button>
                                                                 </div>-->
                             </a>
                             <div class="desc">
-                                <h4>'Eagle'
+                                <h4>'Freedom'
                                     <div class="dropdown">
                                         <button class="cartbtn">Add to cart
                                             <i class="fa fa-caret-down"></i>
@@ -208,8 +208,8 @@
                         </figure>
                         <div id="popup6" class="popup">
                             <div class="popup-content">
-                                <h1>'Eagle'</h1>
-                                <img src="/Images/pexels-flickr-145962.jpg" class="modal-image">
+                                <h1>'Freedom'</h1>
+                                <img src="/Images/pexels-david-dibert-635499.jpg" class="modal-image">
                                 <a href="#+" class="close-popup">&times;</a>
                             </div>
                         </div>
@@ -256,19 +256,23 @@
                         <div id="popup8" class="popup">
                             <div class="popup-content">
                                 <h1>'Smart'</h1>
-                                <img src="/Images/pexels-pixabay-64219.jpg" class="modal-image">
+                                <img src="/Images/pexels-public-domain-pictures-40984.jpg" class="modal-image">
                                 <a href="#+" class="close-popup">&times;</a>
                             </div>
+                            
                         </div>
+                        <button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h1>Live Chat</h1></a></button>
                         <!-- <div id="modal" onclick="this.style.display='none'">
                         <figure id="modal-content">
                           <img id="img1">
                         </figure>
                       </div> -->
                     </div>
+                    
                 </div>
+          
             </div>
-
+      
             <div class="footer">
                 <div class="wrapper">
                     <div class="row">
