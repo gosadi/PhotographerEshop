@@ -23,19 +23,19 @@
                     <ul>
                         <sec:authorize access="hasRole('ADMIN')">
                             <li><a href="${pageContext.request.contextPath}/admin" class="btn"><sec:authentication property="principal.username"/></a></li>
-                        </sec:authorize>
+                            </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/" class="btn">Home</a></li>
                         <li><a href="${pageContext.request.contextPath}/products" class="btn">Products</a></li>
-                        <sec:authorize access="!hasAnyRole('ADMIN','USER')">
-                        <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
-                        </sec:authorize>
+                            <sec:authorize access="!hasAnyRole('ADMIN','USER')">
+                            <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
+                            </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/aboutus" class="btn">About Us</a></li>
-                        <sec:authorize access="hasAnyRole('ADMIN','USER')">
+                            <sec:authorize access="hasAnyRole('ADMIN','USER')">
                             <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
-                        </sec:authorize>
-                        <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                            </sec:authorize>
+                            <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><a href="cart.html" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
-                        </sec:authorize>
+                                </sec:authorize>
                     </ul>
                 </nav>
             </div>
@@ -82,7 +82,6 @@
                                 </div>
                             </div>
                         </div>
-               <button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h1>Live Chat</h1></a></button>         
                     </div>
                 </div>
             </div>
@@ -117,6 +116,7 @@
                     <p>Copyright&copy; 2021</p>
                 </div>
             </div>
+            <div class="chat" ><button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h2>Live chat</h2></a></button></div>
         </div>
         <script src="/JS/2.js"></script>
     </body>
