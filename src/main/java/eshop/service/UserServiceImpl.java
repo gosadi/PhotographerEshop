@@ -66,4 +66,31 @@ public class UserServiceImpl implements UserService {
         accountuser = userRepo.save(accountuser);
         return accountuser;
     }
+
+    @Override
+    public List<Account> getUsers() {
+        List<Account> accounts = userRepo.findAll();
+        return accounts;
+    }
+
+    @Override
+    public List<Account> getUsersWithRoleAdmin() {
+        return userRepo.findAllByRoles(1);
+    }
+
+    @Override
+    public List<Account> getUsersWithRoleUser() {
+        return userRepo.findAllByRoles(2);
+    }
+    
+//    public List<Account> getAdmins(){
+//        List<Account> accounts = userRepo.findAdmins();
+//        return accounts;
+//    }
+   
+    
+    
+    
+    
+    
 }

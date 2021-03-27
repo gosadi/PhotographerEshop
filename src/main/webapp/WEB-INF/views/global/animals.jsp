@@ -50,7 +50,7 @@
                                     <img src="${pageContext.request.contextPath}${product.path}">
                                 </a>
                                 <div class="desc">
-                                    <h4>'Fox'
+                                    <h4>'${product.descr}'
                                         <div class="dropdown">
                                             <button class="cartbtn">Add to cart
                                                 <i class="fa fa-caret-down"></i>

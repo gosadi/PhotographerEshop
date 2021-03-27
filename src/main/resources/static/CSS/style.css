@@ -52,8 +52,8 @@ nav ul li {
 
 .adminMenu {
     max-width: 150px;
-
-    height: 1px; /*epitides gia to sticky*/
+    
+    height: 50%; /*epitides gia to sticky*/
     position: -webkit-sticky;
     position: sticky;
     top: 0;

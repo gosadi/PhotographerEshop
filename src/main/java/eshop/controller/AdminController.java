@@ -1,5 +1,6 @@
 package eshop.controller;
 
+import eshop.entity.Account;
 import eshop.entity.Orderr;
 import eshop.entity.Product;
 import eshop.service.OrderrService;
@@ -39,11 +40,18 @@ public class AdminController {
         return "/admin/admin-orders";
     }
     
-//    @GetMapping("/accounts")
-//    public String viewAccounts(Model model){
-//        List<Account> accounts = userService.getUsers();
-//        model.addAttribute("accounts", accounts);
-//        return "/admin/admin-accounts";
-//    }
+    @GetMapping("/users")
+    public String viewAccounts(Model model){
+        List<Account> users = userService.getUsersWithRoleUser();
+        model.addAttribute("users", users);
+        return "/admin/admin-accounts";
+    }
+    
+    @GetMapping("/admins")
+    public String viewAdmins(Model model){
+        List<Account> admins = userService.getUsersWithRoleAdmin();
+        model.addAttribute("admins", admins);
+        return "admin/admin-accounts";
+    }
     
 }
