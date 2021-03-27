@@ -59,6 +59,9 @@ public class Product implements Serializable {
     private List<ProductHasCategory> productHasCategories;
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<OrderDetails> orderDetails;
+    
+//    @Column(nullable = true, length = 64)
+//    private String files;
 
     public Product() {
     }
@@ -122,6 +125,16 @@ public class Product implements Serializable {
         this.orderDetails = orderDetails;
     }
 
+//    public String getfiles() {
+//        return files;
+//    }
+//
+//    public void setfiles(String files) {
+//        this.files = files;
+//    }
+    
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -144,7 +157,9 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "eshop.entity.Product[ id=" + id + " ]";
+        return "Product{" + "id=" + id + ", descr=" + descr + ", path=" + path + ", basePrice=" + basePrice + '}';
     }
+
+
     
 }

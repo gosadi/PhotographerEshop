@@ -38,4 +38,8 @@ public class HomeController {
     }
 
     
+         @GetMapping("/sakis")
+    public String showSakisPage() {
+        return "/global/sakis";
+    }
 }

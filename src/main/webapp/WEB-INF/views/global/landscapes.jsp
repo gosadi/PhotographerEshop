@@ -23,242 +23,64 @@
                     <ul>
                         <sec:authorize access="hasRole('ADMIN')">
                             <li><a href="${pageContext.request.contextPath}/admin" class="btn"><sec:authentication property="principal.username"/></a></li>
-                        </sec:authorize>
+                            </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/" class="btn">Home</a></li>
                         <li><a href="${pageContext.request.contextPath}/products" class="btn">Products</a></li>
-                        <sec:authorize access="!hasAnyRole('ADMIN','USER')">
-                        <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
-                        </sec:authorize>
+                            <sec:authorize access="!hasAnyRole('ADMIN','USER')">
+                            <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
+                            </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/aboutus" class="btn">About Us</a></li>
-                        <sec:authorize access="hasAnyRole('ADMIN','USER')">
+                            <sec:authorize access="hasAnyRole('ADMIN','USER')">
                             <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
-                        </sec:authorize>
-                        <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                            </sec:authorize>
+                            <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><a href="cart.html" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
-                        </sec:authorize>
+                                </sec:authorize>
                     </ul>
                 </nav>
             </div>
 
+
             <div class="categories">
                 <div class="wrapper2">
-                    <h1 id="prodtitle">Landscapes</h1>
+                    <h1 id="prodtitle">Products</h1>
                     <div class="row">
-                        <figure class="col-4">
-                            <a href="#popup"><img src="/Images/pexels-eberhard-grossgasteiger-1366919.jpg">
-                            </a>
-                            <div class="desc">
-                                <h4>'Mountains'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
-                                        </div>
-                                    </div>
-                                </h4>
-                            </div>
-                            <!--                            <div class="overlay">
-                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                                                Add to cart <i class="fa fa-shopping-cart"></i>
-                                                            </button>
-                                                        </div>-->
-                        </figure>
-                        <div id="popup" class="popup">
-                            <div class="popup-content">
-                                <h1>'Mountains'</h1>
-                                <img src="/Images/pexels-eberhard-grossgasteiger-1366919.jpg" class="modal-image">
-                                <!-- #+ is to prevent jumping to the top of the page when closing the modal.
-                                  It basically disables the anchor <a> tag, as long as there is no corresponding anchor tag in the page. -->
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>
+                        <c:forEach items="${products}" var="product">
+                            <figure class="col-4">
+                                <a href="#${product.path}"><img src="${pageContext.request.contextPath}${product.path}"/>
+                                </a>
 
-                        <figure class="col-4">
-                            <a href="#popup2"><img src="/Images/pexels-pixabay-358238.jpg">
-                            </a>
-                            <div class="desc">
-                                <h4>'Pathway'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
+                                <div class="desc">
+                                    <h4>'${product.descr}'
+                                        <div class="dropdown">
+                                            <button class="cartbtn">Add to cart
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                            <div class="dropdown-content">
+                                                <a href="#">S</a>
+                                                <a href="#">L</a>
+                                                <a href="#">XL</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </h4>
-                            </div>
-                            <!--                            <div class="overlay">
-                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                                                Add to cart <i class="fa fa-shopping-cart"></i>
-                                                            </button>
-                                                        </div>-->
-                        </figure>
-                        <div id="popup2" class="popup">
-                            <div class="popup-content">
-                                <h1>'Pathway'</h1>
-                                <img src="/Images/pexels-pixabay-358238.jpg" class="modal-image">
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>
-
-                        <figure class="col-4">
-                            <a href="#popup3"><img src="/Images/pexels-philip-ackermann-1666021.jpg"> 
-                            </a>
-                            <div class="desc">
-                                <h4>'Forest Lake'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
-                                        </div>
-                                    </div>
-                                </h4>
-                            </div>
-                            <!--                            <div class="overlay">
-                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                                                Add to cart <i class="fa fa-shopping-cart"></i>
-                                                            </button>
-                                                        </div>-->
-                        </figure>
-                        <div id="popup3" class="popup">
-                            <div class="popup-content">
-                                <h1>'Forest Lake'</h1>
-                                <img src="/Images/pexels-philip-ackermann-1666021.jpg" class="modal-image">
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <figure class="col-4">
-                            <a href="#popup4"><img src="/Images/pexels-sebastian-palomino-1955134.jpg">
-                            </a>
-                            <div class="desc">
-                                <h4>'Roadtrip'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
-                                        </div>
-                                    </div>
-                                </h4>
-                            </div>
-                            <!--                            <div class="overlay">
-                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                                                Add to cart <i class="fa fa-shopping-cart"></i>
-                                                            </button>
-                                                        </div>-->
-                        </figure>
-                        <div id="popup4" class="popup">
-                            <div class="popup-content">
-                                <h1>'Roadtrip'</h1>
-                                <img src="/Images/pexels-sebastian-palomino-1955134.jpg" class="modal-image">
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>
-
-                        <figure class="col-4">
-                            <a href="#popup5"><img src="/Images/pexels-daniel-frank-356807.jpg">
-                            </a>
-                            <div class="desc">
-                                <h4>'Village Life'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
-                                        </div>
-                                    </div>
-                                </h4>
-                            </div>
-                            <!--                            <div class="overlay">
-                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                                                Add to cart <i class="fa fa-shopping-cart"></i>
-                                                            </button>
-                                                        </div>-->
-                            <div id="popup5" class="popup">
+                                    </h4>
+                                </div>
+                            </figure>
+                            <div id="${product.path}" class="popup">
                                 <div class="popup-content">
-                                    <!-- Attention!! -->
-                                    <h1 style="font-size: 30px; line-height: 0px;">'Village Life'</h1>
-                                    <img src="/Images/pexels-daniel-frank-356807.jpg" class="modal-image">
+                                    <h1>${product.descr}</h1>
+                                    <img src="${pageContext.request.contextPath}${product.path}" class="modal-image">
+                                    <!-- #+ is to prevent jumping to the top of the page when closing the modal.
+                                      It basically disables the anchor <a> tag, as long as there is no corresponding anchor tag in the page. -->
                                     <a href="#+" class="close-popup">&times;</a>
+
                                 </div>
                             </div>
-                            <!--                            <br>
-                                                        <a href="#popup6"><img src="/Images/pexels-pok-rie-132037.jpg">
-                                                            <h4>'Sunset'</h4> 
-                                                        </a>
-                                                        <div class="overlay">
-                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                                                Add to cart <i class="fa fa-shopping-cart"></i>
-                                                            </button>
-                                                        </div>-->
-                        </figure>
-                        <!--                        <div id="popup6" class="popup">
-                                                    <div class="popup-content">
-                                                        <h1>'Sunset'</h1>
-                                                        <img src="/Images/pexels-pok-rie-132037.jpg" style="height: 100%;" class="modal-image">
-                                                        <a href="#+" class="close-popup">&times;</a>
-                                                    </div>
-                                                </div>-->
-
-                        <figure class="col-4">
-                            <a href="#popup7"><img src="/Images/pexels-eberhard-grossgasteiger-1624438.jpg">
-                            </a>
-                            <div class="desc">
-                                <h4>'Night Sky'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
-                                        </div>
-                                    </div>
-                                </h4>
-                            </div>
-                            <!--                            <div class="overlay">
-                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                                                Add to cart <i class="fa fa-shopping-cart"></i>
-                                                            </button>
-                                                        </div>-->
-                        </figure>
-                        <div id="popup7" class="popup">
-                            <div class="popup-content">
-                                <h1>'Night Sky'</h1>
-                                <img src="/Images/pexels-eberhard-grossgasteiger-1624438.jpg" style="height: 100%;" class="modal-image">
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>
-                         <button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h1>Live Chat</h1></a></button>
-                        <!-- <div id="modal" onclick="this.style.display='none'">
-                            <figure id="modal-content">
-                              <img id="img1">
-                            </figure>
-                          </div> -->
+                        </c:forEach>
                     </div>
                 </div>
             </div>
+
+
 
             <div class="footer">
                 <div class="wrapper">

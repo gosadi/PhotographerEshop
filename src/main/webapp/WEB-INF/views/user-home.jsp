@@ -15,6 +15,29 @@
         <div>
             <a href="/">User Home Page</a>
         </div>
+        
+          <div>
+        <table border="2" style="font-size: 20px">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Description</th>
+                        <th>Image Path</th>
+                        <th>Base Price</th>
+                    </tr>
+                </thead>
+                <c:forEach items="${productsList}" var="product">
+                    <tr>
+                        <td>${product.id}</td>
+                        <td>${product.descr}</td>
+                        <td>${product.path}</td>
+                        <td>${product.base_price}</td>
+                        <td>      
+                    </tr>
+                </c:forEach>
+                </table>
+            </div>
+
 
         <form:form action="/logout" method="POST">
             <input type="submit" value="Logout">
