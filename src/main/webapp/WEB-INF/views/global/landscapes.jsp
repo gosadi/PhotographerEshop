@@ -76,6 +76,12 @@
                                 </div>
                             </div>
                         </c:forEach>
+                        </div>
+                        <!-- <div id="modal" onclick="this.style.display='none'">
+                            <figure id="modal-content">
+                              <img id="img1">
+                            </figure>
+                          </div> -->
                     </div>
                 </div>
             </div>
@@ -110,6 +116,7 @@
                 </div>
                 <div class="copyright"><p>Copyright&copy; 2021</p></div>
             </div>
+            <div class="chat" ><button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h2>Live chat</h2></a></button></div>
         </div>
 
         <script src="/JS/2.js"></script>

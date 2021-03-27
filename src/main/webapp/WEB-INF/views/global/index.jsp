@@ -84,7 +84,7 @@
                             <a href="${pageContext.request.contextPath}/products/people"><img src="/Images/happyppl.jpg"></a>
                             <h2>People</h2>
                         </figure>
-                        <button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h1>Live Chat</h1></a></button>
+
                     </div>
                 </div>
             </div>
@@ -97,6 +97,7 @@
                             <p>Telephone: 213 807865</p>
                             <p>E-mail: photografos@gmail.com</p>
                             <p>Business Hours: 0900 - 1700, Monday to Friday</p>
+
                         </div>
                         <div id="pp" class="col-2">
                             <h3>Follow us</h3>
@@ -116,6 +117,7 @@
                 </div>
                 <div class="copyright"><p>Copyright&copy; 2021</p></div>
             </div>
+            <div class="chat" ><button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h2>Live chat</h2></a></button></div>
         </div> 
         <script src="/JS/1.js"></script>
         <script src="/JS/socket.js"></script>

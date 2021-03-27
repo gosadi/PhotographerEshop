@@ -13,13 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AdminController {
     
-    @Autowired
-    ProductService productService;
+    @Autowired ProductService productService;
     
-//    @GetMapping
-//    public String AdminHome(){
-//        return "admin/admin-home";
-//    }
+    @GetMapping
+    public String AdminHome(Model model){
+        List<Product> products = productService.getProducts();
+        model.addAttribute("products", products);
+        return "/admin/admin-home";//admin-home
+    }
+    
+    @GetMapping("/products")
+    public String viewProducts(Model model){
+        List<Product> products = productService.getProducts();
+        model.addAttribute("products",products);
+        return "/admin/admin-products";
+    }
     
         @GetMapping
     public String showProducts(Model model){
