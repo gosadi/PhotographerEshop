@@ -41,18 +41,28 @@ public class ProductController {
     public String showProducts(Model model){
         List<Product> products = productService.getProducts();
         model.addAttribute("products", products);
-        return "/global/landscapes";
+        return "/global/products";
     }
+    
+
+            
+            
     @GetMapping("/landscapes")
-    public String showLandscapes(){
+    public String showLandscapes(Model model){
+        List<Product> products = productService.getLandscapes();
+        model.addAttribute("products", products);
         return "/global/landscapes";
     }
     @GetMapping("/animals")
-    public String showAnimals(){
+    public String showAnimals(Model model){
+        List<Product> products = productService.getAnimals();
+        model.addAttribute("products", products);
         return "/global/animals";
     }
     @GetMapping("/people")
-    public String showPeople(){
+    public String showPeople(Model model){
+        List<Product> products = productService.getPeople();
+        model.addAttribute("products", products);
         return "/global/people";
     }   
     

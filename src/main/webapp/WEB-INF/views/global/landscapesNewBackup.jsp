@@ -8,9 +8,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>People</title>
+        <title>Landscapes</title>
         <link rel="stylesheet" href="/CSS/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
+
     <body>
         <div class="wrapper">
             <div class="navbar">
@@ -37,14 +39,17 @@
                     </ul>
                 </nav>
             </div>
+
+
             <div class="categories">
                 <div class="wrapper2">
-                    <h1 id="prodtitle">People</h1>
+                    <h1 id="prodtitle">Products</h1>
                     <div class="row">
                         <c:forEach items="${products}" var="product">
                             <figure class="col-4">
-                                <a href="#${product.path}"><img src="${pageContext.request.contextPath}${product.path}">
+                                <a href="#${product.path}"><img src="${pageContext.request.contextPath}${product.path}"/>
                                 </a>
+
                                 <div class="desc">
                                     <h4>'${product.descr}'
                                         <div class="dropdown">
@@ -60,20 +65,22 @@
                                     </h4>
                                 </div>
                             </figure>
-
                             <div id="${product.path}" class="popup">
                                 <div class="popup-content">
-                                    <h1>'${product.descr}'</h1>
+                                    <h1>${product.descr}</h1>
                                     <img src="${pageContext.request.contextPath}${product.path}" class="modal-image">
                                     <!-- #+ is to prevent jumping to the top of the page when closing the modal.
-                                    It basically disables the anchor <a> tag, as long as there is no corresponding anchor tag in the page. -->
+                                      It basically disables the anchor <a> tag, as long as there is no corresponding anchor tag in the page. -->
                                     <a href="#+" class="close-popup">&times;</a>
                                 </div>
                             </div>
                         </c:forEach>
-                    </div> 
+                    </div>
                 </div>
             </div>
+
+
+
 
             <div class="footer">
                 <div class="wrapper">
@@ -105,6 +112,7 @@
             </div>
             <div class="chat" ><button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h2>Live chat</h2></a></button></div>
         </div>
+
         <script src="/JS/2.js"></script>
     </body>
 </html>

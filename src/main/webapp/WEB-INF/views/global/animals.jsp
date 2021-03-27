@@ -44,233 +44,38 @@
                 <div class="wrapper2">
                     <h1 id="prodtitle">Animals</h1>
                     <div class="row">
-                        <figure class="col-4">
-                            <a href="#popup">
-                                <img src="/Images/pexels-alex-andrews-2295744.jpg">
-                            </a>
-                            <div class="desc">
-                                <h4>'Fox'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
+                        <c:forEach items="${products}" var="product">
+                            <figure class="col-4">
+                                <a href="#${product.path}">
+                                    <img src="${pageContext.request.contextPath}${product.path}">
+                                </a>
+                                <div class="desc">
+                                    <h4>'Fox'
+                                        <div class="dropdown">
+                                            <button class="cartbtn">Add to cart
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                            <div class="dropdown-content">
+                                                <a href="#">S</a>
+                                                <a href="#">L</a>
+                                                <a href="#">XL</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </h4>
+                                    </h4>
+                                </div>
+                            </figure>
+                            <div id="${product.path}" class="popup">
+                                <div class="popup-content">
+                                    <h1>'${product.descr}'</h1>
+                                    <img src="${pageContext.request.contextPath}${product.path}" class="modal-image">
+                                    <!-- #+ is to prevent jumping to the top of the page when closing the modal.
+                                It basically disables the anchor <a> tag, as long as there is no corresponding anchor tag in the page. -->
+                                    <a href="#+" class="close-popup">&times;</a>
+                                </div>
                             </div>
-
-                            <!--                            <div class="overlay">
-                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                                                Add to cart 
-                                                                <i class="fa fa-shopping-cart"></i>
-                                                            </button>
-                                                        </div>-->
-                        </figure>
-                        <div id="popup" class="popup">
-                            <div class="popup-content">
-                                <h1>'Fox'</h1>
-                                <img src="/Images/pexels-alex-andrews-2295744.jpg" class="modal-image">
-                                <!-- #+ is to prevent jumping to the top of the page when closing the modal.
-                            It basically disables the anchor <a> tag, as long as there is no corresponding anchor tag in the page. -->
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>
-                        <figure class="col-4">
-                            <!--                            <a href="#popup2"><img src="/Images/pexels-chevanon-photography-1108099.jpg">
-                                                            <h4>'Twins'</h4>  
-                                                        </a>
-                                                        <div class="overlay">
-                                                            <button onclick="window.location.href = 'Cart.html';" class="cart-button">
-                                                                Add to cart <i class="fa fa-shopping-cart"></i>
-                                                            </button>
-                                                        </div>
-                                                        <div id="popup2" class="popup">
-                                                            <div class="popup-content">
-                                                                 Attention!! 
-                                                                <h1 style="font-size: 30px;">'Twins'</h1>
-                                                                <img src="/Images/pexels-chevanon-photography-1108099.jpg" class="modal-image">
-                                                                <a href="#+" class="close-popup">&times;</a>
-                                                            </div>
-                                                        </div>-->
-                            <a href="#popup3"><img src="/Images/pexels-flickr-145962.jpg">
-                            </a>
-                            <div class="desc">
-                                <h4>'Eagle'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
-                                        </div>
-                                    </div>
-                                </h4>
-                            </div>
-                            <!--                            <div class="overlay" style="bottom: 95px;">
-                                                            <button class="cart-button">Add to cart <i class="fa fa-shopping-cart"></i></button>
-                                                        </div>-->
-                        </figure>
-
-                        <div id="popup3" class="popup">
-                            <div class="popup-content">
-                                <h1>'Eagle'</h1>
-                                <img src="/Images/pexels-flickr-145962.jpg" class="modal-image">
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>
-                        <figure class="col-4">
-                            <a href="#popup4"><img src="/Images/pexels-public-domain-pictures-41315.jpg">
-                                <!--                                <h4>'King'</h4>
-                                                                <div class="overlay">
-                                                                    <button class="cart-button">Add to cart <i class="fa fa-shopping-cart"></i></button>
-                                                                </div>-->
-                            </a>
-                            <div class="desc">
-                                <h4>'King'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
-                                        </div>
-                                    </div>
-                                </h4>
-                            </div>
-                        </figure>
-                        <div id="popup4" class="popup">
-                            <div class="popup-content">
-                                <h1>'King'</h1>
-                                <img src="/Images/pexels-public-domain-pictures-41315.jpg" class="modal-image">
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
-
-                    <div class="row">
-                        <figure class="col-4">
-                            <a href="#popup5"><img src="/Images/pexels-public-domain-pictures-87403.jpg">
-                                <!--                                <div class="overlay">
-                                                                    <button class="cart-button">Add to cart <i class="fa fa-shopping-cart"></i></button>
-                                                                </div>-->
-                            </a>
-                            <div class="desc">
-                                <h4>'Wild'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
-                                        </div>
-                                    </div>
-                                </h4>
-                            </div>
-                        </figure>
-                        <div id="popup5" class="popup">
-                            <div class="popup-content">
-                                <h1>'Wild'</h1>
-                                <img src="/Images/pexels-public-domain-pictures-87403.jpg" class="modal-image">
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>
-
-                        <figure class="col-4">
-                            <a href="#popup6"><img src="/Images/pexels-david-dibert-635499.jpg">
-                                <!--                                <div class="overlay">
-                                                                    <button class="cart-button">Add to cart <i class="fa fa-shopping-cart"></i></button>
-                                                                </div>-->
-                            </a>
-                            <div class="desc">
-                                <h4>'Freedom'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
-                                        </div>
-                                    </div>
-                                </h4>
-                            </div>
-                        </figure>
-                        <div id="popup6" class="popup">
-                            <div class="popup-content">
-                                <h1>'Freedom'</h1>
-                                <img src="/Images/pexels-david-dibert-635499.jpg" class="modal-image">
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>
-                        <figure class="col-4">
-                            <!--                            <a href="#popup7"><img src="/Images/pexels-kelvin-valerio-617278.jpg">
-                                                            <h4>'Kitten'</h4>
-                                                            <div class="overlay" style="bottom: 95px;">
-                                                                <button class="cart-button">Add to cart <i class="fa fa-shopping-cart"></i>
-                                                                </button>
-                                                            </div>
-                                                        </a>
-                                                        <div id="popup7" class="popup">
-                                                            <div class="popup-content">
-                                                                 Attention!! 
-                                                                <h1 style="font-size: 30px; line-height: 0px;">'Kitten'</h1>
-                                                                <img src="/Images/pexels-kelvin-valerio-617278.jpg" class="modal-image">
-                                                                <a href="#+" class="close-popup">&times;</a>
-                                                            </div>
-                                                        </div>-->
-
-                            <a href="#popup8"><img src="/Images/pexels-public-domain-pictures-40984.jpg">
-                                <!--                                <div class="overlay">
-                                                                    <button class="cart-button">Add to cart <i class="fa fa-shopping-cart"></i>
-                                                                    </button>
-                                                                </div>-->
-                            </a>
-                            <div class="desc">
-                                <h4>'Smart'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
-                                        </div>
-                                    </div>
-                                </h4>
-                            </div>
-
-                        </figure>
-
-                        <div id="popup8" class="popup">
-                            <div class="popup-content">
-                                <h1>'Smart'</h1>
-                                <img src="/Images/pexels-public-domain-pictures-40984.jpg" class="modal-image">
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-
-                        </div>
-
-                        <!-- <div id="modal" onclick="this.style.display='none'">
-                        <figure id="modal-content">
-                          <img id="img1">
-                        </figure>
-                      </div> -->
-                    </div>
-
                 </div>
-
             </div>
 
             <div class="footer">

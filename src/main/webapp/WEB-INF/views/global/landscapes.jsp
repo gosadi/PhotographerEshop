@@ -23,70 +23,59 @@
                     <ul>
                         <sec:authorize access="hasRole('ADMIN')">
                             <li><a href="${pageContext.request.contextPath}/admin" class="btn"><sec:authentication property="principal.username"/></a></li>
-                            </sec:authorize>
+                        </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/" class="btn">Home</a></li>
                         <li><a href="${pageContext.request.contextPath}/products" class="btn">Products</a></li>
-                            <sec:authorize access="!hasAnyRole('ADMIN','USER')">
-                            <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
-                            </sec:authorize>
+                        <sec:authorize access="!hasAnyRole('ADMIN','USER')">
+                        <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
+                        </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/aboutus" class="btn">About Us</a></li>
-                            <sec:authorize access="hasAnyRole('ADMIN','USER')">
+                        <sec:authorize access="hasAnyRole('ADMIN','USER')">
                             <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
-                            </sec:authorize>
-                            <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                        </sec:authorize>
+                        <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><a href="cart.html" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
-                                </sec:authorize>
+                        </sec:authorize>
                     </ul>
                 </nav>
             </div>
-
-
             <div class="categories">
                 <div class="wrapper2">
-                    <h1 id="prodtitle">Products</h1>
+                    <h1 id="prodtitle">Landscapes</h1>
                     <div class="row">
                         <c:forEach items="${products}" var="product">
-                            <figure class="col-4">
-                                <a href="#${product.path}"><img src="${pageContext.request.contextPath}${product.path}"/>
-                                </a>
-
-                                <div class="desc">
-                                    <h4>'${product.descr}'
-                                        <div class="dropdown">
-                                            <button class="cartbtn">Add to cart
-                                                <i class="fa fa-caret-down"></i>
-                                            </button>
-                                            <div class="dropdown-content">
-                                                <a href="#">S</a>
-                                                <a href="#">L</a>
-                                                <a href="#">XL</a>
-                                            </div>
+                        <figure class="col-4">
+                            <a href="#${product.path}"><img src="${pageContext.request.contextPath}${product.path}">
+                            </a>
+                            <div class="desc">
+                                <h4>'${product.descr}'
+                                    <div class="dropdown">
+                                        <button class="cartbtn">Add to cart
+                                            <i class="fa fa-caret-down"></i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <a href="#">S</a>
+                                            <a href="#">L</a>
+                                            <a href="#">XL</a>
                                         </div>
-                                    </h4>
-                                </div>
-                            </figure>
-                            <div id="${product.path}" class="popup">
-                                <div class="popup-content">
-                                    <h1>${product.descr}</h1>
-                                    <img src="${pageContext.request.contextPath}${product.path}" class="modal-image">
-                                    <!-- #+ is to prevent jumping to the top of the page when closing the modal.
-                                      It basically disables the anchor <a> tag, as long as there is no corresponding anchor tag in the page. -->
-                                    <a href="#+" class="close-popup">&times;</a>
-
-                                </div>
+                                    </div>
+                                </h4>
                             </div>
-                        </c:forEach>
+                        </figure>
+                       
+                        <div id="${product.path}" class="popup">
+                            <div class="popup-content">
+                                <h1>'${product.descr}'</h1>
+                                <img src="${pageContext.request.contextPath}${product.path}" class="modal-image">
+                                <!-- #+ is to prevent jumping to the top of the page when closing the modal.
+                                  It basically disables the anchor <a> tag, as long as there is no corresponding anchor tag in the page. -->
+                                <a href="#+" class="close-popup">&times;</a>
+                            </div>
                         </div>
-                        <!-- <div id="modal" onclick="this.style.display='none'">
-                            <figure id="modal-content">
-                              <img id="img1">
-                            </figure>
-                          </div> -->
-                    </div>
+                     </c:forEach>
+                    </div>    
                 </div>
             </div>
-
-
 
             <div class="footer">
                 <div class="wrapper">
@@ -116,7 +105,6 @@
                 </div>
                 <div class="copyright"><p>Copyright&copy; 2021</p></div>
             </div>
-            <div class="chat" ><button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h2>Live chat</h2></a></button></div>
         </div>
 
         <script src="/JS/2.js"></script>

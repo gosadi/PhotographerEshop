@@ -29,10 +29,10 @@ public class AdminController {
         return "/admin/admin-products";
     }
     
-        @GetMapping
-    public String showProducts(Model model){
-        List<Product> products = productService.getProducts();
-        model.addAttribute("products", products);
-        return "admin/admin-home";
-    }
+//        @GetMapping
+//    public String showProducts(Model model){
+//        List<Product> products = productService.getProducts();
+//        model.addAttribute("products", products);
+//        return "admin/admin-home";
+//    }
 }
