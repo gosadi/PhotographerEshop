@@ -47,7 +47,31 @@
                         </ul>
                     </nav>
                 </div>
-                
+                <div class="adminTable">
+                    <table>
+                        <thead>
+                        <th>Product ID</th>
+                        <th>Product info.</th>
+                        <th>Product</th>
+                        <th>Product price</th>
+                        <th>Product Category</th>
+                        <th>update</th>
+                        <th>delete</th>
+                        </thead>
+                        <c:forEach items="${products}" var = "product">
+                            <tr>
+                                <td>${product.id}</td>
+                                <td>${product.descr}</td>
+                                <td><img src="${product.path}" alt="" width="100px"></td>
+                                <td>${product.basePrice}</td>
+                                <td>${product.photocategory.name}</td>
+                                <td><a href="#"><img src="/Images/pencil.png" alt="edit"></a></td>
+                                <td><a href="#"><img src="/Images/eraser.png" alt="update"></a></td>
+                            </tr>
+                        </c:forEach>
+
+                    </table>
+                </div>
 
             </div>
 

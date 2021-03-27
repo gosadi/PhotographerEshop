@@ -1,10 +1,11 @@
 package eshop.repository;
 
-import eshop.entity.Category;
+import eshop.entity.Orderr;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
- public interface CategoryRepo extends JpaRepository<Category, Integer>{
-        
-    }
+public interface OrderrRepo extends JpaRepository<Orderr, Integer>{
+    
+}

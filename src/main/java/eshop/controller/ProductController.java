@@ -5,7 +5,7 @@
  */
 package eshop.controller;
 
-import eshop.entity.Category;
+
 import eshop.entity.Product;
 import eshop.service.CategoryService;
 import eshop.service.ProductService;

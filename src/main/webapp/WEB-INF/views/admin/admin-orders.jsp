@@ -47,7 +47,34 @@
                         </ul>
                     </nav>
                 </div>
-                
+                <div class="adminTable">
+                    <table>
+                        <thead>
+                        <th>Order ID</th>
+                        <th>Order Date</th>
+                        <th>Order Price</th>
+                        <th>Order Account ID</th>
+                        <th>Order Account Firstname</th>
+                        <th>Order Account Lastname</th>
+                        <th>Order Payment</th>
+                        <th>Quant</th>
+                        </thead>
+                        <c:forEach items="${orders}" var = "order">
+                            <tr>
+                                <td>${order.id}</td>
+                                <td>${order.orderDate}</td>
+                                <td>${order.totalPrice}€</td>
+                                <td>${order.account.id}</td>
+                                <td>${order.account.firstname}</td>
+                                <td>${order.account.lastname}</td>
+                                <td>${order.payment.name}</td>
+                                <td>${order.orderDetails}</td>
+                                
+                            </tr>
+                        </c:forEach>
+
+                    </table>
+                </div>
 
             </div>
 
