@@ -41,6 +41,65 @@ nav ul li {
     margin-right: 20px;
 }
 
+.adminWrapper {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    /* background-color: rgb(124, 120, 120); */
+    background-color: #FAF3DD;
+    border-radius: 20px;
+}
+
+.adminMenu {
+    max-width: 150px;
+    
+    height: 1px; /*epitides gia to sticky*/
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.adminTable {
+    border-radius: 20px;
+    margin-right: 1%;
+    margin-left: 1%;
+    
+}
+
+.adminTable table{
+    margin-top: 3%;
+    background-color: #C8D5B9;
+    border-radius: 20px;
+    margin-bottom: 3%;
+}
+
+.adminMenu ul {
+    display: block;
+    list-style-type: none;
+}
+
+.adminMenu li {
+    text-align: center;
+    padding: 20px 20px;
+}
+
+.adminMenu a {
+    width: 100px;
+    height: 100px;
+    color: black;
+    background-color: #C8D5B9;
+    display: inline-block;
+    padding: 25px 20px;
+    line-height: normal;
+    border-radius: 100px;
+    transition: 0.5s;
+
+}
+
+.adminMenu a:hover {
+    transform: scale(1.3);
+}
+
 a {
     text-decoration: none;
     color: #555;
@@ -108,10 +167,10 @@ p {
     position: fixed;
     bottom: 50px;
     margin-left: 90%;
-    z-index: 2;
+    z-index: 999;
 }
 .chatButton {
-    
+
     border-radius: 60px;
     width: 60px;
     border: none;

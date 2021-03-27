@@ -15,6 +15,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -36,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Product.findById", query = "SELECT p FROM Product p WHERE p.id = :id")
     , @NamedQuery(name = "Product.findByDescr", query = "SELECT p FROM Product p WHERE p.descr = :descr")
     , @NamedQuery(name = "Product.findByPath", query = "SELECT p FROM Product p WHERE p.path = :path")
-    , @NamedQuery(name = "Product.findByBasePrice", query = "SELECT p FROM Product p WHERE p.basePrice = :basePrice")})
+    , @NamedQuery(name = "Product.findByBasePrice", query = "SELECT p FROM Product p WHERE p.basePrice = :basePrice")
+    })
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,6 +58,9 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "base_price")
     private int basePrice;
+    @JoinColumn(name = "photo_category_id", referencedColumnName = "id")
+    @ManyToOne(optional = false,fetch = FetchType.LAZY)
+    private PhotoCategory photocategory;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
     private List<ProductHasCategory> productHasCategories;
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
@@ -104,6 +110,14 @@ public class Product implements Serializable {
         this.basePrice = basePrice;
     }
 
+    public PhotoCategory getPhotocategory() {
+        return photocategory;
+    }
+
+    public void setPhotocategory(PhotoCategory photocategory) {
+        this.photocategory = photocategory;
+    }
+
     @XmlTransient
     public List<ProductHasCategory> getProductHasCategories() {
         return productHasCategories;
@@ -146,5 +160,5 @@ public class Product implements Serializable {
     public String toString() {
         return "eshop.entity.Product[ id=" + id + " ]";
     }
-    
+
 }
