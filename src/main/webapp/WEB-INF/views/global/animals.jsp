@@ -50,15 +50,17 @@
                                     <img src="${pageContext.request.contextPath}${product.path}">
                                 </a>
                                 <div class="desc">
-                                    <h4>'Fox'
+                                    <h4>'${product.descr}'
                                         <div class="dropdown">
                                             <button class="cartbtn">Add to cart
                                                 <i class="fa fa-caret-down"></i>
                                             </button>
                                             <div class="dropdown-content">
-                                                <a href="#">S</a>
-                                                <a href="#">L</a>
-                                                <a href="#">XL</a>
+                                                <c:forEach items="${sizes}" var="size">
+                                                <a href="#">${size.size}</a>
+                                                </c:forEach>
+<!--                                                <a href="#">L</a>
+                                                <a href="#">XL</a>-->
                                             </div>
                                         </div>
                                     </h4>
@@ -106,7 +108,11 @@
                 </div>
                 <div class="copyright"><p>Copyright&copy; 2021</p></div>
             </div>
-            <div class="chat" ><button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h2>Live chat</h2></a></button></div>
+            <div class="chat" >
+                <button class="chatButton">
+                    <a href="${pageContext.request.contextPath}/chat" class="">
+                        <h2>Live chat</h2></a>
+                </button></div>
         </div>
         <script src="/JS/2.js"></script>
     </body>

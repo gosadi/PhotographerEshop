@@ -21,17 +21,18 @@ public class ProductService {
     }
     
     public List<Product> getLandscapes(){
-        List<Product> products = productRepo.findAllByCategoryId(1);
+        List<Product> products = productRepo.findAllByPhotoCategoryId(1);
         return products;
     }
     public List<Product> getAnimals(){
-        List<Product> products = productRepo.findAllByCategoryId(2);
+        List<Product> products = productRepo.findAllByPhotoCategoryId(2);
         return products;
     }
     public List<Product> getPeople(){
-        List<Product> products = productRepo.findAllByCategoryId(3);
+        List<Product> products = productRepo.findAllByPhotoCategoryId(3);
         return products;
     }
+    
 
     public void addProduct(Product product) {
         productRepo.save(product);

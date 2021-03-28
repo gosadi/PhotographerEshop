@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface ProductRepo extends JpaRepository<Product, Integer> {
 
     @Query("SELECT p from Product p WHERE p.photocategory.id =:id")
-    List<Product> findAllByCategoryId(@Param("id") int id);
+    List<Product> findAllByPhotoCategoryId(@Param("id") int id);
+
 }
