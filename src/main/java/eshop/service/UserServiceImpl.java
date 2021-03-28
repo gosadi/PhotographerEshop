@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package eshop.service;
 
 import eshop.entity.Account;
@@ -71,4 +66,31 @@ public class UserServiceImpl implements UserService {
         accountuser = userRepo.save(accountuser);
         return accountuser;
     }
+
+    @Override
+    public List<Account> getUsers() {
+        List<Account> accounts = userRepo.findAll();
+        return accounts;
+    }
+
+    @Override
+    public List<Account> getUsersWithRoleAdmin() {
+        return userRepo.findAllByRoles(1);
+    }
+
+    @Override
+    public List<Account> getUsersWithRoleUser() {
+        return userRepo.findAllByRoles(2);
+    }
+    
+//    public List<Account> getAdmins(){
+//        List<Account> accounts = userRepo.findAdmins();
+//        return accounts;
+//    }
+   
+    
+    
+    
+    
+    
 }

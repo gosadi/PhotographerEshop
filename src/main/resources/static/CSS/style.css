@@ -45,15 +45,15 @@ nav ul li {
     display: flex;
     justify-content: space-between;
     text-align: center;
-    /* background-color: rgb(124, 120, 120); */
     background-color: #FAF3DD;
     border-radius: 20px;
+    min-height: 450px;
 }
 
 .adminMenu {
     max-width: 150px;
     
-    height: 1px; /*epitides gia to sticky*/
+    height: 50%; /*epitides gia to sticky*/
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -71,6 +71,11 @@ nav ul li {
     background-color: #C8D5B9;
     border-radius: 20px;
     margin-bottom: 3%;
+}
+.adminTable table tr,
+.adminTable table th{
+    border-bottom: 1px solid black;
+    padding: 0 10px;
 }
 
 .adminMenu ul {
