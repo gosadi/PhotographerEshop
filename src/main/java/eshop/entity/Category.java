@@ -16,6 +16,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -34,8 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c")
     , @NamedQuery(name = "Category.findById", query = "SELECT c FROM Category c WHERE c.id = :id")
-    , @NamedQuery(name = "Category.findBySize", query = "SELECT c FROM Category c WHERE c.size = :size")
-    , @NamedQuery(name = "Category.findByPriceRateSize", query = "SELECT c FROM Category c WHERE c.priceRateSize = :priceRateSize")})
+    , @NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name = :name")
+    , @NamedQuery(name = "Category.findByPriceRate", query = "SELECT c FROM Category c WHERE c.priceRate = :priceRate")})
 public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,15 +47,21 @@ public class Category implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @JoinColumn(name = "category_type_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CategoryType categoryType;
     @Size(max = 30)
-    @Column(name = "size")
-    private String size;
+    @Column(name = "name")
+    private String name;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "price_rate_size")
-    private BigDecimal priceRateSize;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category", fetch = FetchType.LAZY)
-    private List<ProductHasCategory> productHasCategories;
-
+    @Column(name = "price_rate")
+    private BigDecimal priceRate;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category", fetch = FetchType.LAZY)
+//    private List<ProductHasCategory> productHasCategories;
+    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+    private List<OrderDetails> orderDetails;
+    
+    
     public Category() {
     }
 
@@ -68,30 +77,48 @@ public class Category implements Serializable {
         this.id = id;
     }
 
-    public String getSize() {
-        return size;
+    public String getName() {
+        return name;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public BigDecimal getPriceRateSize() {
-        return priceRateSize;
+    public BigDecimal getPriceRate() {
+        return priceRate;
     }
 
-    public void setPriceRateSize(BigDecimal priceRateSize) {
-        this.priceRateSize = priceRateSize;
+    public void setPriceRate(BigDecimal priceRate) {
+        this.priceRate = priceRate;
     }
 
-    @XmlTransient
-    public List<ProductHasCategory> getProductHasCategories() {
-        return productHasCategories;
+//    @XmlTransient
+//    public List<ProductHasCategory> getProductHasCategories() {
+//        return productHasCategories;
+//    }
+//
+//    public void setProductHasCategories(List<ProductHasCategory> productHasCategories) {
+//        this.productHasCategories = productHasCategories;
+//    }
+
+    public CategoryType getCategoryType() {
+        return categoryType;
     }
 
-    public void setProductHasCategories(List<ProductHasCategory> productHasCategories) {
-        this.productHasCategories = productHasCategories;
+    public void setCategoryType(CategoryType categoryType) {
+        this.categoryType = categoryType;
     }
+
+    public List<OrderDetails> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetails> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+    
+    
 
     @Override
     public int hashCode() {

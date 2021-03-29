@@ -50,47 +50,28 @@
                         </ul>
                     </nav>
                 </div>
-                            <i id="wrong">${wrong}</i>
                 <div class="adminTable">
                     <table>
                         <thead>
-                        <th>ID</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>Postalcode</th>
-                        <th>Orders</th>
-                        <th>update</th>
+                        <th>Order ID</th>
+                        <th>Product</th>
+                        <th>Base Price</th>
+                        <th>Quantity</th>
+                        <th>Current Price</th>
+                        <th>Category Name</th>
+                        <th>Price Rate</th>
                         </thead>
-                        <c:forEach items="${admins}" var = "account">
+                        <c:forEach items="${orderDetails}" var = "orderDetail">
                             <tr>
-                                <td>${account.id}</td>
-                                <td>${account.firstname}</td>
-                                <td>${account.lastname}</td>
-                                <td>${account.username}</td>
-                                <td>${account.email}</td>
-                                <td>${account.address}</td>
-                                <td>${account.city}</td>
-                                <td>${account.postalcode}</td>
-                                <td><a href="${pageContext.request.contextPath}/admin/users/orders?id=${account.id}">ViewOrders</a></td>
-                                <td><a href="${pageContext.request.contextPath}/admin/users/edit/${account.id}"><img src="/Images/pencil.png" alt="edit"></a></td>
-                            </tr>
-                        </c:forEach>
-                            <c:forEach items="${users}" var = "account">
-                            <tr>
-                                <td>${account.id}</td>
-                                <td>${account.firstname}</td>
-                                <td>${account.lastname}</td>
-                                <td>${account.username}</td>
-                                <td>${account.email}</td>
-                                <td>${account.address}</td>
-                                <td>${account.city}</td>
-                                <td>${account.postalcode}</td>
-                                <td><a href="${pageContext.request.contextPath}/admin/users/orders?id=${account.id}">ViewOrders</a></td>
-                                <td><a href="${pageContext.request.contextPath}/admin/users/edit/${account.id}"><img src="/Images/pencil.png" alt="edit"></a></td>
+                                <td>${orderDetail.orderr.id}</td>
+                                <td><img src="${orderDetail.product.path}" alt="" width="100px"></td>
+                                <td>${orderDetail.product.basePrice}€</td>
+                                <td>${orderDetail.quant}</td>
+                                <td>${orderDetail.currentPrice}</td>
+                                <c:forEach items="${orderDetail.categories}" var="category">
+                                    <td>${category.name}</td>
+                                    <td>${category.priceRate}</td>
+                                </c:forEach>
                             </tr>
                         </c:forEach>
 
@@ -100,9 +81,7 @@
             </div>
 
             <div class="copyright"><p>Copyright&copy; 2021</p></div>
-        </div>
-
-
+        </div> 
         <script src="/JS/1.js"></script>
     </body>
 </html>

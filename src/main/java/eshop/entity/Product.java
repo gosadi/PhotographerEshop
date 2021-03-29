@@ -61,8 +61,8 @@ public class Product implements Serializable {
     @JoinColumn(name = "product_category_id", referencedColumnName = "id")
     @ManyToOne(optional = false,fetch = FetchType.LAZY)
     private ProductCategory productcategory;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
-    private List<ProductHasCategory> productHasCategories;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
+//    private List<ProductHasCategory> productHasCategories;
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<OrderDetails> orderDetails;
     
@@ -121,14 +121,14 @@ public class Product implements Serializable {
         this.productcategory = productcategory;
     }
 
-    @XmlTransient
-    public List<ProductHasCategory> getProductHasCategories() {
-        return productHasCategories;
-    }
-
-    public void setProductHasCategories(List<ProductHasCategory> productHasCategories) {
-        this.productHasCategories = productHasCategories;
-    }
+//    @XmlTransient
+//    public List<ProductHasCategory> getProductHasCategories() {
+//        return productHasCategories;
+//    }
+//
+//    public void setProductHasCategories(List<ProductHasCategory> productHasCategories) {
+//        this.productHasCategories = productHasCategories;
+//    }
 
     @XmlTransient
     public List<OrderDetails> getOrderDetails() {

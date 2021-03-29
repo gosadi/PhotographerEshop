@@ -67,7 +67,7 @@
                                 <td>${product.descr}</td>
                                 <td><img src="${product.path}" alt="" width="100px"></td>
                                 <td>${product.basePrice}€</td>
-                                <td>${product.photocategory.name}</td>
+                                <td>${product.productcategory.name}</td>
                                 <td><a href="${pageContext.request.contextPath}/admin/products/edit/${product.id}"><img src="/Images/pencil.png" alt="edit"></a></td>
                                 <td><a href="${pageContext.request.contextPath}/admin/products/delete?id=${product.id}"><img src="/Images/eraser.png" alt="delete"></a></td>
                             </tr>
