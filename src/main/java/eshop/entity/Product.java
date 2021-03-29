@@ -58,9 +58,9 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "base_price")
     private int basePrice;
-    @JoinColumn(name = "photo_category_id", referencedColumnName = "id")
+    @JoinColumn(name = "product_category_id", referencedColumnName = "id")
     @ManyToOne(optional = false,fetch = FetchType.LAZY)
-    private PhotoCategory photocategory;
+    private ProductCategory productcategory;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
     private List<ProductHasCategory> productHasCategories;
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
@@ -113,12 +113,12 @@ public class Product implements Serializable {
         this.basePrice = basePrice;
     }
 
-    public PhotoCategory getPhotocategory() {
-        return photocategory;
+    public ProductCategory getProductcategory() {
+        return productcategory;
     }
 
-    public void setPhotocategory(PhotoCategory photocategory) {
-        this.photocategory = photocategory;
+    public void setProductcategory(ProductCategory productcategory) {
+        this.productcategory = productcategory;
     }
 
     @XmlTransient

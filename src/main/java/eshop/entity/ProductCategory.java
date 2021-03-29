@@ -27,13 +27,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alkinoos
  */
 @Entity
-@Table(name = "photo_category")
+@Table(name = "ProductCategory")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PhotoCategory.findAll", query = "SELECT p FROM PhotoCategory p")
-    , @NamedQuery(name = "PhotoCategory.findById", query = "SELECT p FROM PhotoCategory p WHERE p.id = :id")
-    , @NamedQuery(name = "PhotoCategory.findByName", query = "SELECT p FROM PhotoCategory p WHERE p.name = :name")})
-public class PhotoCategory implements Serializable {
+    @NamedQuery(name = "ProductCategory.findAll", query = "SELECT p FROM ProductCategory p")
+    , @NamedQuery(name = "ProductCategory.findById", query = "SELECT p FROM ProductCategory p WHERE p.id = :id")
+    , @NamedQuery(name = "ProductCategory.findByName", query = "SELECT p FROM ProductCategory p WHERE p.name = :name")})
+public class ProductCategory implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,17 +46,17 @@ public class PhotoCategory implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "photocategory")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productcategory")
     private List<Product> products;
 
-    public PhotoCategory() {
+    public ProductCategory() {
     }
 
-    public PhotoCategory(Integer id) {
+    public ProductCategory(Integer id) {
         this.id = id;
     }
 
-    public PhotoCategory(Integer id, String name) {
+    public ProductCategory(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -97,10 +97,10 @@ public class PhotoCategory implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PhotoCategory)) {
+        if (!(object instanceof ProductCategory)) {
             return false;
         }
-        PhotoCategory other = (PhotoCategory) object;
+        ProductCategory other = (ProductCategory) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -109,7 +109,7 @@ public class PhotoCategory implements Serializable {
 
     @Override
     public String toString() {
-        return "eshop.entity.PhotoCategory[ id=" + id + " ]";
+        return "eshop.entity.ProductCategory[ id=" + id + " ]";
     }
     
 }
