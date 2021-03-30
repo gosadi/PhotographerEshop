@@ -7,6 +7,8 @@ package eshop.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +17,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -43,6 +47,12 @@ public class OrderDetails implements Serializable {
     private Integer id;
     @Column(name = "quant")
     private Integer quant;
+    
+    @JoinTable(name = "order_details_has_category", 
+            joinColumns = {@JoinColumn(name = "order_details_id", referencedColumnName = "id")}, 
+            inverseJoinColumns = {@JoinColumn(name = "category_id", referencedColumnName = "id")})
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Category> categories = new ArrayList<>();
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "current_price")
     private BigDecimal currentPrice;
@@ -84,11 +94,11 @@ public class OrderDetails implements Serializable {
         this.currentPrice = currentPrice;
     }
 
-    public Orderr getOrder() {
+    public Orderr getOrderr() {
         return orderr;
     }
 
-    public void setOrder(Orderr orderr) {
+    public void setOrderr(Orderr orderr) {
         this.orderr = orderr;
     }
 
@@ -98,6 +108,14 @@ public class OrderDetails implements Serializable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     @Override

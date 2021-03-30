@@ -474,6 +474,12 @@ div.desc {
     background-color: black;
 }
 
+#wrong{
+    color: red;
+    position: relative;
+    left: 68%;
+    height: 30px;
+}
 @keyframes looping {
     0%{
         transform: rotate(0deg);

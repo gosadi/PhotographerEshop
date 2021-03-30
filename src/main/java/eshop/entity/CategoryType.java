@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eshop.entity;
 
 import java.io.Serializable;
@@ -11,6 +7,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,13 +24,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author alkinoos
  */
 @Entity
-@Table(name = "photo_category")
+@Table(name = "category_type")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PhotoCategory.findAll", query = "SELECT p FROM PhotoCategory p")
-    , @NamedQuery(name = "PhotoCategory.findById", query = "SELECT p FROM PhotoCategory p WHERE p.id = :id")
-    , @NamedQuery(name = "PhotoCategory.findByName", query = "SELECT p FROM PhotoCategory p WHERE p.name = :name")})
-public class PhotoCategory implements Serializable {
+    @NamedQuery(name = "CategoryType.findAll", query = "SELECT c FROM CategoryType c")
+    , @NamedQuery(name = "CategoryType.findById", query = "SELECT c FROM CategoryType c WHERE c.id = :id")
+    , @NamedQuery(name = "CategoryType.findByName", query = "SELECT c FROM CategoryType c WHERE c.name = :name")})
+public class CategoryType implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,17 +43,18 @@ public class PhotoCategory implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "photocategory")
-    private List<Product> products;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoryType", fetch = FetchType.LAZY)
+    private List<Category> categories;
 
-    public PhotoCategory() {
+    public CategoryType() {
     }
 
-    public PhotoCategory(Integer id) {
+    public CategoryType(Integer id) {
         this.id = id;
     }
 
-    public PhotoCategory(Integer id, String name) {
+    public CategoryType(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -77,12 +75,12 @@ public class PhotoCategory implements Serializable {
         this.name = name;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<Category> getCategories() {
+        return categories;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
     
     
@@ -97,10 +95,10 @@ public class PhotoCategory implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PhotoCategory)) {
+        if (!(object instanceof CategoryType)) {
             return false;
         }
-        PhotoCategory other = (PhotoCategory) object;
+        CategoryType other = (CategoryType) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -109,7 +107,7 @@ public class PhotoCategory implements Serializable {
 
     @Override
     public String toString() {
-        return "eshop.entity.PhotoCategory[ id=" + id + " ]";
+        return "eshop.entity.CategoryType[ id=" + id + " ]";
     }
     
 }

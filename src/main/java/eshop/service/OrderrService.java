@@ -8,4 +8,6 @@ public interface OrderrService {
     
     List<Orderr> getOrderrs();
     
+    List<Orderr> getOrdersByAccountId(int id);
+    
 }
