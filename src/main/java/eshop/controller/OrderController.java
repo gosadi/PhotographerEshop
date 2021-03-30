@@ -1,29 +1,33 @@
 
 package eshop.controller;
 
-import eshop.entity.Category;
-import eshop.entity.Product;
-import eshop.service.CategoryService;
-import eshop.service.ProductService;
+
+
+import eshop.entity.OrderDetails;
+import eshop.entity.ProductHasCategory;
+import eshop.service.ProductHasCategoryService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping
+@RequestMapping("/order")
 public class OrderController {
     
     @Autowired
-    ProductService productService;
+    ProductHasCategoryService productHasCategoryService;
     
-    @Autowired
-    CategoryService categoryService;
+    @GetMapping
+    public String showCart(@ModelAttribute("order") ProductHasCategory productHasCategory){
+        return "order";
+    }
     
     @ModelAttribute("sizes")
-    public List<Category> getProductSize(){
-        List<Category> sizes = categoryService.getCategories();
-        return sizes;
+    public List<ProductHasCategory> getProductSize(){
+        return productHasCategoryService.getProductHasCategory();
     }
+
 }
