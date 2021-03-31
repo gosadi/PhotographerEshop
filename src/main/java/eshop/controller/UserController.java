@@ -8,9 +8,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UserController {
     
-    @GetMapping
-    public String UserHome(){
-        return "user-home";
+    @GetMapping("/user-history")
+    public String showUserHistory(){
+        return "global/user-history";
     }
     
+    @GetMapping("/user-info")
+    public String showUserInfo(){
+        return "global/user-info";
+    }
+    
+     @GetMapping("/user-update")
+    public String showUpdateForm(){
+        return "global/user-update";
+    }
+    
+     @GetMapping("/user-order-details")
+    public String showUserOrderDetails(){
+        return "global/user-order-details";
+    }
 }

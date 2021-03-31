@@ -36,10 +36,4 @@ public class HomeController {
     public String showChat() {
         return "/global/websocket";
     }
-
-    
-         @GetMapping("/sakis")
-    public String showSakisPage() {
-        return "/global/sakis";
-    }
 }
