@@ -17,4 +17,6 @@ public interface UserService extends UserDetailsService{
     
     Account saveUser(Account accountuser);
     
+    Account getUserById(int id);
+    
 } 
