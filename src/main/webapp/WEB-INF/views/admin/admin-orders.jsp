@@ -41,15 +41,16 @@
                 <div class="adminMenu">
                     <nav>
                         <ul>
-                            <li><a href="${pageContext.request.contextPath}/admin/products">View Products</a></li>
-                            <li><a href="${pageContext.request.contextPath}/admin/orders">View Orders</a></li>
-                            <li><a href="${pageContext.request.contextPath}/admin/admins">View Admins</a></li>
-                            <li><a href="${pageContext.request.contextPath}/admin/users">View Users</a></li>
-                            <li><a href="#">Add Product</a></li>
-                            <li><a href="#">Add Account</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/products"><u>View</u> Products</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/orders"><u>View</u> Orders</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/admins"><u>View</u> Admins</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/users"><u>View</u> Users</a></li>
+                            <li><a href="#"><u>Add</u> Product</a></li>
+                            <li><a href="#"><u>Add</u> Account</a></li>
                         </ul>
                     </nav>
                 </div>
+                            
                 <div class="adminTable">
                     <table>
                         <thead>
