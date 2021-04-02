@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -89,14 +90,22 @@ public class AdminController {
         model.addAttribute("admins", admins);
         return "/admin/admin-accounts";
     }
-    
+
     @GetMapping("/users/edit/{id}")
-    public String editUsers(@PathVariable(name = "id")int id, Model model){
+    public String editUsers(@PathVariable(name = "id") int id, Model model) {
         Account account = userService.getUserById(id);
         List<Role> roles = roleService.getAllRoles();
         model.addAttribute("accountToEdit", account);
         model.addAttribute("roles", roles);
         return "/admin/admin-form-account";
+    }
+
+    @PostMapping("/users/update")
+    public String updateUser(Account account, Role role) {
+        
+        userService.updateUserAndRole(account,role);
+
+        return null;
     }
 
 }

@@ -1,6 +1,7 @@
 package eshop.service;
 
 import eshop.entity.Account;
+import eshop.entity.Role;
 import java.util.List;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -9,7 +10,7 @@ public interface UserService extends UserDetailsService{
     
     List<Account> getUsersWithRoleAdmin();
     List<Account> getUsersWithRoleUser();
-//    List<Account> getAdmins();
+
     
     List<Account> getUsers();
     
@@ -18,5 +19,9 @@ public interface UserService extends UserDetailsService{
     Account saveUser(Account accountuser);
     
     Account getUserById(int id);
+    
+    Account updateUserAndRole(Account account,Role role);
+    
+    
     
 } 

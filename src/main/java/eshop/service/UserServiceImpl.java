@@ -87,10 +87,14 @@ public class UserServiceImpl implements UserService {
     public Account getUserById(int id){
         return userRepo.findById(id).get();
     }
-//    public List<Account> getAdmins(){
-//        List<Account> accounts = userRepo.findAdmins();
-//        return accounts;
-//    }
+
+    @Override
+    public Account updateUserAndRole(Account account,Role role) {
+        for(Role r : account.getRoles()){
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+r.getId()+r.getName());
+        }
+        return userRepo.save(account);
+    }
    
     
     

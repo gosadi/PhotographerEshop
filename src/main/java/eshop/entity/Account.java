@@ -213,6 +213,11 @@ public class Account implements Serializable {
             roles = new ArrayList();
         }
         roles.add(role);
+        role.getAccounts().add(this);
+    }
+    
+    public void RemoveRole(Role role){
+        
     }
 
     @Override

@@ -19,7 +19,7 @@
 
         <div class="container" id="container">
             <div class="form-container">
-                <form:form action="${pageContext.request.contextPath}/admin/update" method="POST">
+                <form:form action="${pageContext.request.contextPath}/admin/users/update" method="POST">
 
                     <h2><u>Change the account ${accountToEdit.id} details</u></h2>
                     <label for="username"><i>Account username:</i></label>
@@ -40,9 +40,7 @@
                         <div class="selectWrapper">
                             <select name="roles">
                                 <c:forEach items="${roles}" var = "role">
-                                    <c:forEach items="${accountToEdit.roles}" var= "accountToEditRole">
-                                        <option value="" disabled selected="true" hidden="true">${accountToEditRole.name}</option>
-                                    </c:forEach>
+                                    
                                     <option value="${role.id}">${role.name}</option>
                                 </c:forEach>
                             </select>
