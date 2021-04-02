@@ -1,10 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package eshop.controller;
 
+package eshop.controller;
 
 import eshop.entity.Product;
 import eshop.service.CategoryService;
@@ -16,10 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- *
- * @author alkinoos
- */
 @Controller
 @RequestMapping("/products")
 public class ProductController {
@@ -30,22 +21,12 @@ public class ProductController {
     @Autowired
     CategoryService categoryService;
     
-//    @RequestMapping
-//    public String showSizes(Model model){
-//        List<Category> size = categoryService.getCategories();
-//        model.addAttribute("size",size);
-//        return "/global/landscapes";
-//    }
-    
     @GetMapping
     public String showProducts(Model model){
         List<Product> products = productService.getProducts();
         model.addAttribute("products", products);
         return "/global/products";
     }
-    
-
-            
             
     @GetMapping("/landscapes")
     public String showLandscapes(Model model){
@@ -66,4 +47,10 @@ public class ProductController {
         return "/global/people";
     }   
     
+    @GetMapping("/cart")
+    public String showCart(Model model){
+        List<Product> cartProducts = productService.getProducts();
+        model.addAttribute("cartProducts", cartProducts);
+        return "/global/cart";
+    }
 }

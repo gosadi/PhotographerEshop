@@ -23,18 +23,29 @@
                     <ul>
                         <sec:authorize access="hasRole('ADMIN')">
                             <li><a href="${pageContext.request.contextPath}/admin" class="btn"><sec:authentication property="principal.username"/></a></li>
-                        </sec:authorize>
+                            </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/" class="btn">Home</a></li>
                         <li><a href="${pageContext.request.contextPath}/products" class="btn">Products</a></li>
-                        <sec:authorize access="!hasAnyRole('ADMIN','USER')">
-                        <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
-                        </sec:authorize>
+                            <sec:authorize access="!hasAnyRole('ADMIN','USER')">
+                            <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
+                            </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/aboutus" class="btn">About Us</a></li>
-                        <sec:authorize access="hasAnyRole('ADMIN','USER')">
+                            <sec:authorize access="hasRole('ADMIN')">
                             <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
-                        </sec:authorize>
-                        <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                            </sec:authorize>
+                            <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><a href="cart.html" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
+                                </sec:authorize>
+                                <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                            <li><div class="dropdown"><a href="#" class="btn-prof">
+                                        <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
+                                    <div class="dropdown-content">
+                                        <a href="${pageContext.request.contextPath}/user/user-history">History</a>
+                                        <a href="${pageContext.request.contextPath}/user/user-info">Info</a>
+                                        <a href="${pageContext.request.contextPath}/logout">Logout</a>
+                                    </div>
+                                </div>
+                            </li>
                         </sec:authorize>
                     </ul>
                 </nav>
@@ -44,35 +55,35 @@
                     <h1 id="prodtitle">Landscapes</h1>
                     <div class="row">
                         <c:forEach items="${products}" var="product">
-                        <figure class="col-4">
-                            <a href="#${product.path}"><img src="${pageContext.request.contextPath}${product.path}">
-                            </a>
-                            <div class="desc">
-                                <h4>'${product.descr}'
-                                    <div class="dropdown">
-                                        <button class="cartbtn">Add to cart
-                                            <i class="fa fa-caret-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <a href="#">S</a>
-                                            <a href="#">L</a>
-                                            <a href="#">XL</a>
+                            <figure class="col-4">
+                                <a href="#${product.path}"><img src="${pageContext.request.contextPath}${product.path}">
+                                </a>
+                                <div class="desc">
+                                    <h4>'${product.descr}'
+                                        <div class="dropdown">
+                                            <button class="cartbtn">Add to cart
+<!--                                                <i class="fa fa-caret-down"></i>-->
+                                            </button>
+<!--                                            <div class="dropdown-content">
+                                                <a href="#">S</a>
+                                                <a href="#">L</a>
+                                                <a href="#">XL</a>
+                                            </div>-->
                                         </div>
-                                    </div>
-                                </h4>
+                                    </h4>
+                                </div>
+                            </figure>
+
+                            <div id="${product.path}" class="popup">
+                                <div class="popup-content">
+                                    <h1>'${product.descr}'</h1>
+                                    <img src="${pageContext.request.contextPath}${product.path}" class="modal-image">
+                                    <!-- #+ is to prevent jumping to the top of the page when closing the modal.
+                                      It basically disables the anchor <a> tag, as long as there is no corresponding anchor tag in the page. -->
+                                    <a href="#+" class="close-popup">&times;</a>
+                                </div>
                             </div>
-                        </figure>
-                       
-                        <div id="${product.path}" class="popup">
-                            <div class="popup-content">
-                                <h1>'${product.descr}'</h1>
-                                <img src="${pageContext.request.contextPath}${product.path}" class="modal-image">
-                                <!-- #+ is to prevent jumping to the top of the page when closing the modal.
-                                  It basically disables the anchor <a> tag, as long as there is no corresponding anchor tag in the page. -->
-                                <a href="#+" class="close-popup">&times;</a>
-                            </div>
-                        </div>
-                     </c:forEach>
+                        </c:forEach>
                     </div>    
                 </div>
             </div>

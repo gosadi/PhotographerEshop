@@ -81,7 +81,6 @@ public class AdminController {
             url = "/admin/admin-orders-by-account";
         }
         return url;
-
     }
 
     @GetMapping("/admins")

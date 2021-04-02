@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepo extends JpaRepository<Account, Integer>{
-    
+//    needs ?1 to work. https://www.objectdb.com/java/jpa/query/parameter
     @Query(value = "SELECT a FROM Account a WHERE a.username = ?1")
     Account findByUsername(String username);
     

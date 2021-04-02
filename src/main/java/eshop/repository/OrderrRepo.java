@@ -14,4 +14,4 @@ public interface OrderrRepo extends JpaRepository<Orderr, Integer>{
     @Query(value = "SELECT * FROM ORDERS WHERE account_id =:id",nativeQuery = true)
     List<Orderr> findOrderrsByAccountId(@Param("id")int id);
     
-}
+    }

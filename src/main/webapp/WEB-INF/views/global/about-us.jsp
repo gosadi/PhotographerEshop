@@ -30,12 +30,23 @@
                             <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
                             </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/aboutus" class="btn">About Us</a></li>
-                            <sec:authorize access="hasAnyRole('ADMIN','USER')">
+                            <sec:authorize access="hasRole('ADMIN')">
                             <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
                             </sec:authorize>
                             <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><a href="cart.html" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
                                 </sec:authorize>
+                            <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                            <li><div class="dropdown"><a href="#" class="btn-prof">
+                                        <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
+                                    <div class="dropdown-content">
+                                        <a href="${pageContext.request.contextPath}/user/user-history">History</a>
+                                        <a href="${pageContext.request.contextPath}/user/user-info">Info</a>
+                                        <a href="${pageContext.request.contextPath}/logout">Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </sec:authorize>
                     </ul>
                 </nav>
             </div>
