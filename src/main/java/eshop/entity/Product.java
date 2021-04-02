@@ -6,6 +6,7 @@
 package eshop.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -57,7 +58,7 @@ public class Product implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "base_price")
-    private int basePrice;
+    private BigDecimal basePrice;
     @JoinColumn(name = "product_category_id", referencedColumnName = "id")
     @ManyToOne(optional = false,fetch = FetchType.LAZY)
     private ProductCategory productcategory;
@@ -76,7 +77,7 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Product(Integer id, int basePrice) {
+    public Product(Integer id, BigDecimal basePrice) {
         this.id = id;
         this.basePrice = basePrice;
     }
@@ -105,11 +106,11 @@ public class Product implements Serializable {
         this.path = path;
     }
 
-    public int getBasePrice() {
+    public BigDecimal getBasePrice() {
         return basePrice;
     }
 
-    public void setBasePrice(int basePrice) {
+    public void setBasePrice(BigDecimal basePrice) {
         this.basePrice = basePrice;
     }
 

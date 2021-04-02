@@ -1,7 +1,6 @@
 
 package eshop.controller;
 
-
 import eshop.entity.Product;
 import eshop.service.CategoryService;
 import eshop.service.ProductService;
@@ -12,10 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- *
- * @author alkinoos
- */
 @Controller
 @RequestMapping("/products")
 public class ProductController {
@@ -52,4 +47,10 @@ public class ProductController {
         return "/global/people";
     }   
     
+    @GetMapping("/cart")
+    public String showCart(Model model){
+        List<Product> cartProducts = productService.getProducts();
+        model.addAttribute("cartProducts", cartProducts);
+        return "/global/cart";
+    }
 }

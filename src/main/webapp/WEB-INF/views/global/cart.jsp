@@ -9,7 +9,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>History</title>
+        <title>Landscapes</title>
         <link rel="stylesheet" href="/CSS/style.css">
     </head>
 
@@ -30,7 +30,7 @@
                             <li><a href="${pageContext.request.contextPath}/register" class="btn">Register/Sign In</a></li>
                             </sec:authorize>
                         <li><a href="${pageContext.request.contextPath}/aboutus" class="btn">About Us</a></li>
-                            <sec:authorize access="hasAnyRole('ADMIN')">
+                            <sec:authorize access="hasRole('ADMIN')">
                             <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
                             </sec:authorize>
                             <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
@@ -40,9 +40,7 @@
                             <li><div class="dropdown"><a href="#" class="btn-prof">
                                         <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
                                     <div class="dropdown-content">
-                                        <c:forEach items="${users}" var = "account">
-                                        <a href="${pageContext.request.contextPath}/user/user-history/orders?id=${account.id}">History</a>
-                                        </c:forEach>
+                                        <a href="${pageContext.request.contextPath}/user/user-history">History</a>
                                         <a href="${pageContext.request.contextPath}/user/user-info">Info</a>
                                         <a href="${pageContext.request.contextPath}/logout">Logout</a>
                                     </div>
@@ -54,29 +52,50 @@
             </div>
             <div class="categories">
                 <div class="wrapper2">
-                    <h2 style="text-align:center">Order History</h2>
-                        <div class="userTable">
-                            <table>
+                    <h2 style="text-align:center">Your Cart</h2>
+                    <div class="row">
+                        <form method="POST" action="${'cart/update'}">
+                              <table>
                                 <tr>
-                                    <th><i>Order ID</i></th>
-                                    <th><i>Date</i></th>
-                                    <th><i>Total Price</i></th>
-                                    <th><i>Payment Method</i></th>
-                                    <th><i>Order Details</i></th>
+                                    <th>Id</th>
+                                    <th>Description</th>
+                                    <th>Photo</th>
+                                    <th>Price</th>
+                                    <th>
+                                        Quality x Quantity
+                                        <input type="submit" value="Save" />
+                                    </th>
+                                    <th>Sub Total</th>
+                                    <th></th>
                                 </tr>
-                                <c:forEach items="${orderByAccountId}" var = "order">
+                                    <tr>
+                                        <c:forEach items="${session.cart}" var = "item">
+                                        <td>"${item.product.id}"</td>
+                                        <td>"${item.product.descr}"</td>
+                                        <td>
+                                            <img src="${item.product.path}" width="100"/>
+                                        </td>
+                                        <td>"${item.product.basePrice}"</td>
+                                        <td>
+                                            <input type="number" value="${item.quality}" name="quality" style="width:50px;" />
+                                            <input type="number" value="${item.quantity}" name="quantity" style="width:50px;" />
+                                        </td>
+                                        <td>"${item.product.basePrice * item.quantity * item.quality}"</td>
+                                        <td>
+                                            <a href="${'/cart/delete/' + item.product.id + '/' + item.quality + '/' + item.quantity}">Remove</a>
+                                        </td>    
+                                        </c:forEach>
+                                    </tr>
+                                
                                 <tr>
-                                    <td>${order.id}</td>
-                                    <td>${order.orderDate}</td>
-                                    <td>${order.totalPrice}</td>
-                                    <td>${order.payment.name}</td>
-                                    <td><a href="${pageContext.request.contextPath}/user/user-order-details">View</a></td>
+                                    <td colspan="5">Total</td>
+                                    <td>"${total}"</td>
                                 </tr>
-                                </c:forEach>
                             </table>
-                        </div>
+                        </form>
                     </div>
                 </div>
+            </div>
             <div class="footer">
                 <div class="wrapper">
                     <div class="row">

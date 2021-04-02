@@ -62,13 +62,13 @@
                                     <h4>'${product.descr}'
                                         <div class="dropdown">
                                             <button class="cartbtn">Add to cart
-                                                <i class="fa fa-caret-down"></i>
+<!--                                                <i class="fa fa-caret-down"></i>-->
                                             </button>
-                                            <div class="dropdown-content">
+<!--                                            <div class="dropdown-content">
                                                 <a href="#">S</a>
                                                 <a href="#">L</a>
                                                 <a href="#">XL</a>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </h4>
                                 </div>

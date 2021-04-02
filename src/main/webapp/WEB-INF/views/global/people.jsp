@@ -59,14 +59,9 @@
                                 <div class="desc">
                                     <h4>'${product.descr}'
                                         <div class="dropdown">
-                                            <button class="cartbtn">Add to cart
-                                                <i class="fa fa-caret-down"></i>
+                                            <button class="cartbtn"><a href="${pageContext.request.contextPath}/cart/buy/${product.id}">Add to cart
+                                            </a>
                                             </button>
-                                            <div class="dropdown-content">
-                                                <a href="#">S</a>
-                                                <a href="#">L</a>
-                                                <a href="#">XL</a>
-                                            </div>
                                         </div>
                                     </h4>
                                 </div>
