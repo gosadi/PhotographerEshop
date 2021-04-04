@@ -23,6 +23,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -54,7 +56,10 @@ public class OrderDetails implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Category> categories = new ArrayList<>();
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "current_price")
+    
+    @DecimalMin(value = "00000000.00")
+    @DecimalMax(value = "99999999.99")
+    @Column(name = "current_price", precision=10, scale=2)
     private BigDecimal currentPrice;
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)

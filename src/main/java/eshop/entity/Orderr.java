@@ -25,6 +25,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -57,7 +59,9 @@ public class Orderr implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date orderDate;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "total_price")
+     @DecimalMin(value = "00000000.00")
+    @DecimalMax(value = "99999999.99")
+    @Column(name = "total_price", precision=10, scale=2)
     private BigDecimal totalPrice;
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

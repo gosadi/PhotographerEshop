@@ -22,6 +22,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -57,7 +59,9 @@ public class Product implements Serializable {
     private String path;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "base_price")
+    @DecimalMin(value = "0000.00")
+    @DecimalMax(value = "9999.99")
+    @Column(name = "base_price", precision=6, scale = 2)
     private BigDecimal basePrice;
     @JoinColumn(name = "product_category_id", referencedColumnName = "id")
     @ManyToOne(optional = false,fetch = FetchType.LAZY)
