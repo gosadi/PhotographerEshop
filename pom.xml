@@ -81,7 +81,7 @@
             <version>5.3.5</version>
             <type>jar</type>
         </dependency>
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>com.paypal.sdk</groupId>
             <artifactId>rest-api-sdk</artifactId>
             <version>1.14.0</version>
@@ -89,16 +89,16 @@
         </dependency>-->
         <!--https://www.sourcecodeexamples.net/2021/01/spring-boot-paypal-payment-gateway.html-->
         <dependency>
-			<groupId>com.paypal.sdk</groupId>
-			<artifactId>rest-api-sdk</artifactId>
-			<version>1.14.0</version>
+            <groupId>com.paypal.sdk</groupId>
+            <artifactId>rest-api-sdk</artifactId>
+            <version>1.14.0</version>
             <type>jar</type>
         </dependency>
-                <dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
