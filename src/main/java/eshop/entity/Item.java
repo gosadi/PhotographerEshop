@@ -1,21 +1,19 @@
 
 package eshop.entity;
 
-import javax.persistence.Entity;
-
 public class Item {
     
     private Product product;
     private int quantity;
-    private float quality;
-
-    public Item(Product product, int quantity, float quality) {
-        this.product = product;
-        this.quantity = quantity;
-        this.quality = quality;
-    }
+    private Category category;
 
     public Item() {
+    }
+
+    public Item(Product product, int quantity, Category category) {
+        this.product = product;
+        this.quantity = quantity;
+        this.category = category;
     }
 
     public Product getProduct() {
@@ -34,11 +32,11 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public float getQuality() {
-        return quality;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setQuality(float quality) {
-        this.quality = quality;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

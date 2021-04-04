@@ -34,7 +34,7 @@
                             <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
                             </sec:authorize>
                             <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
-                            <li><a href="cart.html" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
+                            <li><a href="${pageContext.request.contextPath}/cart" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
                                 </sec:authorize>
                                 <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><div class="dropdown"><a href="#" class="btn-prof">

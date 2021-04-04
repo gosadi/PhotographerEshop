@@ -106,62 +106,70 @@ nav ul li {
 
 /*user update form css*/
 .container {
-    
-  padding: 16px;
-  background-color: white;
-  margin: 50px 25%;
+
+    padding: 16px;
+    background-color: white;
+    margin: 50px 25%;
 }
 
 .container input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
 }
 
 .container input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
+    background-color: #ddd;
+    outline: none;
 }
 
 /* Overwrite default styles of hr user update form */
 .container hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
 }
 
+.fa-trash{
+    font-size:25px !important;
+    color:grey;
+}
+
+.fa-trash:hover {
+    color: red;
+}
 /* Set a style for the user update button */
 .updatebtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
 }
 
 .registerbtn:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 .userTable table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
 }
 
 .userTable td, th {
-  border: 1px solid #dddddd;
-  text-align: center;
-  padding: 8px;
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
 }
 
 .userTable tr:nth-child(even) {
-  background-color: #dddddd;
+    background-color: #dddddd;
 }
 
 a {
@@ -197,10 +205,10 @@ p {
 }
 
 .avatar {
-  vertical-align: middle;
-  width: 42px;
-/*  height: 50px;*/
-  border-radius: 25%;
+    vertical-align: middle;
+    width: 42px;
+    /*  height: 50px;*/
+    border-radius: 25%;
 }
 
 .btn-prof{
@@ -270,6 +278,14 @@ p {
 }
 .chat h2{
     color: #FED766;
+}
+
+.blink {
+    animation: blinker 3s linear infinite;
+    color: #00B295;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: sans-serif;
 }
 
 .logout input{
@@ -510,11 +526,18 @@ div.desc {
     display: inline-block;
     /*    margin-left: 185px;*/
     background: black;
-    color: #fff;
+    
     border: none;
     padding: 5px 10px;
     cursor: pointer;
     /* transition: 0.5s; */
+}
+.cartbtn a{
+color: #fff;
+}
+
+.cartbtn:hover, .dropdown:hover .cartbtn {
+    background-color: rgba(0, 0, 0, 0.61);
 }
 
 .dropdown {
@@ -546,9 +569,6 @@ div.desc {
     display: block;
 }
 
-.cartbtn:hover, .dropdown:hover .cartbtn {
-    background-color: black;
-}
 
 #wrong{
     color: red;
@@ -581,50 +601,55 @@ div.desc {
     }
 }
 
-
-@media screen and (max-width: 650px) {
-    .columnAboutUs {
-        width: 100%;
-        display: block;
+@keyframes blinker {
+    50% {
+        opacity: 0;
     }
+}
 
-    .col-4 {
-        flex-basis: 30%;
-        padding-bottom: 70px;
+    @media screen and (max-width: 650px) {
+        .columnAboutUs {
+            width: 100%;
+            display: block;
+        }
+
+        .col-4 {
+            flex-basis: 30%;
+            padding-bottom: 70px;
+        }
+
+        .row {
+            display:contents;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            height: min-content;
+        }
+
+        .adminTable {
+            overflow-y: visible;
+            border-radius: 20px;
+            margin-right: 1%;
+            margin-left: 1%;
+            overflow-y: scroll;
+
+        }
+
+        .adminWrapper {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            background-color: #FAF3DD;
+            border-radius: 20px;
+            min-height: 450px;
+            overflow: visible!important;
+
+        }
+
+        .container {
+            padding: 16px;
+            background-color: white;
+            margin: 50px 5%;
+        }
+
     }
-
-    .row {
-        display:contents;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        height: min-content;
-    }
-    
-    .adminTable {
-    overflow-y: visible;
-    border-radius: 20px;
-    margin-right: 1%;
-    margin-left: 1%;
-    overflow-y: scroll;
-  
-}
-
-.adminWrapper {
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    background-color: #FAF3DD;
-    border-radius: 20px;
-    min-height: 450px;
-    overflow: visible!important;
-
-}
-
-.container {
-  padding: 16px;
-  background-color: white;
-  margin: 50px 5%;
-}
-    
-}

@@ -81,6 +81,46 @@
             <version>5.3.5</version>
             <type>jar</type>
         </dependency>
+<!--        <dependency>
+            <groupId>com.paypal.sdk</groupId>
+            <artifactId>rest-api-sdk</artifactId>
+            <version>1.14.0</version>
+            <type>jar</type>
+        </dependency>-->
+        <!--https://www.sourcecodeexamples.net/2021/01/spring-boot-paypal-payment-gateway.html-->
+        <dependency>
+			<groupId>com.paypal.sdk</groupId>
+			<artifactId>rest-api-sdk</artifactId>
+			<version>1.14.0</version>
+            <type>jar</type>
+        </dependency>
+                <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--        java.lang.NoClassDefFoundError: org.slf4j.impl.StaticLoggerBinder.
+        Failed to load class "org.slf4j.impl.StaticMDCBinder"-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
+        <!--        java.lang.NoClassDefFoundError: org.slf4j.impl.StaticLoggerBinder.
+        Failed to load class "org.slf4j.impl.StaticMDCBinder"-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.30</version>
+        </dependency>
     </dependencies>
 
     <build>

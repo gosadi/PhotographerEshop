@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Landscapes</title>
         <link rel="stylesheet" href="/CSS/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
@@ -34,7 +35,7 @@
                             <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
                             </sec:authorize>
                             <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
-                            <li><a href="cart.html" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
+                            <li><a href="${pageContext.request.contextPath}/cart" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
                                 </sec:authorize>
                                 <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><div class="dropdown"><a href="#" class="btn-prof">
@@ -54,22 +55,23 @@
                 <div class="wrapper2">
                     <h2 style="text-align:center">Your Cart</h2>
                     <div class="row">
-                        <form method="POST" action="${'cart/update'}">
-                              <table>
+                        <form:form method="POST" action="${pageContext.request.contextPath}/cart/update">
+                            <table border="1">
                                 <tr>
                                     <th>Id</th>
                                     <th>Description</th>
                                     <th>Photo</th>
                                     <th>Price</th>
+
                                     <th>
                                         Quality x Quantity
-                                        <input type="submit" value="Save" />
+                                        <input type="submit" value="Update"/>
                                     </th>
                                     <th>Sub Total</th>
                                     <th></th>
                                 </tr>
+                                <c:forEach items="${cart}" var = "item">
                                     <tr>
-                                        <c:forEach items="${session.cart}" var = "item">
                                         <td>"${item.product.id}"</td>
                                         <td>"${item.product.descr}"</td>
                                         <td>
@@ -77,22 +79,32 @@
                                         </td>
                                         <td>"${item.product.basePrice}"</td>
                                         <td>
-                                            <input type="number" value="${item.quality}" name="quality" style="width:50px;" />
+                                            <select name="category">
+                                                <c:forEach items="${categories}" var="category">
+                                                    <option value="${category.priceRate}">${category.name}</option>
+                                                </c:forEach>
+                                            </select>
+
                                             <input type="number" value="${item.quantity}" name="quantity" style="width:50px;" />
                                         </td>
-                                        <td>"${item.product.basePrice * item.quantity * item.quality}"</td>
+                                        <td>"${item.product.basePrice * item.quantity * item.category.priceRate}"</td>   
                                         <td>
-                                            <a href="${'/cart/delete/' + item.product.id + '/' + item.quality + '/' + item.quantity}">Remove</a>
-                                        </td>    
-                                        </c:forEach>
+                                            <a href="${pageContext.request.contextPath}/cart/delete/${item.product.id}/${item.category.id}/${item.quantity}">
+                                                <i class="fa fa-trash"></i></a>
+                                        </td>
                                     </tr>
-                                
+                                </c:forEach>
                                 <tr>
                                     <td colspan="5">Total</td>
-                                    <td>"${total}"</td>
+                                    <td>"${cartTotal}"</td>
                                 </tr>
                             </table>
-                        </form>
+                            <a href="${pageContext.request.contextPath}/products">Continue Shopping</a>
+                            <br>
+                            <a href="${pageContext.request.contextPath}/paypal">Pay with Paypal/credit card</a>
+                            <br>
+                            <a href="${pageContext.request.contextPath}/cart/cash">Pay with cash</a>
+                        </form:form>
                     </div>
                 </div>
             </div>
