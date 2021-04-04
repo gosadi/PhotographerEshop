@@ -51,7 +51,7 @@ public class Category implements Serializable {
     private String name;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "price_rate")
-    private BigDecimal priceRate;
+    private Float priceRate;
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category", fetch = FetchType.LAZY)
 //    private List<ProductHasCategory> productHasCategories;
     @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
@@ -81,11 +81,11 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public BigDecimal getPriceRate() {
+    public Float getPriceRate() {
         return priceRate;
     }
 
-    public void setPriceRate(BigDecimal priceRate) {
+    public void setPriceRate(Float priceRate) {
         this.priceRate = priceRate;
     }
 

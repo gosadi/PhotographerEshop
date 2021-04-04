@@ -32,7 +32,7 @@
                             <li><a href="${pageContext.request.contextPath}/logout" class="btn">Logout</a></li>
                             </sec:authorize>
                             <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
-                            <li><a href="cart.html" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
+                            <li><a href="${pageContext.request.contextPath}/cart" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
                                 </sec:authorize>
                             <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><div class="dropdown"><a href="#" class="btn-prof">
@@ -57,11 +57,15 @@
                                 <a href="#${product.path}"><img src="${pageContext.request.contextPath}${product.path}">
                                 </a>
                                 <div class="desc">
-                                    <h4>'${product.descr}'
+                                    <sec:authorize access="!hasAnyRole('ADMIN','USER')">
+                                    <h4>'${product.descr}' 
+                                        <br><div class="blink">Sign in & Add to cart!!</div>
+                                        </sec:authorize>
                                         <div class="dropdown">
+                                            <sec:authorize access="hasAnyRole('ADMIN','USER')">
                                             <button class="cartbtn"><a href="${pageContext.request.contextPath}/cart/buy/${product.id}">Add to cart
-                                            </a>
-                                            </button>
+                                            </a></button>
+                                            </sec:authorize>
                                         </div>
                                     </h4>
                                 </div>
