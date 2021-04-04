@@ -91,9 +91,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUserAndRole(Account account, Role role) {
         userRepo.save(account);
-        for(Role r : account.getRoles()){
-            
-        }
+//        for (Role r : account.getRoles()) {
+//
+//        }
 
 //        if (role.getName().equals("ROLE_ADMIN")) {
 //            userRepo.saveToUserHasRoleAsAdmin(account.getId());
@@ -101,7 +101,6 @@ public class UserServiceImpl implements UserService {
 //        } else if (role.getName().equals("ROLE_USER")) {
 //            userRepo.saveToUserHasRoleAsUser(account.getId());
 //        }
-
     }
 
 }
