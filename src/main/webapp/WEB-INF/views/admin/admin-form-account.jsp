@@ -12,7 +12,7 @@
         <title>Login/Register</title>
         <link rel="stylesheet" href="/CSS/admin-form-account.css">
     </head>
-    
+
 
 
     <body>
@@ -22,8 +22,10 @@
                 <form:form action="${pageContext.request.contextPath}/admin/users/update" method="POST">
 
                     <h2><u>Change the account ${accountToEdit.id} details</u></h2>
+                    <input type="text" name="id" value="${accountToEdit.id}" hidden="hidden"/>
                     <label for="username"><i>Account username:</i></label>
                     <input type="text"  name="username" value="${accountToEdit.username}" readonly="readonly"/>
+                    <input type="text" name="password" value="${accountToEdit.password}" hidden="hidden"/>
                     <label for="firstname"><i>Account firstname:</i></label>
                     <input type="text"  name="firstname" value="${accountToEdit.firstname}"/>
                     <label for="lastname"><i>Account lastname:</i></label>
@@ -35,39 +37,40 @@
                     <label for="city"><i>Account city:</i></label>
                     <input type="text"  name="city" value="${accountToEdit.city}"/>
                     <label for="postalcode"><i>Account postalcode:</i>
-                        <input type="number"  name="postalcode" value="${accountToEdit.postalcode}"/>
-                        <label for="roles"><i>Account Role:</i></label>
+                    <input type="number"  name="postalcode" value="${accountToEdit.postalcode}"/>
+                     <label for="roles"><i>Account Role:</i></label>
                         <div class="selectWrapper">
-                            <select name="roles">
-                                <c:forEach items="${roles}" var = "role">
-                                    
+                            <select name="roles"  value="${accountToEdit.roles}">
+                                <c:forEach items="${rolesToEdit}" var = "role">
                                     <option value="${role.id}">${role.name}</option>
                                 </c:forEach>
                             </select>
                         </div>
 
+
                         <button type="Submit" value="Submit">Submit</button>
-                        <br>
-                        <br>
-                        <p>${message}</p>
-                        <!--               
-                        <c:if test="${param.logout != null}">
-                            You have logged out successfully!
-                        </c:if>
-                        -->
-
-                        <c:if test="${param.error != null}">
-                            <div class="error">
-                                <i  style="color:red;">Invalid credentials. Please try again</i>
-                            </div>
-                        </c:if>
-
-                        <c:if test="${registered != null}">
-                            <div class="registered">
-                                <i>Successfully registered! Please sign in.</i>
-                            </div>
-                        </c:if>
                     </form:form>
+                    <br>
+                    <br>
+                    <p>${message}</p>
+                    <!--               
+                    <c:if test="${param.logout != null}">
+                        You have logged out successfully!
+                    </c:if>
+                    -->
+
+                    <c:if test="${param.error != null}">
+                        <div class="error">
+                            <i  style="color:red;">Invalid credentials. Please try again</i>
+                        </div>
+                    </c:if>
+
+                    <c:if test="${registered != null}">
+                        <div class="registered">
+                            <i>Successfully registered! Please sign in.</i>
+                        </div>
+                    </c:if>
+
             </div>
 
             <!--            <div class="overlay-container">

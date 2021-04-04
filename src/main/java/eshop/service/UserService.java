@@ -20,7 +20,7 @@ public interface UserService extends UserDetailsService{
     
     Account getUserById(int id);
     
-    Account updateUserAndRole(Account account,Role role);
+    void updateUserAndRole(Account account,Role role);
     
     
     

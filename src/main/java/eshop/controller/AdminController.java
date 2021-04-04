@@ -94,17 +94,15 @@ public class AdminController {
     public String editUsers(@PathVariable(name = "id") int id, Model model) {
         Account account = userService.getUserById(id);
         List<Role> roles = roleService.getAllRoles();
-        model.addAttribute("accountToEdit", account);
-        model.addAttribute("roles", roles);
+        model.addAttribute("accountToEdit", account); //account getRoles()
+        model.addAttribute("rolesToEdit", roles); // ROLE_ADMIN - ROLE_USER
         return "/admin/admin-form-account";
     }
 
     @PostMapping("/users/update")
     public String updateUser(Account account, Role role) {
-        
         userService.updateUserAndRole(account,role);
-
-        return null;
+        return "redirect:/admin/users";
     }
 
 }

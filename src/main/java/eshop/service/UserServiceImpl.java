@@ -82,23 +82,26 @@ public class UserServiceImpl implements UserService {
     public List<Account> getUsersWithRoleUser() {
         return userRepo.findAllByRoles(2);
     }
-    
+
     @Override
-    public Account getUserById(int id){
+    public Account getUserById(int id) {
         return userRepo.findById(id).get();
     }
 
     @Override
-    public Account updateUserAndRole(Account account,Role role) {
+    public void updateUserAndRole(Account account, Role role) {
+        userRepo.save(account);
         for(Role r : account.getRoles()){
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+r.getId()+r.getName());
+            
         }
-        return userRepo.save(account);
+
+//        if (role.getName().equals("ROLE_ADMIN")) {
+//            userRepo.saveToUserHasRoleAsAdmin(account.getId());
+//            userRepo.saveToUserHasRoleAsUser(account.getId());
+//        } else if (role.getName().equals("ROLE_USER")) {
+//            userRepo.saveToUserHasRoleAsUser(account.getId());
+//        }
+
     }
-   
-    
-    
-    
-    
-    
+
 }
