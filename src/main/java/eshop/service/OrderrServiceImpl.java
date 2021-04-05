@@ -23,10 +23,9 @@ public class OrderrServiceImpl implements OrderrService{
     public List<Orderr> getOrdersByAccountId(int id) {
         return orderrRepo.findOrderrsByAccountId(id);
     }
-    
-//    @Override
-//    public List<Orderr> findOrderrByAccountId(int id){
-//        return orderrRepo.findOrderrsByAccountId(id);
-//    }
-    
+
+    @Override
+    public List<Orderr> getUserOrderrsByAccountId(int id) {
+        return orderrRepo.findUserOrderrsByAccountId(id);
+    } 
 }

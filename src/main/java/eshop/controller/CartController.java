@@ -55,6 +55,21 @@ public class CartController {
         return "redirect:/cart";
     }
 
+//    @PostMapping(value = "update")
+//    public String update(HttpServletRequest request, HttpSession session) {
+//
+//        String[] quantities = request.getParameterValues("quantity");
+//        String[] qualities = request.getParameterValues("category");
+//        List<Item> items = (List<Item>) session.getAttribute("cart");
+//        for (int i = 0; i < items.size(); i++) {
+//            items.get(i).setQuantity(Integer.parseInt(quantities[i]));
+//            items.get(i).getCategory().setPriceRate(Float.parseFloat(qualities[i]));
+//        }
+//        onlyOne(session); //unifies multiple entries of the same product and quality
+//        session.setAttribute("cart", items);
+//        return "redirect:/cart";
+//    }
+    
     @PostMapping(value = "update")
     public String update(HttpServletRequest request, HttpSession session) {
 
@@ -63,9 +78,13 @@ public class CartController {
         List<Item> items = (List<Item>) session.getAttribute("cart");
         for (int i = 0; i < items.size(); i++) {
             items.get(i).setQuantity(Integer.parseInt(quantities[i]));
-            items.get(i).getCategory().setPriceRate(Float.parseFloat(qualities[i]));
+            items.get(i).setCategory(categoryService.getCategoryById(Integer.parseInt(qualities[i])).get());
+            System.out.println(items.get(i)); //delete after we are sure it's working properly
         }
         onlyOne(session); //unifies multiple entries of the same product and quality
+        for (int i = 0; i < items.size(); i++) { //delete after we are sure it's working properly
+            System.out.println("Final Item in cart: " + items.get(i));
+    }
         session.setAttribute("cart", items);
         return "redirect:/cart";
     }
@@ -94,14 +113,14 @@ public class CartController {
         return -1;
     }
 
-    private java.math.BigDecimal cartTotal(HttpSession session) { 
+    private BigDecimal cartTotal(HttpSession session) { 
         List<Item> items = (List<Item>) session.getAttribute("cart");
-        java.math.BigDecimal s = java.math.BigDecimal.valueOf(0);
+        BigDecimal s = java.math.BigDecimal.valueOf(0);
         for (int i = 0; i < items.size(); i++) {
             int a = items.get(i).getQuantity();
             float b = items.get(i).getCategory().getPriceRate();
             BigDecimal c = items.get(i).getProduct().getBasePrice();
-            s = s.add(java.math.BigDecimal.valueOf(a*b).multiply(c));
+            s = s.add(BigDecimal.valueOf(a*b).multiply(c));
         }
         session.setAttribute("cartValue", s); //saves the cart's sum to an attribute named cartvalue
         return s;

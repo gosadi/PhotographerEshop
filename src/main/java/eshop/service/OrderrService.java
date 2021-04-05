@@ -10,4 +10,6 @@ public interface OrderrService {
     
     List<Orderr> getOrdersByAccountId(int id);
     
+    List<Orderr> getUserOrderrsByAccountId(int id);
+    
 }

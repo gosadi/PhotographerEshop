@@ -82,19 +82,9 @@ public class UserServiceImpl implements UserService {
     public List<Account> getUsersWithRoleUser() {
         return userRepo.findAllByRoles(2);
     }
-    
+
     @Override
-    public Account getUserById(int id){
+    public Account getUserById(int id) {
         return userRepo.findById(id).get();
     }
-//    public List<Account> getAdmins(){
-//        List<Account> accounts = userRepo.findAdmins();
-//        return accounts;
-//    }
-   
-    
-    
-    
-    
-    
 }

@@ -39,4 +39,8 @@ public class Item {
     public void setCategory(Category category) {
         this.category = category;
     }
+    
+    public String toString() {
+        return "Item{" + "product=" + product + ", quantity=" + quantity + ", category=" + category + '}';
+    }
 }

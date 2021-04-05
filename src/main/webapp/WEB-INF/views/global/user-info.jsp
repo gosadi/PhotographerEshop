@@ -9,7 +9,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>History</title>
+        <title>Personal Info</title>
         <link rel="stylesheet" href="/CSS/style.css">
     </head>
 
@@ -67,22 +67,21 @@
                                 <th><i>City</i></th>
                                 <th><i>Postal Code</i></th>
                                 <th><i>Update</i></th>
-                                
                             </tr>
+                            <c:forEach items="${account}" var = "account">
                             <tr>
-                                <td>Alfreds</td>
-                                <td>Futterkiste</td>
-                                <td>Alfu</td>
-                                <td>Alfu1234</td>
-                                <td>alfie@gmail.com</td>
-                                <td>Heinz St. 35</td>
-                                <td>Hamburg</td>
-                                <td>80035</td>
+                                <td>account.firstname</td>
+                                <td>account.lastname</td>
+                                <td>account.username</td>
+                                <td>account.password</td>
+                                <td>account.email</td>
+                                <td>account.address</td>
+                                <td>account.city</td>
+                                <td>account.postalcode</td>
                                 <td><a href="${pageContext.request.contextPath}/user/user-update">
                                         <img src="/Images/pencil.png" alt="edit"></a></td>
-                                
                             </tr>
-                           
+                            </c:forEach>
                            
                         </table>
 </div>

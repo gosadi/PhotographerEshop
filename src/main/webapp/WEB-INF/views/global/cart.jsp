@@ -81,7 +81,7 @@
                                         <td>
                                             <select name="category">
                                                 <c:forEach items="${categories}" var="category">
-                                                    <option value="${category.priceRate}">${category.name}</option>
+                                                    <option value="${category.id}">${category.name}</option>
                                                 </c:forEach>
                                             </select>
 

@@ -2,6 +2,7 @@ package eshop.service;
 
 import eshop.entity.Account;
 import java.util.List;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 
@@ -18,5 +19,5 @@ public interface UserService extends UserDetailsService{
     Account saveUser(Account accountuser);
     
     Account getUserById(int id);
-    
+   
 } 

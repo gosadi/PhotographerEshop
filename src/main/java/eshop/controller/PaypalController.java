@@ -58,6 +58,7 @@ public class PaypalController {
 	            Payment payment = service.executePayment(paymentId, payerId);
 	            System.out.println(payment.toJSON());
 	            if (payment.getState().equals("approved")) {
+                        //save to database logic
 	                return "/global/success";
 	            }
 	        } catch (PayPalRESTException e) {

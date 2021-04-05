@@ -64,7 +64,7 @@
                                     <th><i>Payment Method</i></th>
                                     <th><i>Order Details</i></th>
                                 </tr>
-                                <c:forEach items="${orderByAccountId}" var = "order">
+                                <c:forEach items="${ordersByAccountId}" var = "order">
                                 <tr>
                                     <td>${order.id}</td>
                                     <td>${order.orderDate}</td>
