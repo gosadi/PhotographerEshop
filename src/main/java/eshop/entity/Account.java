@@ -22,6 +22,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.hibernate.annotations.Cascade;
 
 /**
  *
@@ -89,10 +90,11 @@ public class Account implements Serializable {
     @NotNull
     @Column(name = "postalcode")
     private int postalcode;
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+//    @Cascade(value = {org.hibernate.annotations.CascadeType.DETACH,org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @JoinTable(name = "account_has_role", joinColumns = {
         @JoinColumn(name = "account_id", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "role_id", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.LAZY)
     private List<Role> roles;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "account", fetch = FetchType.LAZY)
     private List<Orderr> orderrs;
@@ -209,6 +211,12 @@ public class Account implements Serializable {
             roles = new ArrayList();
         }
         roles.add(role);
+        role.getAccounts().add(this);
+    }
+    
+    public void RemoveRole(Role role){
+        roles.remove(role);
+        role.getAccounts().remove(this);
     }
 
     @Override

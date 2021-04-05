@@ -16,20 +16,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@RequestMapping("cart")
+@RequestMapping("/cart")
 public class CartController {
 
     @Autowired
     private ProductService productService;
-    
+
     @Autowired
     private CategoryService categoryService;
-    
+
     @Autowired
     private PaymentService paymentService;
 
@@ -113,17 +112,18 @@ public class CartController {
         return -1;
     }
 
-    private BigDecimal cartTotal(HttpSession session) { 
+    private BigDecimal cartTotal(HttpSession session) {
         List<Item> items = (List<Item>) session.getAttribute("cart");
-        BigDecimal s = java.math.BigDecimal.valueOf(0);
+        BigDecimal totalOrderDetail = BigDecimal.valueOf(0);
         for (int i = 0; i < items.size(); i++) {
-            int a = items.get(i).getQuantity();
-            float b = items.get(i).getCategory().getPriceRate();
-            BigDecimal c = items.get(i).getProduct().getBasePrice();
-            s = s.add(BigDecimal.valueOf(a*b).multiply(c));
+            int quant = items.get(i).getQuantity();
+            float priceRate = items.get(i).getCategory().getPriceRate();
+            BigDecimal basePrice = items.get(i).getProduct().getBasePrice();
+//            totalOrderDetail = totalOrderDetail.add(BigDecimal.valueOf(quant*priceRate).multiply(basePrice));
+            totalOrderDetail = basePrice.multiply(new BigDecimal(quant));
         }
-        session.setAttribute("cartValue", s); //saves the cart's sum to an attribute named cartvalue
-        return s;
+        session.setAttribute("cartValue", totalOrderDetail); //saves the cart's sum to an attribute named cartvalue
+        return totalOrderDetail;
     }
 
     private void onlyOne(HttpSession session) {
@@ -133,9 +133,9 @@ public class CartController {
                 for (int j = 1; j < (items.size() - i); j++) {
                     if (items.get(i).getProduct().getId() == items.get(i + j).getProduct().getId()) {
                         if (items.get(i).getCategory().getId() == items.get(i + j).getCategory().getId()) {
-                            items.get(i).setQuantity(items.get(i).getQuantity() + items.get(i+j).getQuantity());
+                            items.get(i).setQuantity(items.get(i).getQuantity() + items.get(i + j).getQuantity());
                             items.remove(i + j);
-                            j=j-1;
+                            j = j - 1;
                         }
                     }
                 }
@@ -155,14 +155,12 @@ public class CartController {
 //        }
 //        return "global/checkout";
 //    }
-    
-     @GetMapping(value = "/cash")
+    @GetMapping(value = "/cash")
     public String checkoutCash(HttpSession session) {
-        Optional<Payment> cashPayment = paymentService.getPaymentById(1);
+        Payment cashPayment = paymentService.getPaymentById(1);
         if (session.getAttribute("payment") == null) {
-        session.setAttribute("payment", cashPayment);
-        }
-        else{
+            session.setAttribute("payment", cashPayment);
+        } else {
             session.removeAttribute("payment");
             session.setAttribute("payment", cashPayment);
         }

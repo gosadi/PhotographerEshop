@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import eshop.service.UserService;
+import org.springframework.security.config.http.SessionCreationPolicy;
 
 
 @EnableWebSecurity
@@ -27,6 +28,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
+    
     
    @Override
    protected void configure(HttpSecurity http) throws Exception{
@@ -41,6 +43,9 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter{
                .loginPage("/register") // kanei override tin spring security DEFAULT login page
                .loginProcessingUrl("/authenticate") // default tou spring security otan kanei login
                .permitAll()
+               
+               
+//               .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                
                
        

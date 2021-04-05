@@ -49,11 +49,10 @@ public class OrderDetails implements Serializable {
     private Integer id;
     @Column(name = "quant")
     private Integer quant;
-    
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "order_details_has_category", 
             joinColumns = {@JoinColumn(name = "order_details_id", referencedColumnName = "id")}, 
             inverseJoinColumns = {@JoinColumn(name = "category_id", referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.LAZY)
     private List<Category> categories = new ArrayList<>();
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     

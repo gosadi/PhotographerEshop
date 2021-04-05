@@ -79,7 +79,7 @@
                                         </td>
                                         <td>"${item.product.basePrice}"</td>
                                         <td>
-                                            <select name="category">
+                                            <select name="category" value="${item.category}">
                                                 <c:forEach items="${categories}" var="category">
                                                     <option value="${category.id}">${category.name}</option>
                                                 </c:forEach>

@@ -526,14 +526,14 @@ div.desc {
     display: inline-block;
     /*    margin-left: 185px;*/
     background: black;
-    
+
     border: none;
     padding: 5px 10px;
     cursor: pointer;
     /* transition: 0.5s; */
 }
 .cartbtn a{
-color: #fff;
+    color: #fff;
 }
 
 .cartbtn:hover, .dropdown:hover .cartbtn {
@@ -607,49 +607,108 @@ color: #fff;
     }
 }
 
-    @media screen and (max-width: 650px) {
-        .columnAboutUs {
-            width: 100%;
-            display: block;
-        }
+@media screen and (max-width: 650px) {
+    .columnAboutUs {
+        width: 100%;
+        display: block;
+    }
 
-        .col-4 {
-            flex-basis: 30%;
-            padding-bottom: 70px;
-        }
+    .col-4 {
+        flex-basis: 30%;
+        padding-bottom: 70px;
+    }
 
-        .row {
-            display:contents;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            height: min-content;
-        }
+    .row {
+        display:contents;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        height: min-content;
+    }
 
-        .adminTable {
-            overflow-y: visible;
-            border-radius: 20px;
-            margin-right: 1%;
-            margin-left: 1%;
-            overflow-y: scroll;
-
-        }
-
-        .adminWrapper {
-            display: flex;
-            justify-content: space-between;
-            text-align: center;
-            background-color: #FAF3DD;
-            border-radius: 20px;
-            min-height: 450px;
-            overflow: visible!important;
-
-        }
-
-        .container {
-            padding: 16px;
-            background-color: white;
-            margin: 50px 5%;
-        }
+    .adminTable {
+        overflow-y: visible;
+        border-radius: 20px;
+        margin-right: 1%;
+        margin-left: 1%;
+        overflow-y: scroll;
 
     }
+
+    .adminWrapper {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        background-color: #FAF3DD;
+        border-radius: 20px;
+        min-height: 450px;
+        overflow: visible!important;
+
+    }
+
+    .container {
+        padding: 16px;
+        background-color: white;
+        margin: 50px 5%;
+    }
+
+}
+.admin-form-container{
+
+    background-color: #C8D5B9;
+    border-radius: 20px;
+    width: 700px;
+    height: 100%;
+    margin-right: 15px;
+    margin-top: 10px;
+
+}
+.admin-form-container form{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 10px auto;
+
+}
+.admin-form-container input{
+    text-align: center;
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+}
+.admin-form-container button {
+    border-radius: 20px;
+    border: 1px solid #C8D5B9;
+    background-color: #FF416C;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+.admin-form-container button:active {
+    transform: scale(0.95);
+}
+.admin-form-container button:focus {
+    outline: none;
+}
+.admin-form-container .selectWrapper{
+    position: relative;
+    width: 100%;
+    height: 34px;
+    margin-bottom: 10px;
+}
+.selectWrapper select{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #eee;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
