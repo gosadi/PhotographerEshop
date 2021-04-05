@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package eshop.controller;
 
 import eshop.entity.ChatMessage;
@@ -12,10 +7,6 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
-/**
- *
- * @author Geo
- */
 @Controller
 public class ChatController {
     

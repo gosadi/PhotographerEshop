@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package eshop.entity;
 
 import java.io.Serializable;
@@ -27,10 +22,6 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author alkinoos
- */
 @Entity
 @Table(name = "order_details")
 @XmlRootElement
@@ -73,6 +64,14 @@ public class OrderDetails implements Serializable {
     public OrderDetails(Integer id) {
         this.id = id;
     }
+
+    public OrderDetails(Integer quant, BigDecimal currentPrice, Orderr orderr, Product product) {
+        this.quant = quant;
+        this.currentPrice = currentPrice;
+        this.orderr = orderr;
+        this.product = product;
+    }
+    
 
     public Integer getId() {
         return id;
