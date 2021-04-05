@@ -117,10 +117,10 @@ public class CartController {
         BigDecimal totalOrderDetail = BigDecimal.valueOf(0);
         for (int i = 0; i < items.size(); i++) {
             int quant = items.get(i).getQuantity();
-            float priceRate = items.get(i).getCategory().getPriceRate();
+            BigDecimal priceRate = items.get(i).getCategory().getPriceRate();
             BigDecimal basePrice = items.get(i).getProduct().getBasePrice();
 //            totalOrderDetail = totalOrderDetail.add(BigDecimal.valueOf(quant*priceRate).multiply(basePrice));
-            totalOrderDetail = basePrice.multiply(new BigDecimal(quant));
+            totalOrderDetail = totalOrderDetail.add(basePrice.multiply(new BigDecimal(quant)).multiply(priceRate));
         }
         session.setAttribute("cartValue", totalOrderDetail); //saves the cart's sum to an attribute named cartvalue
         return totalOrderDetail;

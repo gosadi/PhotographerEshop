@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
+import eshop.entity.Item;
 import eshop.entity.PaypalOrder;
 import eshop.service.PaypalService;
+import java.util.List;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class PaypalController {
@@ -52,12 +55,14 @@ public class PaypalController {
     }
 
 	    @GetMapping(value = SUCCESS_URL)
-	    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
+	    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId, HttpSession session) {
+                List<Item> items = (List<Item>) session.getAttribute("cart");             
 	        try {
 	            Payment payment = service.executePayment(paymentId, payerId);
 	            System.out.println(payment.toJSON());
 	            if (payment.getState().equals("approved")) {
                         //save to database logic
+                        
 	                return "/global/success";
 	            }
 	        } catch (PayPalRESTException e) {
