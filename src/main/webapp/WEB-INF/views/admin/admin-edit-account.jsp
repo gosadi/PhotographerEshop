@@ -10,7 +10,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login/Register</title>
-        <!--<link rel="stylesheet" href="/CSS/admin-form-account.css">-->
         <link rel="stylesheet" href="/CSS/style.css">
     </head>
 
@@ -18,7 +17,7 @@
 
     <body>
 
-        <!--        <div class="container" id="container">-->
+
         <div class="wrapper">
             <div class="navbar">
                 <div class="logo">
@@ -88,14 +87,10 @@
                             </div>
                             <button type="Submit" value="Submit">Submit</button>
                         </form:form>
-                </div>
-                            
-            </div>
-                            
+                </div>     
+            </div>   
             <div class="copyright"><p>Copyright&copy; 2021</p></div>
         </div>
-
-
         <script src="/JS/1.js"></script>
     </body>
 

@@ -90,17 +90,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUserAndRole(Account account, Role role) {
+        //elegxo tous rolous to account prin kano save kai ean den exei ton rolo USer ton vazo ego
         userRepo.save(account);
-//        for (Role r : account.getRoles()) {
-//
-//        }
+        
 
-//        if (role.getName().equals("ROLE_ADMIN")) {
-//            userRepo.saveToUserHasRoleAsAdmin(account.getId());
-//            userRepo.saveToUserHasRoleAsUser(account.getId());
-//        } else if (role.getName().equals("ROLE_USER")) {
-//            userRepo.saveToUserHasRoleAsUser(account.getId());
-//        }
     }
 
 }

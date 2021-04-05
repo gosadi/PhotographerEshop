@@ -22,4 +22,6 @@ import java.util.Optional;
     Optional<Product> getProductById(int id);
     
     Product updateProduct(Product product);
+
+    public void save(Product product);
 }
