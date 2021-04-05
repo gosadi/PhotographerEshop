@@ -5,6 +5,7 @@ import eshop.entity.AccountUserDetails;
 import eshop.entity.Orderr;
 import eshop.service.OrderrService;
 import eshop.service.UserService;
+import java.security.Principal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -38,8 +39,8 @@ public class UserController {
     
 
     @GetMapping("/user-info")
-    public String showUserInfo(@AuthenticationPrincipal, Model model){
-        Account account = userService.findByUsername(username);
+    public String showUserInfo(Principal principal, Model model){
+        Account account = userService.findByUsername(principal.getName());
         model.addAttribute("account", account);
         return "global/user-info";
     }
