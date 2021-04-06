@@ -2,11 +2,15 @@ package eshop.service;
 
 import eshop.entity.Product;
 import eshop.repository.ProductRepo;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 @Transactional
 @Service
@@ -63,5 +67,15 @@ public class ProductServiceImpl implements ProductService{
     public void save(Product product) {
         productRepo.save(product);
     }
+
+    @Override
+    public void saveImage(MultipartFile imageFile) throws Exception {
+        String folder = "C:\\Users\\alkinoos\\Documents\\NetBeansProjects\\groupproject\\src\\main\\resources\\static\\Images\\";
+        byte [] bytes = imageFile.getBytes();
+        Path path =Paths.get(folder + imageFile.getOriginalFilename());
+        Files.write(path, bytes);
+    }
+    
+    
     
 }

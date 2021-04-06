@@ -79,6 +79,7 @@ public class PaypalController {
         Product product = null;
         int quant = 0;
         int catid = 0;
+        BigDecimal totalPrice=BigDecimal.valueOf(0);
         BigDecimal currentPrice = BigDecimal.valueOf(0);
 
         List<Item> itemares = (List<Item>) session.getAttribute("cart");
@@ -100,12 +101,17 @@ public class PaypalController {
                     currentPrice = i.getProduct().getBasePrice()
                             .multiply(new BigDecimal(i.getQuantity())
                                     .multiply(i.getCategory().getPriceRate()));
+                    totalPrice = totalPrice.add(currentPrice);
                     
                     OrderDetails tempOrderDetail= orderDetailsService.saveOrderDetail(new OrderDetails(quant, currentPrice, null, product));//quant,current_price,order_id,product_id
                     lista.add(tempOrderDetail);
-                    System.out.println("skata");
+                   
                 }
-                 Orderr tempOrderr =orderrService.saveOrder(new Orderr(LocalDate.now(), currentPrice.add(currentPrice), tempAccount, paymentEntity, lista));
+                Orderr tempOrderr =orderrService.saveOrder(new Orderr(LocalDate.now(), totalPrice, tempAccount, paymentEntity, lista));
+                for(OrderDetails od : lista){
+                    od.setOrderr(tempOrderr);
+                }
+                Orderr tempOrderr1 = orderrService.saveOrder(tempOrderr);
                 return "/global/success";
             }
         } catch (PayPalRESTException e) {
