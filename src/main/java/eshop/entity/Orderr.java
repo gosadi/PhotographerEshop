@@ -2,6 +2,7 @@ package eshop.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -46,9 +47,9 @@ public class Orderr implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "order_date")
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date orderDate;
+    private LocalDate orderDate;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
      @DecimalMin(value = "00000000.00")
     @DecimalMax(value = "99999999.99")
@@ -70,10 +71,20 @@ public class Orderr implements Serializable {
         this.id = id;
     }
 
-    public Orderr(Integer id, Date orderDate) {
+    public Orderr(Integer id, LocalDate orderDate) {
         this.id = id;
         this.orderDate = orderDate;
     }
+
+    public Orderr(LocalDate orderDate, BigDecimal totalPrice, Account account, Payment payment, List<OrderDetails> orderDetails) {
+        this.orderDate = orderDate;
+        this.totalPrice = totalPrice;
+        this.account = account;
+        this.payment = payment;
+        this.orderDetails = orderDetails;
+    }
+    
+    
 
     public Integer getId() {
         return id;
@@ -83,11 +94,11 @@ public class Orderr implements Serializable {
         this.id = id;
     }
 
-    public Date getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 

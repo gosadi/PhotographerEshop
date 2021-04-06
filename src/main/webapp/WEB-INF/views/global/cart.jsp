@@ -81,8 +81,7 @@
                                         <td>
                                             <select name="category">
                                                 <c:forEach items="${categories}" var="category">
-                                                    <option value="${category.id}" 
-                                                            <c:if test="${item.category.id == category.id}"> selected </c:if>>${category.name}</option>
+                                                    <option value="${category.id}" <c:if test="${item.category.id == category.id}"> selected </c:if>>${category.name}</option>
                                                 </c:forEach>
                                             </select>
                                             <input type="number" value="${item.quantity}" name="quantity" style="width:50px;" />

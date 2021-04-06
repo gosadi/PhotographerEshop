@@ -12,4 +12,5 @@ public interface OrderrService {
     
     List<Orderr> getUserOrderrsByAccountId(int id);
     
+    Orderr saveOrder(Orderr order);
 }
