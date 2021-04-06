@@ -68,20 +68,22 @@ public class PaypalController {
         BigDecimal currentPrice = BigDecimal.valueOf(0);
         
         List<Item> itemares = (List<Item>) session.getAttribute("cart");
-        for (Item i : itemares) {
+     
+        try {
+            Payment payment = service.executePayment(paymentId, payerId);
+            System.out.println(payment.toJSON());
+            if (payment.getState().equals("approved")) {
+                //save to database logic
+                   for (Item i : itemares) {
             product = i.getProduct();
             quant = i.getQuantity();
             catid = i.getCategory().getId();
             currentPrice = i.getProduct().getBasePrice()
                     .multiply(new BigDecimal(i.getQuantity())
                             .multiply(i.getCategory().getPriceRate()));
+               orderDetailsService.saveOrderDetail(new OrderDetails(quant, currentPrice, null, product));
         }
-        try {
-            Payment payment = service.executePayment(paymentId, payerId);
-            System.out.println(payment.toJSON());
-            if (payment.getState().equals("approved")) {
-                //save to database logic
-                orderDetailsService.saveOrderDetail(new OrderDetails(quant, currentPrice, null, product));
+             
                 return "/global/success";
             }
         } catch (PayPalRESTException e) {
