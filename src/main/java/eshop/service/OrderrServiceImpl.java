@@ -28,4 +28,11 @@ public class OrderrServiceImpl implements OrderrService{
     public List<Orderr> getUserOrderrsByAccountId(int id) {
         return orderrRepo.findUserOrderrsByAccountId(id);
     } 
+
+    @Override
+    public Orderr saveOrder(Orderr order) {
+        return orderrRepo.save(order);
+    }
+    
+    
 }

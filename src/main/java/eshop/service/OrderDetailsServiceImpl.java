@@ -21,12 +21,15 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     }
 
     @Override
-    public void saveOrderDetail(OrderDetails orderDetails) {
-        int quant = orderDetails.getQuant();
-        BigDecimal currentPrice = orderDetails.getCurrentPrice();
-//        int orderid = orderDetails.getOrderr().getId(); // NULL
-        int productid = orderDetails.getProduct().getId();
-        orderDetailsRepo.saveOrderDetail(quant,currentPrice,2,productid);
+    public OrderDetails saveOrderDetail(OrderDetails orderDetails) {
+//        int quant = orderDetails.getQuant();
+//        BigDecimal currentPrice = orderDetails.getCurrentPrice();
+        
+//        int orderid = orderDetails.getOrderr().getId(); // NULL   <<<<<< not used
+
+//        int productid = orderDetails.getProduct().getId();
+//        orderDetailsRepo.saveOrderDetail(quant,currentPrice,2,productid);
+    return orderDetailsRepo.save(orderDetails);
     }
     
     
