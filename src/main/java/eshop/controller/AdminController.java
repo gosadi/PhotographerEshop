@@ -15,6 +15,7 @@ import eshop.service.UserService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -43,6 +44,8 @@ public class AdminController {
     RoleService roleService;
     @Autowired
     ProductCategoryService productCategoryService;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
 //    ADMIN SHOW FIRST PAGE
     @GetMapping
@@ -84,7 +87,7 @@ public class AdminController {
             return "redirect:/admin/addProduct?error";
         }
         productService.save(product);
-        attributes.addFlashAttribute("created", "Product successfully created!");
+        attributes.addFlashAttribute("createdProduct", "Product successfully created!");
         return "redirect:/admin/addProduct";
     }
 //    ADMIN VIEW ORDERS
@@ -151,5 +154,32 @@ public class AdminController {
         userService.updateUserAndRole(account, role);
         return "redirect:/admin/users";
     }
-
+    //    ADMIN ADD PRODUCT CATEGORIES TO THE MODELATTRIBUTE TO SHOW PRODUCT FORM
+    @ModelAttribute("adminRole")//accountRoles
+    public Role fetchAdmin() {
+        return roleService.getRoleAdmin();
+    }
+    
+    //ADMIN SHOW USER FORM
+    
+    @GetMapping("/addUser")
+    public String addUser(@ModelAttribute("newAccount")Account account){
+        return "/admin/admin-add-account";
+    }
+    //ADMIN ADD A NEW USER
+    
+    @PostMapping("/addUser")
+    public String saveUser(@Valid @ModelAttribute("newAccount") Account account, BindingResult result, RedirectAttributes attributes){
+        if (result.hasErrors()) {
+            return "redirect:/admin/addUser?error";
+        }
+        
+        Account tempAccount = new Account(account.getId(),
+                account.getFirstname(), account.getLastname(), account.getUsername(),
+                passwordEncoder.encode(account.getPassword()),
+                account.getEmail(), account.getAddress(), account.getCity(), account.getPostalcode(),account.getRoles());
+        userService.saveUser(tempAccount);
+        attributes.addFlashAttribute("createdAccount", "Account successfully created!");
+        return "redirect:/admin/addUser";
+    }
 }

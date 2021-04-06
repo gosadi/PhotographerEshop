@@ -46,7 +46,7 @@
                             <li><a href="${pageContext.request.contextPath}/admin/admins"><u>View</u> Admins</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/users"><u>View</u> Users</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/addProduct"><u>Add</u> Product</a></li>
-                            <li><a href="#"><u>Add</u> Account</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/addUser"><u>Add</u> Account</a></li>
                         </ul>
                     </nav>
                 </div>

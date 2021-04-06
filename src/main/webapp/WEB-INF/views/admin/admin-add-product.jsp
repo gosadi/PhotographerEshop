@@ -53,7 +53,7 @@
                             <li><a href="${pageContext.request.contextPath}/admin/admins"><u>View</u> Admins</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/users"><u>View</u> Users</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/addProduct"><u>Add</u> Product</a></li>
-                            <li><a href="#"><u>Add</u> Account</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/addUser"><u>Add</u> Account</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -66,16 +66,15 @@
                         <label for="file">Upload an image</label>
                         <input type="file" name="imageFile" accept="image/*" title="Please upload an image" required="required"/>
                         <label for="path"><i>Product Path:</i></label>
-                        <form:input type="text" placeholder="/Images/photo_name" path="path" name="path" required="required" title="Please give a path as shown above"/>
+                        <form:input type="text" placeholder="/Images/photo_name" path="path" name="path" required="required" title="Please give a path as shown above!"/>
                         <label for="basePrice"><i>Product Base Price:</i></label>
                         <form:input type="number" placeholder="150.00" path="basePrice" name="basePrice" required="required" step="0.1" min="0"/>
                         <label for="productcategory"><i>Product Category:</i></label>
                         <div class="selectWrapper">
-                            <form:select path="productcategory" name="productcategory" >
+                            <form:select path="productcategory" name="productcategory" required="required" >
                                 <c:forEach  items="${productCategories}" var="productCategory">
                                     <option value="${productCategory.id}">${productCategory.name}</option>
                                 </c:forEach>
-
                             </form:select>
                         </div>
                         <form:button type="Submit" value="Submit">Create</form:button>
