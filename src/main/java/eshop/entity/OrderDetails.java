@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -44,7 +45,7 @@ public class OrderDetails implements Serializable {
     @JoinTable(name = "order_details_has_category", 
             joinColumns = {@JoinColumn(name = "order_details_id", referencedColumnName = "id")}, 
             inverseJoinColumns = {@JoinColumn(name = "category_id", referencedColumnName = "id")})
-    private List<Category> categories = new ArrayList<>();
+    private List<Category> categories;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     
     @DecimalMin(value = "00000000.00")
@@ -71,6 +72,16 @@ public class OrderDetails implements Serializable {
         this.orderr = orderr;
         this.product = product;
     }
+
+    public OrderDetails(Integer quant, List<Category> categories, BigDecimal currentPrice, Orderr orderr, Product product) {
+        this.quant = quant;
+        this.categories = categories;
+        this.currentPrice = currentPrice;
+        this.orderr = orderr;
+        this.product = product;
+    }
+    
+    
     
 
     public Integer getId() {
