@@ -19,10 +19,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author alkinoos
- */
 @Entity
 @Table(name = "category_type")
 @XmlRootElement

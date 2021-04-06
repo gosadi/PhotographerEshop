@@ -13,6 +13,7 @@ import com.paypal.base.rest.PayPalRESTException;
 import eshop.entity.Item;
 import eshop.entity.OrderDetails;
 import eshop.entity.PaypalOrder;
+import eshop.entity.Product;
 import eshop.service.OrderDetailsService;
 import eshop.service.PaypalService;
 import java.math.BigDecimal;
@@ -24,7 +25,6 @@ public class PaypalController {
 
     @Autowired
     PaypalService service;
-    
     @Autowired
     OrderDetailsService orderDetailsService;
 
@@ -60,31 +60,34 @@ public class PaypalController {
         return "global/cancel";
     }
 
-	    @GetMapping(value = SUCCESS_URL)
-	    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId, HttpSession session) {
-                List<Item> items = (List<Item>) session.getAttribute("cart"); 
-                int pid;
-                int quant;
-                int catid;
-	        try {
-	            Payment payment = service.executePayment(paymentId, payerId);
-	            System.out.println(payment.toJSON());
-	            if (payment.getState().equals("approved")) {
-                        //save to database logic
-                        for (Item i: items){
-                            pid = i.getProduct().getId();
-                            quant = i.getQuantity();
-                            catid = i.getCategory().getId();
-                            BigDecimal currentPrice = new BigDecimal(i.getQuantity()).multiply(i.getCategory().getPriceRate()).multiply(i.getProduct().getBasePrice());
-                            OrderDetails od = new OrderDetails(quant, currentPrice, i.getProduct());
-                            orderDetailsService.save(od);
-                        }
-	                return "/global/success";
-	            }
-	        } catch (PayPalRESTException e) {
-	         System.out.println(e.getMessage());
-	        }
-	        return "redirect:/";
-	    }
+    @GetMapping(value = SUCCESS_URL)
+    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId, HttpSession session) {
+        Product product = null;
+        int quant = 0;
+        int catid = 0;
+        BigDecimal currentPrice = BigDecimal.valueOf(0);
+        
+        List<Item> itemares = (List<Item>) session.getAttribute("cart");
+        for (Item i : itemares) {
+            product = i.getProduct();
+            quant = i.getQuantity();
+            catid = i.getCategory().getId();
+            currentPrice = i.getProduct().getBasePrice()
+                    .multiply(new BigDecimal(i.getQuantity())
+                            .multiply(i.getCategory().getPriceRate()));
+        }
+        try {
+            Payment payment = service.executePayment(paymentId, payerId);
+            System.out.println(payment.toJSON());
+            if (payment.getState().equals("approved")) {
+                //save to database logic
+                orderDetailsService.saveOrderDetail(new OrderDetails(quant, currentPrice, null, product));
+                return "/global/success";
+            }
+        } catch (PayPalRESTException e) {
+            System.out.println(e.getMessage());
+        }
+        return "redirect:/";
+    }
 
 }

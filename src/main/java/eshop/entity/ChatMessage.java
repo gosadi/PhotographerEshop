@@ -1,9 +1,5 @@
 package eshop.entity;
 
-/**
- *
- * @author Geo
- */
 public class ChatMessage {
 
     private MessageType type;
