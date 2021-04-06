@@ -11,6 +11,7 @@ import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
 import eshop.entity.Account;
+import eshop.entity.Category;
 import eshop.entity.Item;
 import eshop.entity.OrderDetails;
 import eshop.entity.Orderr;
@@ -78,7 +79,7 @@ public class PaypalController {
     public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId, HttpSession session,Principal principal) {
         Product product = null;
         int quant = 0;
-        int catid = 0;
+        Category category = null;
         BigDecimal totalPrice=BigDecimal.valueOf(0);
         BigDecimal currentPrice = BigDecimal.valueOf(0);
 
@@ -88,6 +89,7 @@ public class PaypalController {
         eshop.entity.Payment paymentEntity = paymentService.getPaymentById(2);
         
         List<OrderDetails> lista= new ArrayList<>();
+        
 
         try {
             Payment payment = service.executePayment(paymentId, payerId);
@@ -97,13 +99,16 @@ public class PaypalController {
                 for (Item i : itemares) {
                     product = i.getProduct();
                     quant = i.getQuantity();
-                    catid = i.getCategory().getId();
+                    category = i.getCategory();
                     currentPrice = i.getProduct().getBasePrice()
                             .multiply(new BigDecimal(i.getQuantity())
                                     .multiply(i.getCategory().getPriceRate()));
                     totalPrice = totalPrice.add(currentPrice);
                     
-                    OrderDetails tempOrderDetail= orderDetailsService.saveOrderDetail(new OrderDetails(quant, currentPrice, null, product));//quant,current_price,order_id,product_id
+                    List<Category> categories = new ArrayList<>();
+                    categories.add(category);
+                    
+                    OrderDetails tempOrderDetail= orderDetailsService.saveOrderDetail(new OrderDetails(quant,categories, currentPrice, null, product));//quant,current_price,order_id,product_id
                     lista.add(tempOrderDetail);
                    
                 }
