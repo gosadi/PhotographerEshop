@@ -92,8 +92,13 @@ public class UserServiceImpl implements UserService {
     public void updateUserAndRole(Account account, Role role) {
         //elegxo tous rolous to account prin kano save kai ean den exei ton rolo USer ton vazo ego
         userRepo.save(account);
-        
-
     }
 
+    @Override
+    public Account updateUser(Account account) {
+        Role role = roleRepo.findByName("ROLE_USER");
+        account.AddRole(role);
+        account = userRepo.save(account);
+        return account;
+    }
 }

@@ -23,6 +23,5 @@ public interface UserService extends UserDetailsService{
     
     void updateUserAndRole(Account account,Role role);
     
-    
-    
+    Account updateUser(Account account);
 } 

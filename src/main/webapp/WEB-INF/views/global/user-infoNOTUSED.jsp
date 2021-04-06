@@ -36,7 +36,7 @@
                             <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><a href="${pageContext.request.contextPath}/cart" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
                                 </sec:authorize>
-                            <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                                <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><div class="dropdown"><a href="#" class="btn-prof">
                                         <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
                                     <div class="dropdown-content">
@@ -52,39 +52,40 @@
             </div>
             <div class="categories">
                 <div class="wrapper2">
-                    
+
                     <h2 style="text-align:center">Personal Details</h2>
                     <div class="row">
                         <div class="userTable">
-                        <table>
-                            <tr>
-                                <th><i>First Name</i></th>
-                                <th><i>Last Name</i></th>
-                                <th><i>Username</i></th>
-                                <th><i>Password</i></th>
-                                <th><i>Email</i></th>
-                                <th><i>Address</i></th>
-                                <th><i>City</i></th>
-                                <th><i>Postal Code</i></th>
-                                <th><i>Update</i></th>
-                            </tr>
-                            <c:forEach items="${account}" var = "account">
-                            <tr>
-                                <td>account.firstname</td>
-                                <td>account.lastname</td>
-                                <td>account.username</td>
-                                <td>account.password</td>
-                                <td>account.email</td>
-                                <td>account.address</td>
-                                <td>account.city</td>
-                                <td>account.postalcode</td>
-                                <td><a href="${pageContext.request.contextPath}/user/user-update">
-                                        <img src="/Images/pencil.png" alt="edit"></a></td>
-                            </tr>
-                            </c:forEach>
-                           
-                        </table>
-</div>
+                            <table>
+                                <tr>
+                                    <th><i>First Name</i></th>
+                                    <th><i>Last Name</i></th>
+                                    <th><i>Username</i></th>
+                                    <th><i>Password</i></th>
+                                    <th><i>Email</i></th>
+                                    <th><i>Address</i></th>
+                                    <th><i>City</i></th>
+                                    <th><i>Postal Code</i></th>
+                                    <th><i>Update</i></th>
+                                </tr>
+                                
+                                <c:if test="${account.username eq principal.getName()}"></c:if>
+                                    <tr>
+                                        <td>${account.firstname}</td>
+                                        <td>${account.lastname}</td>
+                                        <td>${account.username}</td>
+                                        <td>${account.password}</td>
+                                        <td>${account.email}</td>
+                                        <td>${account.address}</td>
+                                        <td>${account.city}</td>
+                                        <td>${account.postalcode}</td>
+                                        <td><a href="${pageContext.request.contextPath}/user/user-update">
+                                                <img src="/Images/pencil.png" alt="edit"></a></td>
+                                    </tr>
+                                
+
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

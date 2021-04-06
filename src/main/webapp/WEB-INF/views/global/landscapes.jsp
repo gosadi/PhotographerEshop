@@ -59,8 +59,8 @@
                                 <a href="#${product.path}"><img src="${pageContext.request.contextPath}${product.path}">
                                 </a>
                                 <div class="desc">
+                                    <h4>'${product.descr}'
                                     <sec:authorize access="!hasAnyRole('ADMIN','USER')">
-                                    <h4>'${product.descr}' 
                                         <br><div class="blink">Sign in & Add to cart!!</div>
                                         </sec:authorize>
                                         <div class="dropdown">
