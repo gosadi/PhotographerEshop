@@ -11,8 +11,11 @@ import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
 import eshop.entity.Item;
+import eshop.entity.OrderDetails;
 import eshop.entity.PaypalOrder;
+import eshop.service.OrderDetailsService;
 import eshop.service.PaypalService;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +24,9 @@ public class PaypalController {
 
     @Autowired
     PaypalService service;
+    
+    @Autowired
+    OrderDetailsService orderDetailsService;
 
     public static final String SUCCESS_URL = "pay/success";
     public static final String CANCEL_URL = "pay/cancel";
@@ -56,13 +62,23 @@ public class PaypalController {
 
 	    @GetMapping(value = SUCCESS_URL)
 	    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId, HttpSession session) {
-                List<Item> items = (List<Item>) session.getAttribute("cart");             
+                List<Item> items = (List<Item>) session.getAttribute("cart"); 
+                int pid;
+                int quant;
+                int catid;
 	        try {
 	            Payment payment = service.executePayment(paymentId, payerId);
 	            System.out.println(payment.toJSON());
 	            if (payment.getState().equals("approved")) {
                         //save to database logic
-                        
+                        for (Item i: items){
+                            pid = i.getProduct().getId();
+                            quant = i.getQuantity();
+                            catid = i.getCategory().getId();
+                            BigDecimal currentPrice = new BigDecimal(i.getQuantity()).multiply(i.getCategory().getPriceRate()).multiply(i.getProduct().getBasePrice());
+                            OrderDetails od = new OrderDetails(quant, currentPrice, i.getProduct());
+                            orderDetailsService.save(od);
+                        }
 	                return "/global/success";
 	            }
 	        } catch (PayPalRESTException e) {

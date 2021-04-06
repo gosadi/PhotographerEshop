@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eshop.entity;
 
 import java.io.Serializable;
@@ -68,6 +64,12 @@ public class OrderDetails implements Serializable {
     private Product product;
 
     public OrderDetails() {
+    }
+
+    public OrderDetails(Integer quant, BigDecimal currentPrice, Product product) {
+        this.quant = quant;
+        this.currentPrice = currentPrice;
+        this.product = product;
     }
 
     public OrderDetails(Integer id) {

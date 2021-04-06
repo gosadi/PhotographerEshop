@@ -23,5 +23,10 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     public List<OrderDetails> findOrderDetailsByOrderId(int id) {
         return orderDetailsRepo.findOrderDetailsByOrder(id);
     }
+
+    @Override
+    public void save(OrderDetails orderDetails) {
+    orderDetailsRepo.save(orderDetails);
+    }
     
 }

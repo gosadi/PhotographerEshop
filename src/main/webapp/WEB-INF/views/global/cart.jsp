@@ -79,12 +79,12 @@
                                         </td>
                                         <td>"${item.product.basePrice}"</td>
                                         <td>
-                                            <select name="category" value="${item.category}">
+                                            <select name="category">
                                                 <c:forEach items="${categories}" var="category">
-                                                    <option value="${category.id}">${category.name}</option>
+                                                    <option value="${category.id}" 
+                                                            <c:if test="${item.category.id == category.id}"> selected </c:if>>${category.name}</option>
                                                 </c:forEach>
                                             </select>
-
                                             <input type="number" value="${item.quantity}" name="quantity" style="width:50px;" />
                                         </td>
                                         <td>"${item.product.basePrice * item.quantity * item.category.priceRate}"</td>   
