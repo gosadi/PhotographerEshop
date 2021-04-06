@@ -103,13 +103,9 @@ public class PaypalController {
                     
                     OrderDetails tempOrderDetail= orderDetailsService.saveOrderDetail(new OrderDetails(quant, currentPrice, null, product));//quant,current_price,order_id,product_id
                     lista.add(tempOrderDetail);
-                    Orderr tempOrderr =orderrService.saveOrder(new Orderr(LocalDate.now(), currentPrice.add(currentPrice), tempAccount, paymentEntity, lista));
-                    
-                    
                     System.out.println("skata");
-                    
                 }
-                
+                 Orderr tempOrderr =orderrService.saveOrder(new Orderr(LocalDate.now(), currentPrice.add(currentPrice), tempAccount, paymentEntity, lista));
                 return "/global/success";
             }
         } catch (PayPalRESTException e) {
