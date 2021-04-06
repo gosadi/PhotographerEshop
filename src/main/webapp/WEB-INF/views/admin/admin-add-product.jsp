@@ -59,26 +59,29 @@
                 </div>
 
                 <div class="admin-form-container">
-                    <form:form action="${pageContext.request.contextPath}/admin/addProduct" method="POST"  modelAttribute="product">
+                    <form:form action="${pageContext.request.contextPath}/admin/addProduct" enctype="multipart/form-data" method="POST"  modelAttribute="product">
                         <h2><u>Add a new product</u></h2>
                         <label for="descr"><i>Product description:</i></label>
-                        <form:input type="text" placeholder="Product descr" path="descr" name="descr" required="required" />
+                        <form:input type="text" placeholder="Night Drive" path="descr" name="descr" required="required" />
+                        <label for="file">Upload an image</label>
+                        <input type="file" name="imageFile" accept="image/*" title="Please upload an image" required="required"/>
                         <label for="path"><i>Product Path:</i></label>
-                        <form:input type="text" placeholder="Product Path" path="path" name="path" required="required"/>
+                        <form:input type="text" placeholder="/Images/photo_name" path="path" name="path" required="required" title="Please give a path as shown above"/>
                         <label for="basePrice"><i>Product Base Price:</i></label>
-                        <form:input type="number" placeholder="Base Price" path="basePrice" name="basePrice" required="required" step="0.1" min="0"/>
+                        <form:input type="number" placeholder="150.00" path="basePrice" name="basePrice" required="required" step="0.1" min="0"/>
                         <label for="productcategory"><i>Product Category:</i></label>
                         <div class="selectWrapper">
                             <form:select path="productcategory" name="productcategory" >
                                 <c:forEach  items="${productCategories}" var="productCategory">
                                     <option value="${productCategory.id}">${productCategory.name}</option>
                                 </c:forEach>
-                                
+
                             </form:select>
                         </div>
                         <form:button type="Submit" value="Submit">Create</form:button>
                     </form:form>
                 </div>
+                
             </div>
             <div class="copyright"><p>Copyright&copy; 2021</p></div>
         </div>

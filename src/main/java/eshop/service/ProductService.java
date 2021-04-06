@@ -3,6 +3,7 @@ package eshop.service;
 import eshop.entity.Product;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.multipart.MultipartFile;
 
 
     public interface ProductService {
@@ -24,4 +25,6 @@ import java.util.Optional;
     Product updateProduct(Product product);
 
     public void save(Product product);
+
+    public void saveImage(MultipartFile imageFile) throws Exception;
 }

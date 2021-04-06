@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequestMapping("/admin")
@@ -59,19 +60,27 @@ public class AdminController {
 
 //    ADMIN ADD PRODUCT CATEGORIES TO THE MODELATTRIBUTE TO SHOW PRODUCT FORM
     @ModelAttribute("productCategories")
-    public List<ProductCategory> allProductCategories(){
+    public List<ProductCategory> allProductCategories() {
         return productCategoryService.findAll();
     }
-    
+
 //    ADMIN SHOW PRODUCT FORM
     @GetMapping("/addProduct")
-    public String addProduct(@ModelAttribute("product")Product product) {
+    public String addProduct(@ModelAttribute("product") Product product) {
         return "/admin/admin-add-product";
     }
 //    ADMIN ADD A NEW PRODUCT
+
     @PostMapping("/addProduct")
-    public String saveProduct(@Valid @ModelAttribute("product") Product product, BindingResult result, RedirectAttributes attributes){
-        if(result.hasErrors()){
+    public String saveProduct(@Valid @ModelAttribute("product") Product product, BindingResult result, RedirectAttributes attributes, @RequestParam("imageFile") MultipartFile imageFile) {
+        if (result.hasErrors()) {
+            return "redirect:/admin/addProduct?error";
+        }
+        try {
+            productService.saveImage(imageFile);
+        }catch(Exception e){
+            e.printStackTrace();
+            attributes.addFlashAttribute("failedToUpload", "Failed to Upload the image!");
             return "redirect:/admin/addProduct?error";
         }
         productService.save(product);
@@ -79,6 +88,7 @@ public class AdminController {
         return "redirect:/admin/addProduct";
     }
 //    ADMIN VIEW ORDERS
+
     @GetMapping("/orders")
     public String viewOrders(Model model) {
         List<Orderr> orderrs = orderrService.getOrderrs();
@@ -86,6 +96,7 @@ public class AdminController {
         return "/admin/admin-orders";
     }
 //    ADMIN VIEW ORDER DETAILS OF EACH ORDER
+
     @GetMapping("/orders/orderdetails")
     public String viewOrderDetails(@RequestParam("id") int id, Model model) {
         List<OrderDetails> orderDetails = orderDetailsService.findOrderDetailsByOrderId(id);
@@ -93,6 +104,7 @@ public class AdminController {
         return "/admin/admin-order-details";
     }
 //    ADMIN VIEW USERS
+
     @GetMapping("/users")
     public String viewAccounts(Model model) {
         List<Account> users = userService.getUsersWithRoleUser();
@@ -100,6 +112,7 @@ public class AdminController {
         return "/admin/admin-accounts";
     }
 //    ADMIN VIEW ORDERS OF EACH ACCOUNT
+
     @GetMapping("/users/orders")
     public String viewOrdersByAccount(@RequestParam("id") int id, Model model, RedirectAttributes attributes) {
         String url = "";
@@ -114,6 +127,7 @@ public class AdminController {
         return url;
     }
 //    ADMIN VIEW ADMINS
+
     @GetMapping("/admins")
     public String viewAdmins(Model model) {
         List<Account> admins = userService.getUsersWithRoleAdmin();
@@ -121,6 +135,7 @@ public class AdminController {
         return "/admin/admin-accounts";
     }
 //    ADMIN VIEW "EDIT USER FORM"
+
     @GetMapping("/users/edit/{id}")
     public String editUsers(@PathVariable(name = "id") int id, Model model) {
         Account account = userService.getUserById(id);
@@ -130,6 +145,7 @@ public class AdminController {
         return "/admin/admin-edit-account";
     }
 //    ADMIN EDIT USER
+
     @PostMapping("/users/update")
     public String updateUser(Account account, Role role) {
         userService.updateUserAndRole(account, role);
