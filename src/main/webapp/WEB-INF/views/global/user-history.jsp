@@ -64,13 +64,14 @@
                                     <th><i>Payment Method</i></th>
                                     <th><i>Order Details</i></th>
                                 </tr>
+                                <c:if test="${account.username eq principal.getName()}"></c:if>
                                 <c:forEach items="${ordersByAccountId}" var = "order">
                                 <tr>
                                     <td>${order.id}</td>
                                     <td>${order.orderDate}</td>
                                     <td>${order.totalPrice}</td>
                                     <td>${order.payment.name}</td>
-                                    <td><a href="${pageContext.request.contextPath}/user/user-order-details">View</a></td>
+                                    <td><a href="${pageContext.request.contextPath}/user/user-order-details?id=${order.id}">View</a></td>
                                 </tr>
                                 </c:forEach>
                             </table>

@@ -24,4 +24,5 @@ public interface UserRepo extends JpaRepository<Account, Integer>{
     @Modifying
     @Query(value = "INSERT INTO ACCOUNT_HAS_ROLE (account_id,role_id) VALUES (:accountid,2)",nativeQuery = true)
     void saveToUserHasRoleAsUser(@Param("accountid")int accountid);
+    
 }

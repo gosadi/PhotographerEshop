@@ -1,57 +1,59 @@
 package eshop.controller;
 
 import eshop.entity.Account;
-import eshop.entity.AccountUserDetails;
+import eshop.entity.OrderDetails;
 import eshop.entity.Orderr;
+import eshop.service.OrderDetailsService;
 import eshop.service.OrderrService;
 import eshop.service.UserService;
 import java.security.Principal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 @RequestMapping("/user")
 @Controller
 public class UserController {
-    
+
     @Autowired
     OrderrService orderrService;
-    
+
     @Autowired
     UserService userService;
     
-//    @GetMapping("/user-history")
-//    public String showUserHistory(@RequestParam("id")int id, Model model, RedirectAttributes attributes){
-//        String url = "";
-//        List<Orderr> ordersByAccountId = orderrService.getUserOrderrsByAccountId(id);
-//        model.addAttribute("ordersByAccountId", ordersByAccountId);
-//        return "/global/user-history";
-//    }
-    
+    @Autowired
+    OrderDetailsService orderDetailsService;
 
-    @GetMapping("/user-info")
-    public String showUserInfo(Principal principal, Model model){
+    @GetMapping("/user-history")
+    public String showUserHistory( Principal principal, Model model){
+        Account account = userService.findByUsername(principal.getName());
+        List<Orderr> ordersByAccountId = orderrService.getUserOrderrsByAccountId(account.getId());
+        model.addAttribute("ordersByAccountId", ordersByAccountId);
+        return "/global/user-history";
+    }
+    @GetMapping("/user-edit")
+    public String showUserInfo(Principal principal, Model model) {
         Account account = userService.findByUsername(principal.getName());
         model.addAttribute("account", account);
-        return "global/user-info";
+        return "global/user-edit";
     }
-    
-     @GetMapping("/user-update")
-    public String showUpdateForm(){
-        return "global/user-update";
+
+    @PostMapping("/user-update")
+    public String updateUserInfo(Account user) {
+        userService.updateUser(user);
+        return "redirect:/user/user-edit";
     }
-    
-     @GetMapping("/user-order-details")
-    public String showUserOrderDetails(){
+
+    @GetMapping("/user-order-details")
+    public String showUserOrderDetails(@RequestParam("id") int id, Model model) {
+        List<OrderDetails> userOrderDetails = orderDetailsService.findOrderDetailsByOrderId(id);
+        model.addAttribute("userOrderDetails", userOrderDetails);
         return "global/user-order-details";
     }
 }

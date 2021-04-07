@@ -38,7 +38,7 @@
                                 </sec:authorize>
                                 <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><div class="dropdown"><a href="#" class="btn-prof">
-                                        <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
+                                        <img src="/Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
                                     <div class="dropdown-content">
                                         <a href="${pageContext.request.contextPath}/user/user-history">History</a>
                                         <a href="${pageContext.request.contextPath}/user/user-info">Info</a>
@@ -53,29 +53,28 @@
             <div class="categories">
                 <div class="wrapper2">
                     <h2 style="text-align:center">Personal Details</h2>
-                    
-                        <form action="#" >
+                    <form:form action="${pageContext.request.contextPath}/user/user-update" method="POST">
+                        <c:if test="${account.username eq principal.getName()}"></c:if>
                             <div class="container">
+                            <input type="text" id="id" name="id" value="${account.id}" hidden="true"/>
                             <label for="firstname">First Name:</label><br>
-                            <input type="text" id="fname" name="fname" value="Alfreds"><br>
+                            <input type="text" name="firstname" value="${account.firstname}"/><br><br>
                             <label for="lastname">Last Name:</label><br>
-                            <input type="text" id="lname" name="lname" value="Futterkiste"><br><br>
+                            <input type="text" name="lastname" value="${account.lastname}"/><br><br>
                             <label for="username">Username:</label><br>
-                            <input type="text" id="lname" name="lname" value="Alfu"><br><br>
-                            <label for="password">Password:</label><br>
-                            <input type="password" id="lname" name="lname" value="Alfu1234"><br><br>
+                            <input type="text" name="username" value="${account.username}" readonly="readonly"/><br><br>
+                            <input type="password" id=pass name="password" value="${account.password}" hidden="hidden"/>
                             <label for="email">Email:</label><br>
-                            <input type="text" id="lname" name="lname" value="alfie@gmail.com"><br><br>
+                            <input type="email" name="email" value="${account.email}"/><br><br>
                             <label for="address">Address:</label><br>
-                            <input type="text" id="address" name="address" value="Heinz St. 35"><br><br>
+                            <input type="text" name="address" value="${account.address}"/><br><br>
                             <label for="city">City:</label><br>
-                            <input type="text" id="city" name="city" value="Hamburg"><br><br>
+                            <input type="text" name="city" value="${account.city}"/><br><br>
                             <label for="postalcode">Postal Code:</label><br>
-                            <input type="text" id="postalcode" name="postalcode" value="Hamburg"><br><br>
+                            <input type="text" name="postalcode" value="${account.postalcode}"/><br><br>
                             <button type="submit" class="updatebtn">Update</button>
-                            </div>
-                        </form> 
-                    
+                        </div>
+                    </form:form>    
                 </div>
             </div>
         </div>

@@ -60,9 +60,20 @@
                             <th>Order ID</th>
                             <th>Product</th>
                             <th>Quantity</th>
-                            <th>Size</th>
-                            <th>Item Price</th>
+                            <th>Quality</th>
+                            <th>Price</th>
                             </thead>
+                            <c:forEach items="${userOrderDetails}" var = "details">
+                            <tr>
+                                <td>${details.orderr.id}</td>
+                                <td><img src="${details.product.path}" alt="image" width="100px"></td>
+                                <td>${details.quant}</td>
+                                <c:forEach items="${details.categories}" var ="category">
+                                <td>${category.name}</td>
+                                </c:forEach>
+                                <td>${details.currentPrice}</td>
+                            </tr>
+                            </c:forEach>
                         </table>
                     </div>
                 </div>

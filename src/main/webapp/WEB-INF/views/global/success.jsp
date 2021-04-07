@@ -22,11 +22,9 @@
             </div>
             <div class="categories">
                 <div class="wrapper2">
-                    <h1 id="prodtitle">About Us</h1>
-                    <h2 style="text-align:center">Our Team</h2>
                     <div class="row">
                         <div align="center">
-                            <h1>Payment Success</h1>
+                            <h1>Successful Payment!!</h1>
                             <a href="${pageContext.request.contextPath}/">Go Back Home</a>
                         </div>
                     </div>

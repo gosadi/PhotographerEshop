@@ -59,7 +59,7 @@
                                 <div class="desc">
                                     <h4>'${product.descr}' 
                                     <sec:authorize access="!hasAnyRole('ADMIN','USER')">
-                                    
+
                                         <br><div class="blink">Sign in & Add to cart!!</div>
                                         </sec:authorize>
                                         <div class="dropdown">
