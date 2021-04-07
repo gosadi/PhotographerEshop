@@ -1,17 +1,23 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <title>Login/Register</title>
         <link rel="stylesheet" href="/CSS/style.css">
     </head>
+
+
+
     <body>
+
+
         <div class="wrapper">
             <div class="navbar">
                 <div class="logo">
@@ -50,38 +56,38 @@
                         </ul>
                     </nav>
                 </div>
-                            
-                <div class="adminTable">
-                    <table>
-                        <thead>
-                        <th>ID</th>
-                        <th>Product info.</th>
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Category</th>
-                        <th>update</th>
-                        <th>download</th>
-                        </thead>
-                        <c:forEach items="${products}" var = "product">
-                            <tr>
-                                <td>${product.id}</td>
-                                <td>${product.descr}</td>
-                                <td><img src="${product.path}" alt="" width="100px"></td>
-                                <td>${product.basePrice}€</td>
-                                <td>${product.productcategory.name}</td>
-                                <td><a href="${pageContext.request.contextPath}/admin/products/edit/${product.id}"><img src="/Images/pencil.png" alt="edit"></a></td>
-                                <td><a href="${pageContext.request.contextPath}/admin/products/download/${product.id}"><img src="/Images/download.png" alt="delete"></a></td>
-                            </tr>
-                        </c:forEach>
 
-                    </table>
-                </div>
+                <div class="admin-form-container">
+                    <form:form action="${pageContext.request.contextPath}/admin/products/update" method="POST">
 
-            </div>
-
+                        <h2><u>Change the product ${productToEdit.id} details</u></h2>
+                        <input type="text" name="id" value="${productToEdit.id}" hidden="hidden"/>
+                        
+                        <label for="descr"><i>Product description:</i></label>
+                        <input type="text"  name="descr" value="${productToEdit.descr}" required="required"/>
+                        
+                        <label for="path"><i>Product image:</i></label>
+                        <input type="text" name="path" value="${productToEdit.path}" hidden="hidden"/>
+                        
+                        <div><img src="${pageContext.request.contextPath}${productToEdit.path}" width="100px" height="150"></div>
+                        <label for="basePrice"><i>Product base price:</i></label>
+                        <input type="text"  name="basePrice" value="${productToEdit.basePrice}" required="required"/>
+                        
+                        <label for="productcategory"><i>Product category:</i></label>
+                            <div class="selectWrapper">
+                                <select name="productcategory"  value="${productToEdit.productcategory}" required="required">
+                                    <c:forEach items="${productCategoriesToEdit}" var = "productCat">
+                                        <option value="${productCat.id}">${productCat.name}</option> <!-- SELECTED ITEM TO DROPDOWN -->
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <button type="Submit" value="Submit">Submit</button>
+                        </form:form>
+                </div>     
+            </div>   
             <div class="copyright"><p>Copyright&copy; 2021</p></div>
-        </div> 
+        </div>
         <script src="/JS/1.js"></script>
     </body>
-</html>
 
+</html>

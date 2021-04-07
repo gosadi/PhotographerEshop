@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUserAndRole(Account account, Role role) {
+    public void updateUserAndRole(Account account) {
         //elegxo tous rolous to account prin kano save kai ean den exei ton rolo USer ton vazo ego
         userRepo.save(account);
         

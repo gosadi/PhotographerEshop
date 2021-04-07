@@ -63,16 +63,16 @@
 
                         <h2><u>Add a new account</u></h2>
                         <label for="username"><i>Account username:</i></label>
-                        <form:input type="text" placeholder="Username"  path="username" name="username" required="required"/>
+                        <form:input type="text" placeholder="nikosMats"  path="username" name="username" required="required"/>
                         <label for="city"><i>Account password:</i></label>
-                        <form:input type="text" placeholder="Password" path="password" name="password" required="required" />
+                        <form:input type="password" placeholder="Password" path="password" name="password" required="required" />
                         <label for="firstname"><i>Account firstname:</i></label>
                         <form:input type="text" placeholder="Nikos" path="firstname" name="firstname" required="required"/>
                         <label for="lastname"><i>Account lastname:</i></label>
                         <form:input type="text" placeholder="Matsamplokos" path="lastname" name="lastname" required="required"/>
                         <label for="email"><i>Account email:</i></label>
                         <form:input type="email" placeholder="nikmats@gmail.com" path="email" name="email"  required="required"/>
-                        <label for="address"><i>Account address:</i></label>
+                        <label for="address"><i>Account full address:</i></label>
                         <form:input type="text" placeholder="matsakonias 52" path="address" name="address" required="required"/>
                         <label for="city"><i>Account city:</i></label>
                         <form:input type="text" placeholder="Athens" path="city" name="city"  required="required"/>

@@ -3,6 +3,7 @@ package eshop.service;
 import eshop.entity.Product;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -27,4 +28,6 @@ import org.springframework.web.multipart.MultipartFile;
     public void save(Product product);
 
     public void saveImage(MultipartFile imageFile) throws Exception;
+    
+    public void downloadImage(String filepath,HttpServletResponse response);
 }

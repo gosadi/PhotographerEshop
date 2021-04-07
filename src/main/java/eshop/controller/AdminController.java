@@ -13,6 +13,7 @@ import eshop.service.ProductService;
 import eshop.service.RoleService;
 import eshop.service.UserService;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -60,6 +62,20 @@ public class AdminController {
         model.addAttribute("products", products);
         return "/admin/admin-products";
     }
+    
+    @GetMapping("/products/edit/{id}")
+    public String editProducts(@PathVariable("id")int id,Model model){
+        Product product = productService.getProductById(id).get();
+        List<ProductCategory> productCategories = productCategoryService.findAll();
+        model.addAttribute("productToEdit", product);
+        model.addAttribute("productCategoriesToEdit", productCategories);
+        return "/admin/admin-edit-product";
+    }
+    @PostMapping("/products/update")
+    public String updateProduct(Product product){
+        productService.save(product);
+        return "redirect:/admin/products";
+    }
 
 //    ADMIN ADD PRODUCT CATEGORIES TO THE MODELATTRIBUTE TO SHOW PRODUCT FORM
     @ModelAttribute("productCategories")
@@ -90,6 +106,16 @@ public class AdminController {
         attributes.addFlashAttribute("createdProduct", "Product successfully created!");
         return "redirect:/admin/addProduct";
     }
+//    DOWNLOAD A PRODUCT
+    
+    @GetMapping("/products/download/{id}")
+    @ResponseBody
+    public void downloadProductImage(@PathVariable("id") int id,HttpServletResponse response){
+        Product product = productService.getProductById(id).get();
+        productService.downloadImage(product.getPath(), response);
+        
+    }
+    
 //    ADMIN VIEW ORDERS
 
     @GetMapping("/orders")
@@ -150,13 +176,13 @@ public class AdminController {
 //    ADMIN EDIT USER
 
     @PostMapping("/users/update")
-    public String updateUser(Account account, Role role) {
-        userService.updateUserAndRole(account, role);
+    public String updateUser(Account account) {
+        userService.updateUserAndRole(account);
         return "redirect:/admin/users";
     }
-    //    ADMIN ADD PRODUCT CATEGORIES TO THE MODELATTRIBUTE TO SHOW PRODUCT FORM
+    //    ADMIN ADD ADMIN ROLE TO THE MODELATTRIBUTE TO SHOW ADMIN-ADD-ACCOUNT FORM
     @ModelAttribute("adminRole")//accountRoles
-    public Role fetchAdmin() {
+    public Role fetchAdminRole() {
         return roleService.getRoleAdmin();
     }
     
