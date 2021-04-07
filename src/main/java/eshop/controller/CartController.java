@@ -36,6 +36,10 @@ public class CartController {
     public String showCart(Model model, HttpSession session) {
         List<Category> categories = categoryService.getCategories();
         model.addAttribute("categories", categories);
+        if (session.getAttribute("cartTotal") == null) {
+            BigDecimal totalOrderDetail = BigDecimal.valueOf(0);
+            session.setAttribute("cartTotal", totalOrderDetail);
+        }
         model.addAttribute("cartTotal", cartTotal(session));
         return "/global/cart";
     }
@@ -54,20 +58,6 @@ public class CartController {
         return "redirect:/cart";
     }
 
-//    @PostMapping(value = "update")
-//    public String update(HttpServletRequest request, HttpSession session) {
-//
-//        String[] quantities = request.getParameterValues("quantity");
-//        String[] qualities = request.getParameterValues("category");
-//        List<Item> items = (List<Item>) session.getAttribute("cart");
-//        for (int i = 0; i < items.size(); i++) {
-//            items.get(i).setQuantity(Integer.parseInt(quantities[i]));
-//            items.get(i).getCategory().setPriceRate(Float.parseFloat(qualities[i]));
-//        }
-//        onlyOne(session); //unifies multiple entries of the same product and quality
-//        session.setAttribute("cart", items);
-//        return "redirect:/cart";
-//    }
     
     @PostMapping(value = "update")
     public String update(HttpServletRequest request, HttpSession session) {
@@ -111,15 +101,18 @@ public class CartController {
         }
         return -1;
     }
-
+    
     private BigDecimal cartTotal(HttpSession session) {
+        if(session.getAttribute("cart") == null){
+            List<Item> itemList = new ArrayList();
+            session.setAttribute("cart", itemList);
+        }
         List<Item> items = (List<Item>) session.getAttribute("cart");
         BigDecimal totalOrderDetail = BigDecimal.valueOf(0);
         for (int i = 0; i < items.size(); i++) {
             int quant = items.get(i).getQuantity();
             BigDecimal priceRate = items.get(i).getCategory().getPriceRate();
             BigDecimal basePrice = items.get(i).getProduct().getBasePrice();
-//            totalOrderDetail = totalOrderDetail.add(BigDecimal.valueOf(quant*priceRate).multiply(basePrice));
             totalOrderDetail = totalOrderDetail.add(basePrice.multiply(new BigDecimal(quant)).multiply(priceRate));
         }
         session.setAttribute("cartValue", totalOrderDetail); //saves the cart's sum to an attribute named cartvalue
@@ -143,18 +136,6 @@ public class CartController {
         }
     }
 
-//    @GetMapping(value = "/paypal")
-//    public String checkoutPaypal(HttpSession session) {
-//        Optional<Payment> paypalPayment = paymentService.getPaymentById(2);
-//        if (session.getAttribute("payment") == null) {
-//        session.setAttribute("payment", paypalPayment);
-//        }
-//        else{
-//            session.removeAttribute("payment");
-//            session.setAttribute("payment", paypalPayment);
-//        }
-//        return "global/checkout";
-//    }
     @GetMapping(value = "/cash")
     public String checkoutCash(HttpSession session) {
         Payment cashPayment = paymentService.getPaymentById(1);

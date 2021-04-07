@@ -46,7 +46,7 @@
                             <li><a href="${pageContext.request.contextPath}/admin/admins"><u>View</u> Admins</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/users"><u>View</u> Users</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/addProduct"><u>Add</u> Product</a></li>
-                            <li><a href="#"><u>Add</u> Account</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/addUser"><u>Add</u> Account</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -60,7 +60,7 @@
                         <th>Price</th>
                         <th>Category</th>
                         <th>update</th>
-                        <th>delete</th>
+                        <th>download</th>
                         </thead>
                         <c:forEach items="${products}" var = "product">
                             <tr>
@@ -70,7 +70,7 @@
                                 <td>${product.basePrice}€</td>
                                 <td>${product.productcategory.name}</td>
                                 <td><a href="${pageContext.request.contextPath}/admin/products/edit/${product.id}"><img src="/Images/pencil.png" alt="edit"></a></td>
-                                <td><a href="${pageContext.request.contextPath}/admin/products/delete?id=${product.id}"><img src="/Images/eraser.png" alt="delete"></a></td>
+                                <td><a href="${pageContext.request.contextPath}/admin/products/download/${product.id}"><img src="/Images/download.png" alt="delete"></a></td>
                             </tr>
                         </c:forEach>
 

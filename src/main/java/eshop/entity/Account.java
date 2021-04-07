@@ -117,6 +117,20 @@ public class Account implements Serializable {
         this.postalcode = postalcode;
     }
 
+    public Account(Integer id, String firstname, String lastname, String username, String password, String email, String address, String city, int postalcode, List<Role> roles) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.address = address;
+        this.city = city;
+        this.postalcode = postalcode;
+        this.roles = roles;
+    }
+    
+
     public Integer getId() {
         return id;
     }

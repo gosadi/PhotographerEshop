@@ -18,6 +18,11 @@ public class RoleServiceImpl implements RoleService{
     public List<Role> getAllRoles() {
         return roleRepo.findAll();
     }
+
+    @Override
+    public Role getRoleAdmin() {
+        return roleRepo.findById(1).get();
+    }
     
     
 }

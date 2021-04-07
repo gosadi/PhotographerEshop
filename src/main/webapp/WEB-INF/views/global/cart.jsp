@@ -41,8 +41,8 @@
                             <li><div class="dropdown"><a href="#" class="btn-prof">
                                         <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
                                     <div class="dropdown-content">
-                                        <a href="${pageContext.request.contextPath}/user/user-history">History</a>
-                                        <a href="${pageContext.request.contextPath}/user/user-info">Info</a>
+                                        <a href="${pageContext.request.contextPath}/user/user-history"><sec:authentication property="principal.username"/>'s History</a>
+                                        <a href="${pageContext.request.contextPath}/user/user-edit"><sec:authentication property="principal.username"/>'s Info</a>
                                         <a href="${pageContext.request.contextPath}/logout">Logout</a>
                                     </div>
                                 </div>

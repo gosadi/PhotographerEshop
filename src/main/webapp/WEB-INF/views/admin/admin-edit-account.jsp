@@ -52,7 +52,7 @@
                             <li><a href="${pageContext.request.contextPath}/admin/admins"><u>View</u> Admins</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/users"><u>View</u> Users</a></li>
                             <li><a href="${pageContext.request.contextPath}/admin/addProduct"><u>Add</u> Product</a></li>
-                            <li><a href="#"><u>Add</u> Account</a></li>
+                            <li><a href="${pageContext.request.contextPath}/admin/addUser"><u>Add</u> Account</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -66,20 +66,20 @@
                         <input type="text"  name="username" value="${accountToEdit.username}" readonly="readonly"/>
                         <input type="text" name="password" value="${accountToEdit.password}" hidden="hidden"/>
                         <label for="firstname"><i>Account firstname:</i></label>
-                        <input type="text"  name="firstname" value="${accountToEdit.firstname}"/>
+                        <input type="text"  name="firstname" value="${accountToEdit.firstname}" required="required"/>
                         <label for="lastname"><i>Account lastname:</i></label>
-                        <input type="text"  name="lastname" value="${accountToEdit.lastname}"/>
+                        <input type="text"  name="lastname" value="${accountToEdit.lastname}" required="required"/>
                         <label for="email"><i>Account email:</i></label>
-                        <input type="email"  name="email" value="${accountToEdit.email}"/>
+                        <input type="email"  name="email" value="${accountToEdit.email}" required="required"/>
                         <label for="address"><i>Account address:</i></label>
-                        <input type="text"  name="address" value="${accountToEdit.address}"/>
+                        <input type="text"  name="address" value="${accountToEdit.address}" required="required"/>
                         <label for="city"><i>Account city:</i></label>
-                        <input type="text"  name="city" value="${accountToEdit.city}"/>
+                        <input type="text"  name="city" value="${accountToEdit.city}" required="required"/>
                         <label for="postalcode"><i>Account postalcode:</i>
-                            <input type="number"  name="postalcode" value="${accountToEdit.postalcode}"/>
-                            <label for="roles"><i>Account Role:</i></label>
+                            <input type="number"  name="postalcode" value="${accountToEdit.postalcode}" required="required"/>
+                            <label for="roles"><i>Account Roles:</i></label>
                             <div class="selectWrapper">
-                                <select name="roles"  value="${accountToEdit.roles}">
+                                <select name="roles"  value="${accountToEdit.roles}" required="required" multiple="multiple">
                                     <c:forEach items="${rolesToEdit}" var = "role">
                                         <option value="${role.id}">${role.name}</option>
                                     </c:forEach>
