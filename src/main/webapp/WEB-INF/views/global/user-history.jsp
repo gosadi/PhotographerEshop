@@ -40,9 +40,7 @@
                             <li><div class="dropdown"><a href="#" class="btn-prof">
                                         <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
                                     <div class="dropdown-content">
-                                        <c:forEach items="${users}" var = "account">
                                         <a href="${pageContext.request.contextPath}/user/user-history/orders?id=${account.id}">History</a>
-                                        </c:forEach>
                                         <a href="${pageContext.request.contextPath}/user/user-info">Info</a>
                                         <a href="${pageContext.request.contextPath}/logout">Logout</a>
                                     </div>
