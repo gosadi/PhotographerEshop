@@ -4,6 +4,7 @@ import eshop.entity.Product;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 
@@ -31,7 +32,7 @@ import org.springframework.web.multipart.MultipartFile;
     
     public void downloadImage(String filepath,HttpServletResponse response);
     
-    public void findAllPeopleByBasePriceAsc(HttpServletResponse response);
+    public List<Product> findAllProductsByBasePriceAsc(int categoryid);
     public List<Product> findAllProductsByBasePriceDesc(int categoryid);
     public List<Product> findAllProductsByBasePriceHigherOrEqual500(int categoryid);
     public List<Product> findAllProductsByBasePriceLower500(int categoryid);

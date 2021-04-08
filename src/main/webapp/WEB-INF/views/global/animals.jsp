@@ -53,6 +53,16 @@
             </div>
             <div class="categories">
                 <div class="wrapper2">
+                    <div id="filtros" >
+                        <ul>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/ascprice?id=2">price ascending</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/descprice?id=2">price descending</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/pricehigherorequal?id=2">price >= 500€</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/pricelower?id=2">price < 500€</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/ascname?id=2">name ascending</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/descname?id=2">name descending</a></li>
+                        </ul>
+                    </div>
                     <h1 id="prodtitle">Animals</h1>
                     <div class="row">
                         <c:forEach items="${products}" var="product">

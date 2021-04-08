@@ -34,7 +34,7 @@
                             <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><a href="${pageContext.request.contextPath}/cart" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
                                 </sec:authorize>
-                                <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                            <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><div class="dropdown"><a href="#" class="btn-prof">
                                         <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
                                     <div class="dropdown-content">
@@ -52,10 +52,12 @@
                 <div class="wrapper2">
                     <div id="filtros" >
                         <ul>
-                            <li><a href="#">ascending</a></li>
-                            <li><a href="#">descending</a></li>
-                            <li><a href="#">price >= 700€</a></li>
-                            <li><a href="#">price < 700€</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/ascprice?id=3">price ascending</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/descprice?id=3">price descending</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/pricehigherorequal?id=3">price >= 500€</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/pricelower?id=3">price < 500€</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/ascname?id=3">name ascending</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/descname?id=3">name descending</a></li>
                         </ul>
                     </div>
                     <h1 id="prodtitle">People</h1>
@@ -66,15 +68,15 @@
                                 </a>
                                 <div class="desc">
                                     <h4>'${product.descr}' 
-                                        <sec:authorize access="!hasAnyRole('ADMIN','USER')">
+                                    <sec:authorize access="!hasAnyRole('ADMIN','USER')">
 
-                                            <br><div class="blink">Sign in & Add to cart!!</div>
+                                        <br><div class="blink">Sign in & Add to cart!!</div>
                                         </sec:authorize>
                                         <div class="dropdown">
                                             <sec:authorize access="hasAnyRole('ADMIN','USER')">
-                                                <button class="cartbtn"><a href="${pageContext.request.contextPath}/cart/buy/${product.id}">Add to cart
-                                                    </a></button>
-                                                </sec:authorize>
+                                            <button class="cartbtn"><a href="${pageContext.request.contextPath}/cart/buy/${product.id}">Add to cart
+                                            </a></button>
+                                            </sec:authorize>
                                         </div>
                                     </h4>
                                 </div>

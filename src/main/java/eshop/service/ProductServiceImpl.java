@@ -17,6 +17,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -111,18 +113,12 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
+
     @Override
-    public void findAllPeopleByBasePriceAsc(HttpServletResponse response) {
-        ProductCategory productCategory = productCategoryRepo.findById(3).get();
-        List<Product> products = productRepo.findAllProductsByBasePriceAsc(productCategory.getId());
-        try {
-            String json = new Gson().toJson(products);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(json);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    public List<Product> findAllProductsByBasePriceAsc(int categoryid) {
+//        ProductCategory productCategory = productCategoryRepo.findById(3).get();
+        return productRepo.findAllProductsByBasePriceAsc(categoryid);
+        
     }
 
     @Override

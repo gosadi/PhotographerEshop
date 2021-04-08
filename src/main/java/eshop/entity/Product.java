@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Product.findByPath", query = "SELECT p FROM Product p WHERE p.path = :path")
     , @NamedQuery(name = "Product.findByBasePrice", query = "SELECT p FROM Product p WHERE p.basePrice = :basePrice")
 })
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,14 +64,10 @@ public class Product implements Serializable {
     @JoinColumn(name = "product_category_id", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private ProductCategory productcategory;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
-//    private List<ProductHasCategory> productHasCategories;
-    @JsonIgnore
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<OrderDetails> orderDetails;
 
-//    @Column(nullable = true, length = 64)
-//    private String files;
+
     public Product() {
     }
 
@@ -124,14 +120,7 @@ public class Product implements Serializable {
         this.productcategory = productcategory;
     }
 
-//    @XmlTransient
-//    public List<ProductHasCategory> getProductHasCategories() {
-//        return productHasCategories;
-//    }
-//
-//    public void setProductHasCategories(List<ProductHasCategory> productHasCategories) {
-//        this.productHasCategories = productHasCategories;
-//    }
+
     @XmlTransient
     public List<OrderDetails> getOrderDetails() {
         return orderDetails;
@@ -141,13 +130,7 @@ public class Product implements Serializable {
         this.orderDetails = orderDetails;
     }
 
-//    public String getfiles() {
-//        return files;
-//    }
-//
-//    public void setfiles(String files) {
-//        this.files = files;
-//    }
+
     @Override
     public int hashCode() {
         int hash = 0;
