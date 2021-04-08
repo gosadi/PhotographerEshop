@@ -30,4 +30,11 @@ import org.springframework.web.multipart.MultipartFile;
     public void saveImage(MultipartFile imageFile) throws Exception;
     
     public void downloadImage(String filepath,HttpServletResponse response);
+    
+    public void findAllPeopleByBasePriceAsc(HttpServletResponse response);
+    public List<Product> findAllProductsByBasePriceDesc(int categoryid);
+    public List<Product> findAllProductsByBasePriceHigherOrEqual500(int categoryid);
+    public List<Product> findAllProductsByBasePriceLower500(int categoryid);
+    public List<Product> findAllProductsByDescrAsc(int categoryid);
+    public List<Product> findAllProductsByDescrDesc(int categoryid);
 }

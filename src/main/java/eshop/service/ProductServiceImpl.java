@@ -1,6 +1,9 @@
 package eshop.service;
 
+import com.google.gson.Gson;
 import eshop.entity.Product;
+import eshop.entity.ProductCategory;
+import eshop.repository.ProductCategoryRepo;
 import eshop.repository.ProductRepo;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
@@ -10,6 +13,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +27,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductRepo productRepo;
+    @Autowired
+    ProductCategoryRepo productCategoryRepo;
 
     @Override
     public List<Product> getProducts() {
@@ -84,8 +91,8 @@ public class ProductServiceImpl implements ProductService {
     public void downloadImage(String filepath, HttpServletResponse response) {
         String folder = "C:\\Users\\alkinoos\\Documents\\NetBeansProjects\\groupproject\\src\\main\\resources\\static\\Images\\";
         String filename = new String(filepath.substring(8));
-        
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+filename);
+
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + filename);
         response.setHeader("Content-Disposition", "attachment; filename=" + filename);
         response.setHeader("Content-Transfer-Encoding", "binary");
 
@@ -95,13 +102,52 @@ public class ProductServiceImpl implements ProductService {
             int len;
             byte[] buf = new byte[1024];
             while ((len = fis.read(buf)) > 0) {
-                bos.write(buf,0,len);
+                bos.write(buf, 0, len);
             }
             bos.close();
             response.flushBuffer();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void findAllPeopleByBasePriceAsc(HttpServletResponse response) {
+        ProductCategory productCategory = productCategoryRepo.findById(3).get();
+        List<Product> products = productRepo.findAllProductsByBasePriceAsc(productCategory.getId());
+        try {
+            String json = new Gson().toJson(products);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(json);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<Product> findAllProductsByBasePriceDesc(int categoryid) {
+        return productRepo.findAllProductsByBasePriceDesc(categoryid);
+    }
+
+    @Override
+    public List<Product> findAllProductsByBasePriceHigherOrEqual500(int categoryid) {
+        return productRepo.findAllProductsByBasePriceHigherOrEqual500(categoryid);
+    }
+
+    @Override
+    public List<Product> findAllProductsByBasePriceLower500(int categoryid) {
+        return productRepo.findAllProductsByBasePriceLower500(categoryid);
+    }
+
+    @Override
+    public List<Product> findAllProductsByDescrAsc(int categoryid) {
+        return productRepo.findAllProductsByDescrAsc(categoryid);
+    }
+
+    @Override
+    public List<Product> findAllProductsByDescrDesc(int categoryid) {
+        return productRepo.findAllProductsByDescrDesc(categoryid);
     }
 
 }

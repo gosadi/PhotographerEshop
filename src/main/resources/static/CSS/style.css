@@ -716,3 +716,11 @@ div.desc {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+#filtros{
+    position: relative; 
+    left: 1450px;
+    width: 120px;
+    height: 100px;
+    text-align: center;
+}

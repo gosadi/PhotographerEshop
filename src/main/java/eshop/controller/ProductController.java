@@ -5,11 +5,14 @@ import eshop.entity.Product;
 import eshop.service.CategoryService;
 import eshop.service.ProductService;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/products")
@@ -47,10 +50,9 @@ public class ProductController {
         return "/global/people";
     }   
     
-//    @GetMapping("/cart")
-//    public String showCart(Model model){
-//        List<Product> cartProducts = productService.getProducts();
-//        model.addAttribute("cartProducts", cartProducts);
-//        return "/global/cart";
-//    }
+    @GetMapping("/listAscByPriceRate")
+    @ResponseBody
+    public void showPeopleByBasePriceAsc(HttpServletResponse response){
+        productService.findAllPeopleByBasePriceAsc(response);
+    }
 }

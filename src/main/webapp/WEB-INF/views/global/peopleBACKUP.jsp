@@ -4,15 +4,13 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Personal Info</title>
+        <title>People</title>
         <link rel="stylesheet" href="/CSS/style.css">
     </head>
-
     <body>
         <div class="wrapper">
             <div class="navbar">
@@ -36,12 +34,12 @@
                             <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><a href="${pageContext.request.contextPath}/cart" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
                                 </sec:authorize>
-                                <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                            <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><div class="dropdown"><a href="#" class="btn-prof">
                                         <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
                                     <div class="dropdown-content">
-                                        <a href="${pageContext.request.contextPath}/user/user-history">History</a>
-                                        <a href="${pageContext.request.contextPath}/user/user-info">Info</a>
+                                        <a href="${pageContext.request.contextPath}/user/user-history"><sec:authentication property="principal.username"/>'s History</a>
+                                        <a href="${pageContext.request.contextPath}/user/user-edit"><sec:authentication property="principal.username"/>'s Info</a>
                                         <a href="${pageContext.request.contextPath}/logout">Logout</a>
                                     </div>
                                 </div>
@@ -52,43 +50,42 @@
             </div>
             <div class="categories">
                 <div class="wrapper2">
-
-                    <h2 style="text-align:center">Personal Details</h2>
+                    <h1 id="prodtitle">People</h1>
                     <div class="row">
-                        <div class="userTable">
-                            <table>
-                                <tr>
-                                    <th><i>First Name</i></th>
-                                    <th><i>Last Name</i></th>
-                                    <th><i>Username</i></th>
-                                    <th><i>Password</i></th>
-                                    <th><i>Email</i></th>
-                                    <th><i>Address</i></th>
-                                    <th><i>City</i></th>
-                                    <th><i>Postal Code</i></th>
-                                    <th><i>Update</i></th>
-                                </tr>
-                                
-                                <c:if test="${account.username eq principal.getName()}"></c:if>
-                                    <tr>
-                                        <td>${account.firstname}</td>
-                                        <td>${account.lastname}</td>
-                                        <td>${account.username}</td>
-                                        <td>${account.password}</td>
-                                        <td>${account.email}</td>
-                                        <td>${account.address}</td>
-                                        <td>${account.city}</td>
-                                        <td>${account.postalcode}</td>
-                                        <td><a href="${pageContext.request.contextPath}/user/user-update">
-                                                <img src="/Images/pencil.png" alt="edit"></a></td>
-                                    </tr>
-                                
+                        <c:forEach items="${products}" var="product">
+                            <figure class="col-4">
+                                <a href="#${product.path}"><img src="${pageContext.request.contextPath}${product.path}">
+                                </a>
+                                <div class="desc">
+                                    <h4>'${product.descr}' 
+                                    <sec:authorize access="!hasAnyRole('ADMIN','USER')">
 
-                            </table>
-                        </div>
-                    </div>
+                                        <br><div class="blink">Sign in & Add to cart!!</div>
+                                        </sec:authorize>
+                                        <div class="dropdown">
+                                            <sec:authorize access="hasAnyRole('ADMIN','USER')">
+                                            <button class="cartbtn"><a href="${pageContext.request.contextPath}/cart/buy/${product.id}">Add to cart
+                                            </a></button>
+                                            </sec:authorize>
+                                        </div>
+                                    </h4>
+                                </div>
+                            </figure>
+
+                            <div id="${product.path}" class="popup">
+                                <div class="popup-content">
+                                    <h1>'${product.descr}'</h1>
+                                    <img src="${pageContext.request.contextPath}${product.path}" class="modal-image">
+                                    <!-- #+ is to prevent jumping to the top of the page when closing the modal.
+                                    It basically disables the anchor <a> tag, as long as there is no corresponding anchor tag in the page. -->
+                                    <a href="#+" class="close-popup">&times;</a>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div> 
                 </div>
             </div>
+
             <div class="footer">
                 <div class="wrapper">
                     <div class="row">
@@ -110,19 +107,15 @@
                         </div>
                         <div id="pp" class="col-2" id="iframe">
                             <h3>Directions</h3>
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3145.941054270136!2d23.73827821565579!3d37.95516230953271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd74bbb87737%3A0x67cc69af825c4e17!2zzpfPgM61zq_Pgc6_z4UgNSwgzpTOrM-Gzr3OtyDOkc-Ez4TOuc66zq7PgiAxNzIgMzc!5e0!3m2!1sel!2sgr!4v1615095404442!5m2!1sel!2sgr"
-                                width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3145.941054270136!2d23.73827821565579!3d37.95516230953271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd74bbb87737%3A0x67cc69af825c4e17!2zzpfPgM61zq_Pgc6_z4UgNSwgzpTOrM-Gzr3OtyDOkc-Ez4TOuc66zq7PgiAxNzIgMzc!5e0!3m2!1sel!2sgr!4v1615095404442!5m2!1sel!2sgr" 
+                                    width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
                     </div>
                 </div>
-                <div class="copyright">
-                    <p>Copyright&copy; 2021</p>
-                </div>
+                <div class="copyright"><p>Copyright&copy; 2021</p></div>
             </div>
             <div class="chat" ><button class="chatButton"><a href="${pageContext.request.contextPath}/chat" class=""><h2>Live chat</h2></a></button></div>
         </div>
         <script src="/JS/2.js"></script>
     </body>
-
 </html>

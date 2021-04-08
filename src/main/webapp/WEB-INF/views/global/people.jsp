@@ -34,7 +34,7 @@
                             <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><a href="${pageContext.request.contextPath}/cart" class="btn cart"><img src="/Images/cart.png" alt="cart" class="cart"></a></li>
                                 </sec:authorize>
-                            <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
+                                <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><div class="dropdown"><a href="#" class="btn-prof">
                                         <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
                                     <div class="dropdown-content">
@@ -50,6 +50,14 @@
             </div>
             <div class="categories">
                 <div class="wrapper2">
+                    <div id="filtros" >
+                        <ul>
+                            <li><a href="#">ascending</a></li>
+                            <li><a href="#">descending</a></li>
+                            <li><a href="#">price >= 700€</a></li>
+                            <li><a href="#">price < 700€</a></li>
+                        </ul>
+                    </div>
                     <h1 id="prodtitle">People</h1>
                     <div class="row">
                         <c:forEach items="${products}" var="product">
@@ -58,15 +66,15 @@
                                 </a>
                                 <div class="desc">
                                     <h4>'${product.descr}' 
-                                    <sec:authorize access="!hasAnyRole('ADMIN','USER')">
+                                        <sec:authorize access="!hasAnyRole('ADMIN','USER')">
 
-                                        <br><div class="blink">Sign in & Add to cart!!</div>
+                                            <br><div class="blink">Sign in & Add to cart!!</div>
                                         </sec:authorize>
                                         <div class="dropdown">
                                             <sec:authorize access="hasAnyRole('ADMIN','USER')">
-                                            <button class="cartbtn"><a href="${pageContext.request.contextPath}/cart/buy/${product.id}">Add to cart
-                                            </a></button>
-                                            </sec:authorize>
+                                                <button class="cartbtn"><a href="${pageContext.request.contextPath}/cart/buy/${product.id}">Add to cart
+                                                    </a></button>
+                                                </sec:authorize>
                                         </div>
                                     </h4>
                                 </div>
