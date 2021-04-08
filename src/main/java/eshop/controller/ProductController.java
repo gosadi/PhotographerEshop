@@ -58,7 +58,6 @@ public class ProductController {
     }
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FILTERS (WANNABE) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\\
-    
     //SHOW PRODUCTS BASE PRICE ASCENDING
     @GetMapping("/filter/ascprice")
     public String showPeopleByBasePriceAsc(@RequestParam("id") int id, Model model) {
@@ -67,110 +66,110 @@ public class ProductController {
         String landscapes = "landscapes";
         List<Product> products = productService.findAllProductsByBasePriceAsc(id);
         model.addAttribute("products", products);
-        if(id==1){
-            return "/global/"+landscapes;
-        }else if(id==2){
-            return "/global/"+animals;
-        }else if(id ==3){
-            return "/global/"+people;
-        }else{
-        return "redirect:/";
+        if (id == 1) {
+            return "/global/" + landscapes;
+        } else if (id == 2) {
+            return "/global/" + animals;
+        } else if (id == 3) {
+            return "/global/" + people;
+        } else {
+            return "redirect:/";
         }
     }
 
     //SHOW PRODUCTS BASE PRICE DESCENDING
     @GetMapping("/filter/descprice")
-    public String showPeopleByBasePriceDesc(@RequestParam("id") int id,Model model) {
+    public String showPeopleByBasePriceDesc(@RequestParam("id") int id, Model model) {
         String animals = "animals";
         String people = "people";
         String landscapes = "landscapes";
         List<Product> products = productService.findAllProductsByBasePriceDesc(id);
         model.addAttribute("products", products);
-        if(id==1){
-            return "/global/"+landscapes;
-        }else if(id==2){
-            return "/global/"+animals;
-        }else if(id ==3){
-            return "/global/"+people;
-        }else{
-        return "redirect:/";
+        if (id == 1) {
+            return "/global/" + landscapes;
+        } else if (id == 2) {
+            return "/global/" + animals;
+        } else if (id == 3) {
+            return "/global/" + people;
+        } else {
+            return "redirect:/";
         }
     }
 
     //SHOW PRODUCTS BASE PRICE HIGHER OR EQUAL TO 500€
     @GetMapping("/filter/pricehigherorequal")
-    public String showPeopleByBasePriceHigherOrEqual500(@RequestParam("id") int id,Model model) {
+    public String showPeopleByBasePriceHigherOrEqual500(@RequestParam("id") int id, Model model) {
         String animals = "animals";
         String people = "people";
         String landscapes = "landscapes";
         List<Product> products = productService.findAllProductsByBasePriceHigherOrEqual500(id);
         model.addAttribute("products", products);
-        if(id==1){
-            return "/global/"+landscapes;
-        }else if(id==2){
-            return "/global/"+animals;
-        }else if(id ==3){
-            return "/global/"+people;
-        }else{
-        return "redirect:/";
+        if (id == 1) {
+            return "/global/" + landscapes;
+        } else if (id == 2) {
+            return "/global/" + animals;
+        } else if (id == 3) {
+            return "/global/" + people;
+        } else {
+            return "redirect:/";
         }
     }
-    
+
     //SHOW PRODUCTS BASE PRICE LOWER THAN 500 €
     @GetMapping("/filter/pricelower")
-    public String showPeopleByBasePriceLower500(@RequestParam("id") int id,Model model) {
+    public String showPeopleByBasePriceLower500(@RequestParam("id") int id, Model model) {
         String animals = "animals";
         String people = "people";
         String landscapes = "landscapes";
         List<Product> products = productService.findAllProductsByBasePriceLower500(id);
         model.addAttribute("products", products);
-        if(id==1){
-            return "/global/"+landscapes;
-        }else if(id==2){
-            return "/global/"+animals;
-        }else if(id ==3){
-            return "/global/"+people;
-        }else{
-        return "redirect:/";
+        if (id == 1) {
+            return "/global/" + landscapes;
+        } else if (id == 2) {
+            return "/global/" + animals;
+        } else if (id == 3) {
+            return "/global/" + people;
+        } else {
+            return "redirect:/";
         }
     }
-    
+
     //SHOW PRODUCTS DESCRIPTION ASCENDING
     @GetMapping("/filter/ascname")
-    public String showPeopleByDescrAsc(@RequestParam("id") int id,Model model) {
+    public String showPeopleByDescrAsc(@RequestParam("id") int id, Model model) {
         String animals = "animals";
         String people = "people";
         String landscapes = "landscapes";
         List<Product> products = productService.findAllProductsByDescrAsc(id);
         model.addAttribute("products", products);
-        if(id==1){
-            return "/global/"+landscapes;
-        }else if(id==2){
-            return "/global/"+animals;
-        }else if(id ==3){
-            return "/global/"+people;
-        }else{
-        return "redirect:/";
+        if (id == 1) {
+            return "/global/" + landscapes;
+        } else if (id == 2) {
+            return "/global/" + animals;
+        } else if (id == 3) {
+            return "/global/" + people;
+        } else {
+            return "redirect:/";
         }
     }
-    
+
     //SHOW PRODUCTS DESCRIPTION DESCENDING
     @GetMapping("/filter/descname")
-    public String showPeopleByDescrDesc(@RequestParam("id") int id,Model model) {
+    public String showPeopleByDescrDesc(@RequestParam("id") int id, Model model) {
         String animals = "animals";
         String people = "people";
         String landscapes = "landscapes";
         List<Product> products = productService.findAllProductsByDescrDesc(id);
         model.addAttribute("products", products);
-        if(id==1){
-            return "/global/"+landscapes;
-        }else if(id==2){
-            return "/global/"+animals;
-        }else if(id ==3){
-            return "/global/"+people;
-        }else{
-        return "redirect:/";
+        if (id == 1) {
+            return "/global/" + landscapes;
+        } else if (id == 2) {
+            return "/global/" + animals;
+        } else if (id == 3) {
+            return "/global/" + people;
+        } else {
+            return "redirect:/";
         }
     }
-    
+
 }
