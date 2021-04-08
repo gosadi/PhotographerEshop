@@ -46,11 +46,4 @@ public class ProductController {
         model.addAttribute("products", products);
         return "/global/people";
     }   
-    
-//    @GetMapping("/cart")
-//    public String showCart(Model model){
-//        List<Product> cartProducts = productService.getProducts();
-//        model.addAttribute("cartProducts", cartProducts);
-//        return "/global/cart";
-//    }
 }

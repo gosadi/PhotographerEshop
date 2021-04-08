@@ -180,6 +180,13 @@ nav ul li {
     opacity: 0.7;
 }
 
+.tableCart{
+    text-align: center;
+    block-size:fit-content;
+}
+
+
+
 /*.col-4:hover .overlay{
     opacity: 0.7;
 }*/

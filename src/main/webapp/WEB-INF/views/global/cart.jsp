@@ -56,7 +56,7 @@
                     <h2 style="text-align:center">Your Cart</h2>
                     <div class="row">
                         <form:form method="POST" action="${pageContext.request.contextPath}/cart/update">
-                            <table border="1">
+                            <table border="1" class="tableCart">
                                 <tr>
                                     <th>Id</th>
                                     <th>Description</th>
