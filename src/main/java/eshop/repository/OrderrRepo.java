@@ -19,7 +19,7 @@ public interface OrderrRepo extends JpaRepository<Orderr, Integer> {
             + " JOIN account a"
             + " ON o.account_id = a.id"
             + " WHERE o.account_id= :id"
-            + " ORDER BY o.order_date DESC;", nativeQuery = true)
+            + " ORDER BY o.id;", nativeQuery = true)
     List<Orderr> findUserOrderrsByAccountId(@Param("id") int id);
 
 }

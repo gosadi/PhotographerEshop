@@ -161,7 +161,6 @@ nav ul li {
 }
 
 .userTable table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -170,11 +169,24 @@ nav ul li {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
+    width: 150px;
 }
 
 .userTable tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.userTable table td:hover .overlay{
+    opacity: 0.7;
+}
+
+/*.col-4:hover .overlay{
+    opacity: 0.7;
+}*/
+
+/* .col-4 img:hover {
+    opacity: 0.6;
+} */
 
 a {
     text-decoration: none;
@@ -403,8 +415,8 @@ input[name="r"] {
     margin-left: 50px;
 }
 
-.cart-button{
-    color: #eee;
+.download-button{
+    color: grey;
     background-color: transparent;
     border: none;
     font-size: 20px;
@@ -412,6 +424,9 @@ input[name="r"] {
     font-family: 'Dancing Script', cursive;
 }
 
+.download-button:hover{
+    color: green;
+}
 .col-4 {
     flex-basis: 30%;
     min-width: 300px;
@@ -425,7 +440,7 @@ input[name="r"] {
 
 .overlay {
     position: relative;  
-    bottom: 95px;
+    bottom: 0px;
     background: rgba(0, 0, 0, 0.5); /* Black see-through */
     color: #f1f1f1; 
     width: 100%;
@@ -439,13 +454,7 @@ input[name="r"] {
 
 }
 
-.col-4:hover .overlay{
-    opacity: 0.7;
-}
 
-.col-4 img:hover {
-    opacity: 0.6;
-} 
 
 .col-4 h1 {
     font-size: 50px;

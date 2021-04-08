@@ -74,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void saveImage(MultipartFile imageFile) throws Exception {
-        String folder = "C:\\Users\\alkinoos\\Documents\\NetBeansProjects\\groupproject\\src\\main\\resources\\static\\Images\\";
+        String folder = "C:\\Users\\Petros\\Documents\\GitHub\\PhotographerEshop\\src\\main\\resources\\static\\Images\\";
         byte[] bytes = imageFile.getBytes();
         Path path = Paths.get(folder + imageFile.getOriginalFilename());
         Files.write(path, bytes);
@@ -82,7 +82,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void downloadImage(String filepath, HttpServletResponse response) {
-        String folder = "C:\\Users\\alkinoos\\Documents\\NetBeansProjects\\groupproject\\src\\main\\resources\\static\\Images\\";
+        String folder = "C:\\Users\\Petros\\Documents\\GitHub\\PhotographerEshop\\src\\main\\resources\\static\\Images\\";
         String filename = new String(filepath.substring(8));
         
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+filename);

@@ -64,15 +64,19 @@
                             <th>Price</th>
                             </thead>
                             <c:forEach items="${userOrderDetails}" var = "details">
-                            <tr>
-                                <td>${details.orderr.id}</td>
-                                <td><img src="${details.product.path}" alt="image" width="100px"></td>
-                                <td>${details.quant}</td>
-                                <c:forEach items="${details.categories}" var ="category">
-                                <td>${category.name}</td>
-                                </c:forEach>
-                                <td>${details.currentPrice}</td>
-                            </tr>
+                                <tr>
+                                    <td>${details.orderr.id}</td>
+                                    <td><img src="${details.product.path}" alt="image" width="100%">
+                                        <a href ="${pageContext.request.contextPath}/user/product/download/${details.product.id}" class="download-button">
+                                            Download
+                                        </a>
+                                    </td>
+                                    <td>${details.quant}</td>
+                                    <c:forEach items="${details.categories}" var ="category">
+                                        <td>${category.name}</td>
+                                    </c:forEach>
+                                    <td>${details.currentPrice}</td>
+                                </tr>
                             </c:forEach>
                         </table>
                     </div>

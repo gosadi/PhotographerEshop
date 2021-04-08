@@ -3,18 +3,23 @@ package eshop.controller;
 import eshop.entity.Account;
 import eshop.entity.OrderDetails;
 import eshop.entity.Orderr;
+import eshop.entity.Product;
 import eshop.service.OrderDetailsService;
 import eshop.service.OrderrService;
+import eshop.service.ProductService;
 import eshop.service.UserService;
 import java.security.Principal;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @RequestMapping("/user")
@@ -29,6 +34,9 @@ public class UserController {
     
     @Autowired
     OrderDetailsService orderDetailsService;
+    
+    @Autowired
+    ProductService productService;
 
     @GetMapping("/user-history")
     public String showUserHistory( Principal principal, Model model){
@@ -55,5 +63,12 @@ public class UserController {
         List<OrderDetails> userOrderDetails = orderDetailsService.findOrderDetailsByOrderId(id);
         model.addAttribute("userOrderDetails", userOrderDetails);
         return "global/user-order-details";
+    }
+    
+    @GetMapping("/product/download/{id}")
+    @ResponseBody
+    public void downloadProduct(@PathVariable("id") int id,HttpServletResponse response){
+        Product product = productService.getProductById(id).get();
+        productService.downloadImage(product.getPath(), response);
     }
 }
