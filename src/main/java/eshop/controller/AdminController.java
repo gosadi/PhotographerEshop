@@ -93,6 +93,7 @@ public class AdminController {
     @PostMapping("/addProduct")
     public String saveProduct(@Valid @ModelAttribute("product") Product product, BindingResult result, RedirectAttributes attributes, @RequestParam("imageFile") MultipartFile imageFile) {
         if (result.hasErrors()) {
+            attributes.addFlashAttribute("error", "Please give valid value!!");
             return "redirect:/admin/addProduct?error";
         }
         try {
@@ -199,12 +200,7 @@ public class AdminController {
         if (result.hasErrors()) {
             return "redirect:/admin/addUser?error";
         }
-        
-        Account tempAccount = new Account(account.getId(),
-                account.getFirstname(), account.getLastname(), account.getUsername(),
-                passwordEncoder.encode(account.getPassword()),
-                account.getEmail(), account.getAddress(), account.getCity(), account.getPostalcode(),account.getRoles());
-        userService.saveUser(tempAccount);
+        userService.saveUser(account);
         attributes.addFlashAttribute("createdAccount", "Account successfully created!");
         return "redirect:/admin/addUser";
     }

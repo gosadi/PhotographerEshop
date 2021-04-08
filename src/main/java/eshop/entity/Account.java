@@ -88,7 +88,7 @@ public class Account implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "postalcode")
-    private int postalcode;
+    private Integer postalcode;
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 //    @Cascade(value = {org.hibernate.annotations.CascadeType.DETACH,org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @JoinTable(name = "account_has_role", joinColumns = {
@@ -105,7 +105,7 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public Account(Integer id, String firstname, String lastname, String username, String password, String email, String address, String city, int postalcode) {
+    public Account(Integer id, String firstname, String lastname, String username, String password, String email, String address, String city, Integer postalcode) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -117,7 +117,7 @@ public class Account implements Serializable {
         this.postalcode = postalcode;
     }
 
-    public Account(Integer id, String firstname, String lastname, String username, String password, String email, String address, String city, int postalcode, List<Role> roles) {
+    public Account(Integer id, String firstname, String lastname, String username, String password, String email, String address, String city, Integer postalcode, List<Role> roles) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -195,11 +195,11 @@ public class Account implements Serializable {
         this.city = city;
     }
 
-    public int getPostalcode() {
+    public Integer getPostalcode() {
         return postalcode;
     }
 
-    public void setPostalcode(int postalcode) {
+    public void setPostalcode(Integer postalcode) {
         this.postalcode = postalcode;
     }
 

@@ -83,6 +83,9 @@ public class PaypalController {
         BigDecimal totalPrice=BigDecimal.valueOf(0);
         BigDecimal currentPrice = BigDecimal.valueOf(0);
 
+        if((List<Item>) session.getAttribute("cart") == null){
+            return "redirect:/";
+        }
         List<Item> itemares = (List<Item>) session.getAttribute("cart");
         
         Account tempAccount = userService.findByUsername(principal.getName());
@@ -117,6 +120,9 @@ public class PaypalController {
                     od.setOrderr(tempOrderr);
                 }
                 Orderr tempOrderr1 = orderrService.saveOrder(tempOrderr);
+                session.removeAttribute("cart");
+                session.removeAttribute("cartValue");
+                session.removeAttribute("cartTotal");
                 return "/global/success";
             }
         } catch (PayPalRESTException e) {

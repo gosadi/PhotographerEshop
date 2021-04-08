@@ -1,5 +1,9 @@
 package eshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -19,6 +23,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -33,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Product.findByDescr", query = "SELECT p FROM Product p WHERE p.descr = :descr")
     , @NamedQuery(name = "Product.findByPath", query = "SELECT p FROM Product p WHERE p.path = :path")
     , @NamedQuery(name = "Product.findByBasePrice", query = "SELECT p FROM Product p WHERE p.basePrice = :basePrice")
-    })
+})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,21 +56,22 @@ public class Product implements Serializable {
     private String path;
     @Basic(optional = false)
     @NotNull
-    @DecimalMin(value = "0000.00")
-    @DecimalMax(value = "9999.99")
-    @Column(name = "base_price", precision=6, scale = 2)
+//    @DecimalMin(value = "0000.00")
+//    @DecimalMax(value = "9999.99")
+    @Column(name = "base_price")//, precision=6, scale = 2
+    @Digits(integer = 99999, fraction = 0, message = "Please give a valid value!!")
     private BigDecimal basePrice;
     @JoinColumn(name = "product_category_id", referencedColumnName = "id")
-    @ManyToOne(optional = false,fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private ProductCategory productcategory;
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.LAZY)
 //    private List<ProductHasCategory> productHasCategories;
+    @JsonIgnore
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<OrderDetails> orderDetails;
-    
+
 //    @Column(nullable = true, length = 64)
 //    private String files;
-
     public Product() {
     }
 
@@ -125,7 +132,6 @@ public class Product implements Serializable {
 //    public void setProductHasCategories(List<ProductHasCategory> productHasCategories) {
 //        this.productHasCategories = productHasCategories;
 //    }
-
     @XmlTransient
     public List<OrderDetails> getOrderDetails() {
         return orderDetails;
@@ -142,9 +148,6 @@ public class Product implements Serializable {
 //    public void setfiles(String files) {
 //        this.files = files;
 //    }
-    
-    
-
     @Override
     public int hashCode() {
         int hash = 0;
