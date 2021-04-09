@@ -21,5 +21,8 @@ public interface OrderrRepo extends JpaRepository<Orderr, Integer> {
             + " WHERE o.account_id= :id"
             + " ORDER BY o.order_date DESC;", nativeQuery = true)
     List<Orderr> findUserOrderrsByAccountId(@Param("id") int id);
+    
+    @Query(value = "SELECT max(id) FROM ORDERS WHERE account_id =:id", nativeQuery = true)
+    int findOrderrsMaxIdByAccountId(@Param("id") int id);
 
 }

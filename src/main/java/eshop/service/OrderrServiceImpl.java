@@ -34,5 +34,10 @@ public class OrderrServiceImpl implements OrderrService{
         return orderrRepo.save(order);
     }
     
+    @Override
+    public int getOrderrsMaxIdByAccountId(int id) {
+        return orderrRepo.findOrderrsMaxIdByAccountId(id);
+    }
+    
     
 }

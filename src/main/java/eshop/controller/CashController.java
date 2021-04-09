@@ -37,14 +37,15 @@ public class CashController {
     PaymentService paymentService;
 
     //stores the data of the order in the database and creates
-    //a code related to the user and the date the order was placed.
+    //a code related to the user, the date the order was placed and the order.
     @GetMapping("/cart/cash")
     public String home(Model model, Principal principal, HttpSession session) {
         payCash(session, principal);
         String paymentCode = null;
         LocalDate today = LocalDate.now();
         int paymentCodeAccountId = (userService.findByUsername(principal.getName())).getId();
-        paymentCode = (paymentCodeAccountId + "/" + today);
+        int paymentCodeOrderId = orderrService.getOrderrsMaxIdByAccountId(paymentCodeAccountId);
+        paymentCode = (paymentCodeAccountId + "/" + today + "/" + paymentCodeOrderId);
         model.addAttribute("paymentCode", paymentCode);
 
         return "/global/cash";
