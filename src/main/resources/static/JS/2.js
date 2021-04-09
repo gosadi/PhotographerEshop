@@ -1,5 +1,13 @@
-// function onClick(element) {
-//     document.getElementById("img1").src = element.src;
-//     document.getElementById("modal").style.display = "block";
-//   }
-
+//$(document).ready(function () {
+//    $("#ascending").on("click", function () {
+//        $.ajax({
+//            type: "GET",
+//            url: "/products/listPeopleAscByPriceRate",
+//
+//            success: function (response) {
+//                $("#divarono").html(response);
+//            }
+//        });
+//    });
+//
+//});

@@ -20,13 +20,21 @@
                 <form:form  action="${pageContext.request.contextPath}/register" method="POST" modelAttribute="accountuser" >
                     <h1>Create Account</h1>
                     <form:input type="text" placeholder="Firstname" path="firstname" name="firstname" required="required" />
+                    <form:errors path="firstname" ></form:errors>
                     <form:input type="text" placeholder="Lastname" path="lastname" name="lastname" required="required"/>
+                    <form:errors path="lastname" ></form:errors>
                     <form:input type="text" placeholder="Username" path="username" name="username" required="required" />
+                    <form:errors path="username" ></form:errors>
                     <form:input type="password" placeholder="Password" path="password" name="password" required="required" />
+                    <form:errors path="password" ></form:errors>
                     <form:input type="email" placeholder="Email" path="email" name="email" required="required" />
+                    <form:errors path="email" ></form:errors>
                     <form:input type="text" placeholder="Address" path="address" name="address" required="required" />
+                    <form:errors path="address" ></form:errors>
                     <form:input type="text" placeholder="City" path="city" name="city" required="required" />
-                    <form:input type="number" placeholder="Postal code" path="postalcode" name="postalcode" required="required"/>
+                     <form:errors path="city" ></form:errors>
+                    <form:input type="text" placeholder="Postal code" path="postalcode" name="postalcode" required="required" />
+                    <form:errors path="postalcode" ></form:errors>
                     <form:button type="submit">Sign Up</form:button>
                 </form:form>
             </div>

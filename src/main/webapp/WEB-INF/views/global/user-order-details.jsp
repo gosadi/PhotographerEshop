@@ -38,7 +38,7 @@
                                 </sec:authorize>
                                 <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><div class="dropdown"><a href="#" class="btn-prof">
-                                        <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
+                                        <img src="/Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
                                     <div class="dropdown-content">
                                         <a href="${pageContext.request.contextPath}/user/user-history"><sec:authentication property="principal.username"/>'s History</a>
                                         <a href="${pageContext.request.contextPath}/user/user-edit"><sec:authentication property="principal.username"/>'s Info</a>

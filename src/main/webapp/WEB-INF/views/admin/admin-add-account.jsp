@@ -63,21 +63,21 @@
 
                         <h2><u>Add a new account</u></h2>
                         <label for="username"><i>Account username:</i></label>
-                        <form:input type="text" placeholder="nikosMats"  path="username" name="username" required="required"/>
+                        <form:input type="text" placeholder="nikosMats"  path="username" name="username" required="required" maxlength="20" />
                         <label for="city"><i>Account password:</i></label>
-                        <form:input type="password" placeholder="Password" path="password" name="password" required="required" />
+                        <form:input type="password" placeholder="Password" path="password" name="password" required ="required" pattern=".{4,68}" title="min 4 max 68 characters" />
                         <label for="firstname"><i>Account firstname:</i></label>
-                        <form:input type="text" placeholder="Nikos" path="firstname" name="firstname" required="required"/>
+                        <form:input type="text" placeholder="Nikos" path="firstname" name="firstname" required="required" maxlength="30" />
                         <label for="lastname"><i>Account lastname:</i></label>
-                        <form:input type="text" placeholder="Matsamplokos" path="lastname" name="lastname" required="required"/>
+                        <form:input type="text" placeholder="Matsamplokos" path="lastname" name="lastname" required="required" maxlength="30" />
                         <label for="email"><i>Account email:</i></label>
-                        <form:input type="email" placeholder="nikmats@gmail.com" path="email" name="email"  required="required"/>
+                        <form:input type="email" placeholder="nikmats@gmail.com" path="email" name="email"  required="required" maxlength="50" />
                         <label for="address"><i>Account full address:</i></label>
-                        <form:input type="text" placeholder="matsakonias 52" path="address" name="address" required="required"/>
+                        <form:input type="text" placeholder="matsakonias 52" path="address" name="address" required="required" maxlength="50" />
                         <label for="city"><i>Account city:</i></label>
-                        <form:input type="text" placeholder="Athens" path="city" name="city"  required="required"/>
+                        <form:input type="text" placeholder="Athens" path="city" name="city"  required="required" maxlength="50" />
                         <label for="postalcode"><i>Account postalcode:</i>
-                            <form:input type="number" placeholder="15432" path="postalcode" name="postalcode" required="required" min="0"/>
+                            <form:input type="text" placeholder="15432" path="postalcode" name="postalcode" required="required" pattern="(?=.*\d).{5,}" title="Must contain only numbers and at least 5 characters" />
                             <label for="roles"><i>Make admin:</i></label>
                             <div class="selectWrapper">
                                 <form:checkbox path="Roles" value="${adminRole}" />
@@ -85,7 +85,7 @@
                             <form:button type="Submit" value="Submit">Submit</form:button>
                         </form:form>
                 </div>
-                
+
             </div>
             <div class="copyright"><p>Copyright&copy; 2021</p></div>
         </div>

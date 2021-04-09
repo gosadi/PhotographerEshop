@@ -13,16 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class HomeController {
 
+    //show index
     @RequestMapping
     public String showHome() {
         return "/global/index"; //home
     }
 
+    //show about us
     @GetMapping("/aboutus")
     public String showAboutus() {
         return "/global/about-us";
     }
 
+    //override the /logout 
     @RequestMapping("/logout")
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -31,8 +34,9 @@ public class HomeController {
         }
         return "redirect:/";
     }
-    
-        @GetMapping("/chat")
+
+    //show websocket chat
+    @GetMapping("/chat")
     public String showChat() {
         return "/global/websocket";
     }

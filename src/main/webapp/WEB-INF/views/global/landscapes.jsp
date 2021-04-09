@@ -38,7 +38,7 @@
                                 </sec:authorize>
                                 <sec:authorize access="!hasRole('ADMIN') && isAuthenticated()">
                             <li><div class="dropdown"><a href="#" class="btn-prof">
-                                        <img src="../Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
+                                        <img src="/Images/icon-avatar-1.jpg" alt="Avatar" class="avatar"></a>
                                     <div class="dropdown-content">
                                         <a href="${pageContext.request.contextPath}/user/user-history"><sec:authentication property="principal.username"/>'s History</a>
                                         <a href="${pageContext.request.contextPath}/user/user-edit"><sec:authentication property="principal.username"/>'s Info</a>
@@ -52,6 +52,16 @@
             </div>
             <div class="categories">
                 <div class="wrapper2">
+                    <div id="filtros" >
+                        <ul>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/ascprice?id=1">price ascending</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/descprice?id=1">price descending</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/pricehigherorequal?id=1">price >= 500€</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/pricelower?id=1">price < 500€</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/ascname?id=1">name ascending</a></li>
+                            <li><a href="${pageContext.request.contextPath}/products/filter/descname?id=1">name descending</a></li>
+                        </ul>
+                    </div>
                     <h1 id="prodtitle">Landscapes</h1>
                     <div class="row">
                         <c:forEach items="${products}" var="product">

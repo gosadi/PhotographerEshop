@@ -64,14 +64,14 @@
                         <input type="text" name="id" value="${productToEdit.id}" hidden="hidden"/>
                         
                         <label for="descr"><i>Product description:</i></label>
-                        <input type="text"  name="descr" value="${productToEdit.descr}" required="required"/>
+                        <input type="text"  name="descr" value="${productToEdit.descr}" required="required" maxlength="30"  minlength="5" />
                         
                         <label for="path"><i>Product image:</i></label>
                         <input type="text" name="path" value="${productToEdit.path}" hidden="hidden"/>
                         
                         <div><img src="${pageContext.request.contextPath}${productToEdit.path}" width="100px" height="150"></div>
                         <label for="basePrice"><i>Product base price:</i></label>
-                        <input type="text"  name="basePrice" value="${productToEdit.basePrice}" required="required"/>
+                        <input type="text"  name="basePrice" value="${productToEdit.basePrice}" required="required" min="0" />
                         
                         <label for="productcategory"><i>Product category:</i></label>
                             <div class="selectWrapper">

@@ -66,17 +66,17 @@
                         <input type="text"  name="username" value="${accountToEdit.username}" readonly="readonly"/>
                         <input type="text" name="password" value="${accountToEdit.password}" hidden="hidden"/>
                         <label for="firstname"><i>Account firstname:</i></label>
-                        <input type="text"  name="firstname" value="${accountToEdit.firstname}" required="required"/>
+                        <input type="text"  name="firstname" value="${accountToEdit.firstname}" required="required" maxlength="30" />
                         <label for="lastname"><i>Account lastname:</i></label>
-                        <input type="text"  name="lastname" value="${accountToEdit.lastname}" required="required"/>
+                        <input type="text"  name="lastname" value="${accountToEdit.lastname}" required="required" maxlength="30" />
                         <label for="email"><i>Account email:</i></label>
-                        <input type="email"  name="email" value="${accountToEdit.email}" required="required"/>
+                        <input type="email"  name="email" value="${accountToEdit.email}" required="required" maxlength="50" />
                         <label for="address"><i>Account address:</i></label>
-                        <input type="text"  name="address" value="${accountToEdit.address}" required="required"/>
+                        <input type="text"  name="address" value="${accountToEdit.address}" required="required" maxlength="50" />
                         <label for="city"><i>Account city:</i></label>
-                        <input type="text"  name="city" value="${accountToEdit.city}" required="required"/>
+                        <input type="text"  name="city" value="${accountToEdit.city}" required="required" maxlength="50" />
                         <label for="postalcode"><i>Account postalcode:</i>
-                            <input type="number"  name="postalcode" value="${accountToEdit.postalcode}" required="required"/>
+                            <input type="number"  name="postalcode" value="${accountToEdit.postalcode}" required="required" pattern="(?=.*\d).{5,}" title="Must contain only numbers and at least 5 characters" />
                             <label for="roles"><i>Account Roles:</i></label>
                             <div class="selectWrapper">
                                 <select name="roles"  value="${accountToEdit.roles}" required="required" multiple="multiple">
