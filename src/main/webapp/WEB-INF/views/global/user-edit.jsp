@@ -56,22 +56,23 @@
                     <form:form action="${pageContext.request.contextPath}/user/user-update" method="POST">
                         <c:if test="${account.username eq principal.getName()}"></c:if>
                             <div class="container">
+                                <p><i style="color: red">${error}</i></p>
                             <input type="text" id="id" name="id" value="${account.id}" hidden="true"/>
                             <label for="firstname">First Name:</label><br>
-                            <input type="text" name="firstname" value="${account.firstname}" maxlength="30" /><br><br>
+                            <input type="text" name="firstname" value="${account.firstname}" maxlength="30" required="required" /><br><br>
                             <label for="lastname">Last Name:</label><br>
-                            <input type="text" name="lastname" value="${account.lastname}" maxlength="30" /><br><br>
+                            <input type="text" name="lastname" value="${account.lastname}" maxlength="30" required="required" /><br><br>
                             <label for="username">Username:</label><br>
-                            <input type="text" name="username" value="${account.username}" readonly="readonly"/><br><br>
-                            <input type="password" id=pass name="password" value="${account.password}" hidden="hidden"/>
+                            <input type="text" name="username" value="${account.username}" readonly="readonly" /><br><br>
+                            <input type="password" id=pass name="password" value="${account.password}" hidden="hidden" />
                             <label for="email">Email:</label><br>
-                            <input type="email" name="email" value="${account.email}" maxlength="50" /><br><br>
+                            <input type="email" name="email" value="${account.email}" maxlength="50" required="required" /><br><br>
                             <label for="address">Address:</label><br>
-                            <input type="text" name="address" value="${account.address}" maxlength="50" /><br><br>
+                            <input type="text" name="address" value="${account.address}" maxlength="50" required="required" /><br><br>
                             <label for="city">City:</label><br>
-                            <input type="text" name="city" value="${account.city}"maxlength="50" /><br><br>
+                            <input type="text" name="city" value="${account.city}" maxlength="50" required="required" /><br><br>
                             <label for="postalcode">Postal Code:</label><br>
-                            <input type="text" name="postalcode" value="${account.postalcode}"pattern="(?=.*\d).{5,}" title="Must contain only numbers and at least 5 characters" /><br><br>
+                            <input type="text" name="postalcode" value="${account.postalcode}" pattern="(?=.*\d).{5,}" title="Must contain only numbers and at least 5 characters"  required="required" /><br><br>
                             <button type="submit" class="updatebtn">Update</button>
                         </div>
                     </form:form>    

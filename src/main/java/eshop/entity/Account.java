@@ -19,9 +19,12 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.hibernate.validator.constraints.Range;
 
 /**
  *
@@ -50,45 +53,53 @@ public class Account implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
+    @NotNull(message = "Firstname must not be null!")
+    @NotEmpty(message = "Firstname must not be empty!")
+    @Size(min = 2, max = 30,message = "Firstname size must be between 2 and 30 characters")
     @Column(name = "firstname")
     private String firstname;
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "Lastname must not be null!")
+    @NotEmpty(message = "Lastname must not be empty!")
     @Size(min = 1, max = 30)
     @Column(name = "lastname")
     private String lastname;
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "Username must not be null!")
+    @NotEmpty(message = "Username must not be empty!")
     @Size(min = 1, max = 20)
     @Column(name = "username",unique = true)
     private String username;
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "Password must not be null!")
+    @NotEmpty(message = "Password must not be empty!")
     @Size(min = 1, max = 68)
     @Column(name = "password")
     private String password;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @NotNull(message = "Email must not be null!")
+    @NotEmpty(message = "Email must not be empty!")
+    @Size(min = 1, max = 50,message = "Email size must be between 1 and 50 characters!")
     @Column(name = "email",unique = true)
     private String email;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @NotNull(message = "Address must not be null!")
+    @NotEmpty(message="Address must not be empty!")
+    @Size(min = 1, max = 50,message = "Address size must be between 1 and 50 characters!")
     @Column(name = "address")
     private String address;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    @NotNull(message = "City must not be null!")
+    @NotEmpty(message = "City must not be empty!")
+    @Size(min = 1, max = 50,message = "City size must be between 1 and 50 characters!")
     @Column(name = "city")
     private String city;
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "Postalcode must not be null!")
+    @Pattern(regexp="^[0-9]{5}", message = "Invalid Zip Code")
     @Column(name = "postalcode")
-    private Integer postalcode;
+    private String postalcode;
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 //    @Cascade(value = {org.hibernate.annotations.CascadeType.DETACH,org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @JoinTable(name = "account_has_role", joinColumns = {
@@ -105,7 +116,7 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public Account(Integer id, String firstname, String lastname, String username, String password, String email, String address, String city, Integer postalcode) {
+    public Account(Integer id, String firstname, String lastname, String username, String password, String email, String address, String city, String postalcode) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -117,7 +128,7 @@ public class Account implements Serializable {
         this.postalcode = postalcode;
     }
 
-    public Account(Integer id, String firstname, String lastname, String username, String password, String email, String address, String city, Integer postalcode, List<Role> roles) {
+    public Account(Integer id, String firstname, String lastname, String username, String password, String email, String address, String city, String postalcode, List<Role> roles) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -195,11 +206,11 @@ public class Account implements Serializable {
         this.city = city;
     }
 
-    public Integer getPostalcode() {
+    public String getPostalcode() {
         return postalcode;
     }
 
-    public void setPostalcode(Integer postalcode) {
+    public void setPostalcode(String postalcode) {
         this.postalcode = postalcode;
     }
 
