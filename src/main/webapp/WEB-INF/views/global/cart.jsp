@@ -56,7 +56,8 @@
                     <h2 style="text-align:center">Your Cart</h2>
                     <div class="row">
                         <form:form method="POST" action="${pageContext.request.contextPath}/cart/update">
-                            <table border="1" class="tableCart">
+                            <table class="tableCart">
+                                <thead>
                                 <tr>
                                     <th>Id</th>
                                     <th>Description</th>
@@ -70,6 +71,7 @@
                                     <th>Sub Total</th>
                                     <th></th>
                                 </tr>
+                                </thead>
                                 <c:forEach items="${cart}" var = "item">
                                     <tr>
                                         <td>"${item.product.id}"</td>
@@ -87,7 +89,7 @@
                                             <input type="number" value="${item.quantity}" name="quantity" style="width:50px;" />
                                         </td>
                                         <td>"${item.product.basePrice * item.quantity * item.category.priceRate}"</td>   
-                                        <td>
+                                        <td style="border-bottom: hidden; width: 5%;">
                                             <a href="${pageContext.request.contextPath}/cart/delete/${item.product.id}/${item.category.id}/${item.quantity}">
                                                 <i class="fa fa-trash"></i></a>
                                         </td>
@@ -95,14 +97,15 @@
                                 </c:forEach>
                                 <tr>
                                     <td colspan="5">Total</td>
-                                    <td>"${cartTotal}"</td>
+                                    <td style="background-color: #C8D5B9;">"${cartTotal}"</td>
+                                    <td style="border-bottom: hidden"></td>
                                 </tr>
                             </table>
-                            <a href="${pageContext.request.contextPath}/products">Continue Shopping</a>
+                            <a id="acart" href="${pageContext.request.contextPath}/products">Continue Shopping</a>
                             <br>
-                            <a href="${pageContext.request.contextPath}/paypal">Pay with Paypal/credit card</a>
+                            <a id="acart" href="${pageContext.request.contextPath}/paypal">Pay with Paypal/credit card</a>
                             <br>
-                            <a href="${pageContext.request.contextPath}/cart/cash">Pay with cash</a>
+                            <a id="acart" href="${pageContext.request.contextPath}/cart/cash">Pay with cash</a>
                         </form:form>
                     </div>
                 </div>

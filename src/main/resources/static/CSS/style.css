@@ -183,17 +183,24 @@ nav ul li {
 .tableCart{
     text-align: center;
     block-size:fit-content;
+    border-bottom: 1px solid #ddd;
+    border-collapse: collapse;
 }
 
+.tableCart thead{
+    background-color: #C8D5B9;
+}
 
+.tableCart th, td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
 
-/*.col-4:hover .overlay{
-    opacity: 0.7;
-}*/
-
-/* .col-4 img:hover {
-    opacity: 0.6;
-} */
+#acart{
+    position: relative;
+    left: 850px;
+    text-align: center;
+}
 
 a {
     text-decoration: none;
@@ -219,7 +226,6 @@ p {
 }
 .cart{
     margin: -13% -30%;
-
 }
 .cart img{
     position: relative;
