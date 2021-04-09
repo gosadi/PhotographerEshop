@@ -52,7 +52,7 @@
             </div>
             <div class="categories">
                 <div class="wrapper2">
-                    <h2 style="text-align:center">Personal Details</h2>
+                    <h2 style="text-align:center">Order Details</h2>
 
                     <div class="userTable">
                         <table>
@@ -75,7 +75,7 @@
                                     <c:forEach items="${details.categories}" var ="category">
                                         <td>${category.name}</td>
                                     </c:forEach>
-                                    <td>${details.currentPrice}</td>
+                                        <td>${details.currentPrice}&euro;</td>
                                 </tr>
                             </c:forEach>
                         </table>

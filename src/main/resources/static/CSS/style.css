@@ -189,14 +189,17 @@ nav ul li {
 }
 
 .tableCart th, td {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
 }
 
 #acart{
     position: relative;
-    left: 850px;
+    left: 72%;
     text-align: center;
+}
+#acart:hover{
+    color: #C8D5B9;
 }
 
 a {
@@ -283,6 +286,7 @@ p {
     margin-left: 90%;
     z-index: 999;
 }
+
 .chatButton {
 
     border-radius: 60px;
@@ -435,8 +439,9 @@ input[name="r"] {
 }
 
 .download-button:hover{
-    color: green;
+    color: #C8D5B9;
 }
+
 .col-4 {
     flex-basis: 30%;
     min-width: 300px;
@@ -463,8 +468,6 @@ input[name="r"] {
     text-align: center;
 
 }
-
-
 
 .col-4 h1 {
     font-size: 50px;
@@ -555,9 +558,26 @@ div.desc {
     background-color: rgba(0, 0, 0, 0.61);
 }
 
+#cartUpdate{
+    cursor: pointer;
+    animation: blinker 3s linear infinite;
+    border-radius: 12px;
+    padding: 2px;
+    border:none;
+    font-family: 'Dancing Script', cursive;
+}
+
+#cartSelect{
+    border-radius: 12px;
+    border:none;
+    cursor:pointer;
+    font-family: 'Dancing Script', cursive;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
+    width:100%;
 }
 
 .dropdown-content {
@@ -589,82 +609,7 @@ div.desc {
     left: 68%;
     height: 30px;
 }
-@keyframes looping {
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-}
 
-@keyframes glowing {
-    0% {
-        background-color:#00B295;
-        box-shadow: 0 0 3px #00B295;
-    }
-    50% {
-        background-color: #00B295;
-        box-shadow: 0 0 10px #00B295;
-    }
-    100% {
-        background-color:#00B295;
-        box-shadow: 0 0 3px #00B295;
-    }
-}
-
-@keyframes blinker {
-    50% {
-        opacity: 0;
-    }
-}
-
-@media screen and (max-width: 650px) {
-    .columnAboutUs {
-        width: 100%;
-        display: block;
-    }
-
-    .col-4 {
-        flex-basis: 30%;
-        padding-bottom: 70px;
-    }
-
-    .row {
-        display:contents;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        height: min-content;
-    }
-
-    .adminTable {
-        overflow-y: visible;
-        border-radius: 20px;
-        margin-right: 1%;
-        margin-left: 1%;
-        overflow-y: scroll;
-
-    }
-
-    .adminWrapper {
-        display: flex;
-        justify-content: space-between;
-        text-align: center;
-        background-color: #FAF3DD;
-        border-radius: 20px;
-        min-height: 450px;
-        overflow: visible!important;
-
-    }
-
-    .container {
-        padding: 16px;
-        background-color: white;
-        margin: 50px 5%;
-    }
-
-}
 .admin-form-container{
 
     background-color: #C8D5B9;
@@ -727,8 +672,99 @@ input[type=number] {
 
 #filtros{
     position: relative; 
-    left: 1450px;
+    left: 85%;
     width: 150px;
     height: 100px;
     text-align: center;
+}
+
+@media screen and (max-width: 650px) {
+    .columnAboutUs {
+        width: 100%;
+        display: block;
+    }
+
+    .col-4 {
+        flex-basis: 30%;
+        padding-bottom: 70px;
+    }
+
+    .row {
+        display:contents;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        height: min-content;
+    }
+
+    .adminTable {
+        overflow-y: visible;
+        border-radius: 20px;
+        margin-right: 1%;
+        margin-left: 1%;
+        overflow-y: scroll;
+
+    }
+
+    .adminWrapper {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        background-color: #FAF3DD;
+        border-radius: 20px;
+        min-height: 450px;
+        overflow: visible!important;
+
+    }
+
+    .container {
+        padding: 16px;
+        background-color: white;
+        margin: 50px 5%;
+    }
+
+    #filtros{
+        position: relative; 
+        left: 70%;
+        width: 150px;
+        height: 100px;
+        text-align: center;
+    }
+
+    .chat{
+        position: fixed;
+        bottom: 50px;
+        margin-left: 75%;
+        z-index: 999;
+    }
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes looping {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes glowing {
+    0% {
+        background-color:#00B295;
+        box-shadow: 0 0 3px #00B295;
+    }
+    50% {
+        background-color: #00B295;
+        box-shadow: 0 0 10px #00B295;
+    }
+    100% {
+        background-color:#00B295;
+        box-shadow: 0 0 3px #00B295;
+    }
 }

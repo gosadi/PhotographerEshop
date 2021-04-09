@@ -66,10 +66,9 @@
 
                                     <th>
                                         Quality x Quantity
-                                        <input type="submit" value="Update"/>
+                                        <input id="cartUpdate" type="submit" value="Update"/>
                                     </th>
                                     <th>Sub Total</th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <c:forEach items="${cart}" var = "item">
@@ -77,18 +76,18 @@
                                         <td>"${item.product.id}"</td>
                                         <td>"${item.product.descr}"</td>
                                         <td>
-                                            <img src="${item.product.path}" width="100"/>
+                                            <img src="${item.product.path}" style= "width:50%;"/>
                                         </td>
-                                        <td>"${item.product.basePrice}"</td>
+                                        <td>${item.product.basePrice}&euro;</td>
                                         <td>
-                                            <select name="category">
+                                            <select id="cartSelect" name="category">
                                                 <c:forEach items="${categories}" var="category">
                                                     <option value="${category.id}" <c:if test="${item.category.id == category.id}"> selected </c:if>>${category.name}</option>
                                                 </c:forEach>
                                             </select>
-                                            <input type="number" value="${item.quantity}" name="quantity" style="width:50px;" />
+                                            <input id="cartSelect" type="number" value="${item.quantity}" name="quantity" style="width:50px;" />
                                         </td>
-                                        <td>"${item.product.basePrice * item.quantity * item.category.priceRate}"</td>   
+                                        <td>${item.product.basePrice * item.quantity * item.category.priceRate}&euro;</td>   
                                         <td style="border-bottom: hidden; width: 5%;">
                                             <a href="${pageContext.request.contextPath}/cart/delete/${item.product.id}/${item.category.id}/${item.quantity}">
                                                 <i class="fa fa-trash"></i></a>
@@ -97,10 +96,11 @@
                                 </c:forEach>
                                 <tr>
                                     <td colspan="5">Total</td>
-                                    <td style="background-color: #C8D5B9;">"${cartTotal}"</td>
+                                    <td style="background-color: #C8D5B9;">${cartTotal}&euro;</td>
                                     <td style="border-bottom: hidden"></td>
                                 </tr>
                             </table>
+                                    <br><br>
                             <a id="acart" href="${pageContext.request.contextPath}/products">Continue Shopping</a>
                             <br>
                             <a id="acart" href="${pageContext.request.contextPath}/paypal">Pay with Paypal/credit card</a>
