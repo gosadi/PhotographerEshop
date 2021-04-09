@@ -26,16 +26,16 @@ import org.springframework.web.multipart.MultipartFile;
     
     Product updateProduct(Product product);
 
-    public void save(Product product);
+    void save(Product product);
 
-    public void saveImage(MultipartFile imageFile) throws Exception;
+    void saveImage(MultipartFile imageFile) throws Exception;
     
-    public void downloadImage(String filepath,HttpServletResponse response);
+    void downloadImage(String filepath,HttpServletResponse response);
     
-    public List<Product> findAllProductsByBasePriceAsc(int categoryid);
-    public List<Product> findAllProductsByBasePriceDesc(int categoryid);
-    public List<Product> findAllProductsByBasePriceHigherOrEqual500(int categoryid);
-    public List<Product> findAllProductsByBasePriceLower500(int categoryid);
-    public List<Product> findAllProductsByDescrAsc(int categoryid);
-    public List<Product> findAllProductsByDescrDesc(int categoryid);
+    List<Product> findAllProductsByBasePriceAsc(int categoryid);
+    List<Product> findAllProductsByBasePriceDesc(int categoryid);
+    List<Product> findAllProductsByBasePriceHigherOrEqual500(int categoryid);
+    List<Product> findAllProductsByBasePriceLower500(int categoryid);
+    List<Product> findAllProductsByDescrAsc(int categoryid);
+    List<Product> findAllProductsByDescrDesc(int categoryid);
 }

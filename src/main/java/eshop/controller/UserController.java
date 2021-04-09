@@ -41,6 +41,7 @@ public class UserController {
     @Autowired
     ProductService productService;
 
+    //USER each user can see history
     @GetMapping("/user-history")
     public String showUserHistory( Principal principal, Model model){
         Account account = userService.findByUsername(principal.getName());
@@ -48,6 +49,8 @@ public class UserController {
         model.addAttribute("ordersByAccountId", ordersByAccountId);
         return "/global/user-history";
     }
+    
+    //USER each user can see a form to edit user details
     @GetMapping("/user-edit")
     public String showUserInfo(Principal principal, Model model) {
         Account account = userService.findByUsername(principal.getName());
@@ -55,6 +58,7 @@ public class UserController {
         return "global/user-edit";
     }
 
+    //post method for updating the user details based on user-edit jsp
     @PostMapping("/user-update")
     public String updateUserInfo(@Valid Account user,BindingResult result,RedirectAttributes attributes) {
         if(result.hasErrors()){
@@ -65,6 +69,7 @@ public class UserController {
         return "redirect:/user/user-edit";
     }
 
+    //USER each user can see the order details of what he has bought
     @GetMapping("/user-order-details")
     public String showUserOrderDetails(@RequestParam("id") int id, Model model) {
         List<OrderDetails> userOrderDetails = orderDetailsService.findOrderDetailsByOrderId(id);
@@ -72,6 +77,7 @@ public class UserController {
         return "global/user-order-details";
     }
     
+    // each user can download the product from the order details 
     @GetMapping("/product/download/{id}")
     @ResponseBody
     public void downloadProduct(@PathVariable("id") int id,HttpServletResponse response){

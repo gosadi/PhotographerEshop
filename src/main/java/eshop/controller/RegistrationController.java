@@ -40,7 +40,7 @@ public class RegistrationController {
     /*Exception handling on @Unique*/
     @ExceptionHandler(DataIntegrityViolationException.class)
     public String handleException(RedirectAttributes attributes){
-        String minima = "Invalid username";
+        String minima = "Invalid username or email";
         attributes.addFlashAttribute("message", minima);
         return "redirect:/register";
     }
