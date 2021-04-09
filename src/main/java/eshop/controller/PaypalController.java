@@ -46,11 +46,14 @@ public class PaypalController {
     public static final String SUCCESS_URL = "pay/success";
     public static final String CANCEL_URL = "pay/cancel";
 
+    //returns checkout.jsp
     @GetMapping("/paypal")
     public String home() {
         return "/global/checkout";
     }
 
+    //gets the info from the PaypalOrder object and stores them in a PayPal Payment object. If the
+    //PayPal Payment object gets approved, continues to the successPay method.
     @PostMapping("pay")
     public String payment(@ModelAttribute("order") PaypalOrder order) {
         try {
@@ -70,11 +73,13 @@ public class PaypalController {
         return "redirect:/";
     }
 
+    //returns the cancel.jsp.
     @GetMapping(value = CANCEL_URL)
     public String cancelPay() {
         return "global/cancel";
     }
 
+     //creates a new order in the database with all its related session attributes.
     @GetMapping(value = SUCCESS_URL)
     public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId, HttpSession session,Principal principal) {
         Product product = null;
