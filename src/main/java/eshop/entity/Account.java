@@ -1,4 +1,3 @@
-
 package eshop.entity;
 
 import java.io.Serializable;
@@ -19,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -31,7 +31,7 @@ import org.hibernate.validator.constraints.Range;
  * @author alkinoos
  */
 @Entity
-@Table(name = "account")
+@Table(name = "account", uniqueConstraints = @UniqueConstraint(columnNames = {"username", "email"}))
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a")
@@ -55,52 +55,52 @@ public class Account implements Serializable {
     @Basic(optional = false)
     @NotNull(message = "Firstname must not be null!")
     @NotEmpty(message = "Firstname must not be empty!")
-    @Size(min = 2, max = 30,message = "Firstname size must be between 2 and 30 characters")
+    @Size(min = 2, max = 30, message = "Firstname size must be between 2 and 30 characters")
     @Column(name = "firstname")
     private String firstname;
     @Basic(optional = false)
     @NotNull(message = "Lastname must not be null!")
     @NotEmpty(message = "Lastname must not be empty!")
-    @Size(min = 1, max = 30)
+    @Size(min = 1, max = 30, message = "Lastname size must be between 1 and 30 characters!")
     @Column(name = "lastname")
     private String lastname;
     @Basic(optional = false)
     @NotNull(message = "Username must not be null!")
     @NotEmpty(message = "Username must not be empty!")
-    @Size(min = 1, max = 20)
-    @Column(name = "username",unique = true)
+    @Size(min = 1, max = 20, message = "Username size must be between 1 and 20 characters!")
+    @Column(name = "username")
     private String username;
     @Basic(optional = false)
     @NotNull(message = "Password must not be null!")
     @NotEmpty(message = "Password must not be empty!")
-    @Size(min = 1, max = 68)
+    @Size(min = 1, max = 68, message = "Password size must be between 1 and 68 characters!")
     @Column(name = "password")
     private String password;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull(message = "Email must not be null!")
     @NotEmpty(message = "Email must not be empty!")
-    @Size(min = 1, max = 50,message = "Email size must be between 1 and 50 characters!")
-    @Column(name = "email",unique = true)
+    @Size(min = 1, max = 50, message = "Email size must be between 1 and 50 characters!")
+    @Column(name = "email")
     private String email;
     @Basic(optional = false)
     @NotNull(message = "Address must not be null!")
-    @NotEmpty(message="Address must not be empty!")
-    @Size(min = 1, max = 50,message = "Address size must be between 1 and 50 characters!")
+    @NotEmpty(message = "Address must not be empty!")
+    @Size(min = 1, max = 50, message = "Address size must be between 1 and 50 characters!")
     @Column(name = "address")
     private String address;
     @Basic(optional = false)
     @NotNull(message = "City must not be null!")
     @NotEmpty(message = "City must not be empty!")
-    @Size(min = 1, max = 50,message = "City size must be between 1 and 50 characters!")
+    @Size(min = 1, max = 50, message = "City size must be between 1 and 50 characters!")
     @Column(name = "city")
     private String city;
     @Basic(optional = false)
     @NotNull(message = "Postalcode must not be null!")
-    @Pattern(regexp="^[0-9]{5}", message = "Invalid Zip Code")
+    @Pattern(regexp = "^[0-9]{5}", message = "Invalid Zip Code")
     @Column(name = "postalcode")
     private String postalcode;
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //    @Cascade(value = {org.hibernate.annotations.CascadeType.DETACH,org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @JoinTable(name = "account_has_role", joinColumns = {
         @JoinColumn(name = "account_id", referencedColumnName = "id")}, inverseJoinColumns = {
@@ -140,7 +140,6 @@ public class Account implements Serializable {
         this.postalcode = postalcode;
         this.roles = roles;
     }
-    
 
     public Integer getId() {
         return id;
@@ -229,7 +228,7 @@ public class Account implements Serializable {
     public void setOrderrs(List<Orderr> orderrs) {
         this.orderrs = orderrs;
     }
-    
+
     public void AddRole(Role role) {
         if (roles == null) {
             roles = new ArrayList();
@@ -237,8 +236,8 @@ public class Account implements Serializable {
         roles.add(role);
         role.getAccounts().add(this);
     }
-    
-    public void RemoveRole(Role role){
+
+    public void RemoveRole(Role role) {
         roles.remove(role);
         role.getAccounts().remove(this);
     }
@@ -267,5 +266,5 @@ public class Account implements Serializable {
     public String toString() {
         return "eshop.entity.Account[ id=" + id + " ]";
     }
-    
+
 }

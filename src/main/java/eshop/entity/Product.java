@@ -24,6 +24,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -48,10 +49,12 @@ public class Product implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 30)
+    @Size(min = 1,max = 30,message = "Description size must be between 1 and 30 characters!")
+    @NotNull(message = "Description must not be null!")
+    @NotEmpty(message = "Description must not be empty!")
     @Column(name = "descr")
     private String descr;
-    @Size(max = 100)
+    @Size(max = 100,message = "Description size max size 100 characters!")
     @Column(name = "path")
     private String path;
     @Basic(optional = false)

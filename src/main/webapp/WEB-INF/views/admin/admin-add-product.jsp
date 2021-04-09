@@ -62,7 +62,7 @@
                     <form:form action="${pageContext.request.contextPath}/admin/addProduct" enctype="multipart/form-data" method="POST"  modelAttribute="product">
                         <h2><u>Add a new product</u></h2>
                         <label for="descr"><i>Product description:</i></label>
-                        <form:input type="text" placeholder="Night Drive" path="descr" name="descr" required="required" maxlength="30"  minlength="5"/>
+                        <form:input type="text" placeholder="Night Drive" path="descr" name="descr" required="required" maxlength="30"  minlength="1"/>
                         <label for="file">Upload an image</label>
                         <input type="file" name="imageFile" accept="image/*" title="Please upload an image" required="required"/>
                         <label for="path"><i>Product Path:</i></label>

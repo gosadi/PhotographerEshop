@@ -79,7 +79,7 @@ public class ProductController {
 
     //SHOW PRODUCTS BASE PRICE DESCENDING
     @GetMapping("/filter/descprice")
-    public String showPeopleByBasePriceDesc(@RequestParam("id") int id, Model model) {
+    public String showProductsByBasePriceDesc(@RequestParam("id") int id, Model model) {
         String animals = "animals";
         String people = "people";
         String landscapes = "landscapes";
@@ -98,7 +98,7 @@ public class ProductController {
 
     //SHOW PRODUCTS BASE PRICE HIGHER OR EQUAL TO 500€
     @GetMapping("/filter/pricehigherorequal")
-    public String showPeopleByBasePriceHigherOrEqual500(@RequestParam("id") int id, Model model) {
+    public String showProductsByBasePriceHigherOrEqual500(@RequestParam("id") int id, Model model) {
         String animals = "animals";
         String people = "people";
         String landscapes = "landscapes";
@@ -117,7 +117,7 @@ public class ProductController {
 
     //SHOW PRODUCTS BASE PRICE LOWER THAN 500 €
     @GetMapping("/filter/pricelower")
-    public String showPeopleByBasePriceLower500(@RequestParam("id") int id, Model model) {
+    public String showProductsByBasePriceLower500(@RequestParam("id") int id, Model model) {
         String animals = "animals";
         String people = "people";
         String landscapes = "landscapes";
@@ -136,7 +136,7 @@ public class ProductController {
 
     //SHOW PRODUCTS DESCRIPTION ASCENDING
     @GetMapping("/filter/ascname")
-    public String showPeopleByDescrAsc(@RequestParam("id") int id, Model model) {
+    public String showProductsByDescrAsc(@RequestParam("id") int id, Model model) {
         String animals = "animals";
         String people = "people";
         String landscapes = "landscapes";
@@ -155,7 +155,7 @@ public class ProductController {
 
     //SHOW PRODUCTS DESCRIPTION DESCENDING
     @GetMapping("/filter/descname")
-    public String showPeopleByDescrDesc(@RequestParam("id") int id, Model model) {
+    public String showProductsByDescrDesc(@RequestParam("id") int id, Model model) {
         String animals = "animals";
         String people = "people";
         String landscapes = "landscapes";
