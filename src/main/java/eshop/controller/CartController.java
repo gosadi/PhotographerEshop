@@ -2,9 +2,7 @@ package eshop.controller;
 
 import eshop.entity.Category;
 import eshop.entity.Item;
-import eshop.entity.Payment;
 import eshop.service.CategoryService;
-import eshop.service.PaymentService;
 import eshop.service.ProductService;
 import java.math.BigDecimal;
 import javax.servlet.http.HttpSession;
@@ -29,9 +27,7 @@ public class CartController {
     @Autowired
     private CategoryService categoryService;
 
-    @Autowired
-    private PaymentService paymentService;
-
+    //shows the contents of the cart for the current session.
     @GetMapping
     public String showCart(Model model, HttpSession session) {
         List<Category> categories = categoryService.getCategories();
@@ -44,6 +40,7 @@ public class CartController {
         return "/global/cart";
     }
 
+    //selects a product and adds it in the cart.
     @GetMapping(value = "buy/{id}")
     public String buy(@PathVariable("id") int id, HttpSession session) {
 
@@ -59,6 +56,7 @@ public class CartController {
     }
 
     
+    //updates the items in the cart with the correct category and quality.
     @PostMapping(value = "update")
     public String update(HttpServletRequest request, HttpSession session) {
 
@@ -68,16 +66,13 @@ public class CartController {
         for (int i = 0; i < items.size(); i++) {
             items.get(i).setQuantity(Integer.parseInt(quantities[i]));
             items.get(i).setCategory(categoryService.getCategoryById(Integer.parseInt(qualities[i])).get());
-            System.out.println(items.get(i)); //delete after we are sure it's working properly
         }
-        onlyOne(session); //unifies multiple entries of the same product and quality
-        for (int i = 0; i < items.size(); i++) { //delete after we are sure it's working properly
-            System.out.println("Final Item in cart: " + items.get(i));
-    }
+        onlyOne(session); //unifies multiple entries of the same product and quality.
         session.setAttribute("cart", items);
         return "redirect:/cart";
     }
 
+    //deletes an item from the cart.
     @GetMapping(value = "delete/{id}/{catId}/{quantity}")
     public String delete(@PathVariable("id") int id, @PathVariable("catId") int catId,
             @PathVariable("quantity") int quantity, HttpSession session) {
@@ -89,6 +84,7 @@ public class CartController {
         return "redirect:/cart";
     }
 
+    //checks if an item with product id, category id and quantity exists in a certain list of items.
     private int checkIfExists(int id, int catId, int quantity, List<Item> items) {
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).getProduct().getId() == id) {
@@ -102,6 +98,7 @@ public class CartController {
         return -1;
     }
     
+    //calculates the total price of the items in the cart.
     private BigDecimal cartTotal(HttpSession session) {
         if(session.getAttribute("cart") == null){
             List<Item> itemList = new ArrayList();
@@ -115,10 +112,12 @@ public class CartController {
             BigDecimal basePrice = items.get(i).getProduct().getBasePrice();
             totalOrderDetail = totalOrderDetail.add(basePrice.multiply(new BigDecimal(quant)).multiply(priceRate));
         }
-        session.setAttribute("cartValue", totalOrderDetail); //saves the cart's sum to an attribute named cartvalue
+        session.setAttribute("cartValue", totalOrderDetail); //saves the cart's sum to an attribute named cartValue.
         return totalOrderDetail;
     }
 
+    //checks if every item in the cart has unique product id and category id. If not, it unifies the multiple items with 
+    //the same attributes and adds their quantities into a single item.
     private void onlyOne(HttpSession session) {
         List<Item> items = (List<Item>) session.getAttribute("cart");
         if (items.size() > 1) {
@@ -136,15 +135,5 @@ public class CartController {
         }
     }
 
-    @GetMapping(value = "/cash")
-    public String checkoutCash(HttpSession session) {
-        Payment cashPayment = paymentService.getPaymentById(1);
-        if (session.getAttribute("payment") == null) {
-            session.setAttribute("payment", cashPayment);
-        } else {
-            session.removeAttribute("payment");
-            session.setAttribute("payment", cashPayment);
-        }
-        return "global/cash";
-    }
+    
 }
