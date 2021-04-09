@@ -37,7 +37,7 @@ public class CashController {
     PaymentService paymentService;
 
     //stores the data of the order in the database and creates
-    //a unique code related to the user and the date the order was placed.
+    //a code related to the user and the date the order was placed.
     @GetMapping("/cart/cash")
     public String home(Model model, Principal principal, HttpSession session) {
         payCash(session, principal);
@@ -93,4 +93,6 @@ public class CashController {
         session.removeAttribute("cartValue");
         session.removeAttribute("cartTotal");
     }
+    
+    
 }
