@@ -57,39 +57,33 @@
                     <div class="row">
                         <div class="columnAboutUs">
                             <div class="card">
-                                <img src="/images/pexels-andrea-piacquadio-3772510.jpg" alt="Jane" style="width:100%">
-                                <div class="container">
-                                    <h2>Makis Liougas</h2>
-                                    <p class="title">CEO & Founder & G I Jo</p>
-                                    <p>I Love Dance and Love.</p>
-                                    <p>jane@example.com</p>
-                                    <p><button class="button">Contact</button></p>
+                                <img src="/images/alk.gif" alt="Jane" style="width:100%">
+                                <div class="container" >
+                                    <h2>Alkinoos Papakostas</h2>
+                                    <p class="title">O proedros</p>
+                                    <p>Project was so easy</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="columnAboutUs">
                             <div class="card">
-                                <img src="/images/pexels-gabriela-cheloni-5990776.jpg" alt="Mike" style="width:100%">
+                                <img src="/images/rouv.gif" alt="Mike" style="width:100%">
                                 <div class="container">
-                                    <h2>Takis Tanalias</h2>
-                                    <p class="title">Art Director, Model & Instagramer</p>
-                                    <p>I love my body</p>
-                                    <p>mike@example.com</p>
-                                    <p><button class="button">Contact</button></p>
+                                    <h2>George Rouvellas</h2>
+                                    <p class="title">Den exo camera</p>
+                                    <p>Mou xalase to microfono</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="columnAboutUs">
                             <div class="card">
-                                <img src="/images/pexels-hüsamettin-akgün-3779853.jpg" alt="John" style="width:100%">
+                                <img src="/images/petros.gif" alt="John" style="width:100%">
                                 <div class="container">
-                                    <h2>Babis Sougias</h2>
-                                    <p class="title">Designer, Organizer & VGA Coordinator</p>
-                                    <p>I am sensitive and fragile</p>
-                                    <p>john@example.com</p>
-                                    <p><button class="button">Contact</button></p>
+                                    <h2>Petros Papadatos</h2>
+                                    <p class="title">Mou exei spasei ta nevra</p>
+                                    <p>Den maresi na milao gia ton euato mou</p>
                                 </div>
                             </div>
                         </div>
