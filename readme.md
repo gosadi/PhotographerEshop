@@ -40,10 +40,11 @@
 Steps to run the application properly!
 
 1) Git pull from github repository
-2) Go to (application properties) and change the following:
+2) Open mysql and run the GroupProjectFinal.sql file that is included with the project
+3) Go to (application properties) and change the following:
 	spring.datasource.username= your username to log into your DB
 	spring.datasource.password= your password to log into your DB
-3) Go to (ProductServiceImpl.java) and change the following method's:
+4) Go to (ProductServiceImpl.java) and change the following method's:
 	a)saveImage()  : the folder path as where you want to upload the images when uploading an image from the application
 	b)uploadImage(): the folder path as where you want to save the images when downloading an image from the application
 	
