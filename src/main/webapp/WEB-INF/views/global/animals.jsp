@@ -54,8 +54,8 @@
             <div class="categories">
                 <div class="wrapper2">
                     <div id="filtros" >
-                        <div class="dropdown"><a href="#">Filters</a>
-                            <div class="dropdown-content">
+                        <div class="dropdown dropdownFilter"><a href="#" style="color: black;">Filters</a>
+                            <div class="dropdown-content dropdown-contentFilter">
                                 <ul>
                                     <li><a href="${pageContext.request.contextPath}/products/filter/ascprice?id=2">price ascending</a></li>
                                     <li><a href="${pageContext.request.contextPath}/products/filter/descprice?id=2">price descending</a></li>
@@ -76,12 +76,12 @@
                                 </a>
                                 <div class="desc">
                                     <h4>'${product.descr}' 
+                                        ${product.basePrice}&euro;
                                         <sec:authorize access="!hasAnyRole('ADMIN','USER')">
-                                            <br><div class="blink">Sign in & Add to cart!!</div>
+                                            <br><div class="blink"><a href="${pageContext.request.contextPath}/register">Sign in & Add to cart!!</a></div>
                                         </sec:authorize>
-                                        <sec:authorize access="hasAnyRole('ADMIN','USER')">
-                                            ${product.basePrice}&euro;
                                             <div class="dropdown">
+                                                <sec:authorize access="hasAnyRole('ADMIN','USER')">
                                                 <button class="cartbtn"><a href="${pageContext.request.contextPath}/cart/buy/${product.id}">Add to cart
                                                     </a></button>
                                                 </sec:authorize>

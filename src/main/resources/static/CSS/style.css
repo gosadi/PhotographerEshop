@@ -310,12 +310,17 @@ p {
     color: #FED766;
 }
 
-.blink {
+.blink a{
     animation: blinker 3s linear infinite;
     color: #00B295;
     font-size: 15px;
     font-weight: bold;
     font-family: sans-serif;
+}
+
+.dropdownFilter{
+    background-color: white;
+    border-radius: 12px;
 }
 
 .logout input{
@@ -578,6 +583,7 @@ div.desc {
     position: relative;
     display: inline-block;
     width:100%;
+    text-align: center;
 }
 
 .dropdown-content {
@@ -590,10 +596,17 @@ div.desc {
 
 .dropdown-content a {
     color: black;
-    padding: 0px;
     text-decoration: none;
-    display: block;
+    display: inline-block;
     text-align: center;
+    border-radius: 12px;
+    vertical-align: middle;
+    position:relative;
+    right:15%;
+}
+
+.dropdown-contentFilter a{
+    right: 0%;
 }
 
 .dropdown-content a:hover {background-color: #5f5a5a71}

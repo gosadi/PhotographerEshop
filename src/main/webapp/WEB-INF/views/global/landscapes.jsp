@@ -53,14 +53,18 @@
             <div class="categories">
                 <div class="wrapper2">
                     <div id="filtros" >
-                        <ul>
-                            <li><a href="${pageContext.request.contextPath}/products/filter/ascprice?id=1">price ascending</a></li>
-                            <li><a href="${pageContext.request.contextPath}/products/filter/descprice?id=1">price descending</a></li>
-                            <li><a href="${pageContext.request.contextPath}/products/filter/pricehigherorequal?id=1">price >= 500€</a></li>
-                            <li><a href="${pageContext.request.contextPath}/products/filter/pricelower?id=1">price < 500€</a></li>
-                            <li><a href="${pageContext.request.contextPath}/products/filter/ascname?id=1">name ascending</a></li>
-                            <li><a href="${pageContext.request.contextPath}/products/filter/descname?id=1">name descending</a></li>
-                        </ul>
+                           <div class="dropdown dropdownFilter"><a href="#" style="color: black;">Filters</a>
+                            <div class="dropdown-content dropdown-contentFilter">
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/ascprice?id=2">price ascending</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/descprice?id=2">price descending</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/pricehigherorequal?id=2">price >= 500€</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/pricelower?id=2">price < 500€</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/ascname?id=2">alphabetical</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/descname?id=2">reverse alphabetical</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <h1 id="prodtitle">Landscapes</h1>
                     <div class="row">
@@ -69,9 +73,10 @@
                                 <a href="#${product.path}"><img src="${pageContext.request.contextPath}${product.path}">
                                 </a>
                                 <div class="desc">
-                                    <h4>'${product.descr}' 
+                                    <h4>'${product.descr}'
+                                        ${product.basePrice}&euro;
                                     <sec:authorize access="!hasAnyRole('ADMIN','USER')">
-                                        <br><div class="blink">Sign in & Add to cart!!</div>
+                                        <br><div class="blink"><a href="${pageContext.request.contextPath}/register">Sign in & Add to cart!!</a></div>
                                         </sec:authorize>
                                         <div class="dropdown">
                                             <sec:authorize access="hasAnyRole('ADMIN','USER')">

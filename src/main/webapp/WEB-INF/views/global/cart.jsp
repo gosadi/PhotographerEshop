@@ -85,7 +85,7 @@
                                                     <option value="${category.id}" <c:if test="${item.category.id == category.id}"> selected </c:if>>${category.name}</option>
                                                 </c:forEach>
                                             </select>
-                                            <input id="cartSelect" type="number" value="${item.quantity}" name="quantity" style="width:50px;" />
+                                            <input id="cartSelect" type="number" min="1" max="10" value="${item.quantity}" name="quantity" style="width:50px;" />
                                         </td>
                                         <td>${item.product.basePrice * item.quantity * item.category.priceRate}&euro;</td>   
                                         <td style="border-bottom: hidden; width: 5%;">
