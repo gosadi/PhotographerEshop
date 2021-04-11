@@ -10,8 +10,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link href="https://fonts.googleapis.com/css?family=Raleway:500,800" rel="stylesheet">
         <link href="css/access-denied.css" rel="stylesheet">
-
-        <title>Document</title>
+        <link rel="icon" type="image/png" href="/Images/favicon.png">
+        <title>Access Denied</title>
     </head>
     <body>
         <use>

@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login/Register</title>
         <link rel="stylesheet" href="/CSS/form.css">
+        <link rel="icon" type="image/png" href="/Images/favicon.png">
     </head>
 
     <body>
