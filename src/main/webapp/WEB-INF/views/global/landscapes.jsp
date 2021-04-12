@@ -57,12 +57,12 @@
                            <div class="dropdown dropdownFilter"><a href="#" style="color: black;">Filters</a>
                             <div class="dropdown-content dropdown-contentFilter">
                                 <ul>
-                                    <li><a href="${pageContext.request.contextPath}/products/filter/ascprice?id=2">price ascending</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/products/filter/descprice?id=2">price descending</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/products/filter/pricehigherorequal?id=2">price >= 500€</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/products/filter/pricelower?id=2">price < 500€</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/products/filter/ascname?id=2">alphabetical</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/products/filter/descname?id=2">reverse alphabetical</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/ascprice?id=1">price ascending</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/descprice?id=1">price descending</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/pricehigherorequal?id=1">price >= 500€</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/pricelower?id=1">price < 500€</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/ascname?id=1">alphabetical</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/products/filter/descname?id=1">reverse alphabetical</a></li>
                                 </ul>
                             </div>
                         </div>
