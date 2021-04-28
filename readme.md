@@ -1,4 +1,4 @@
--This application is about a photographer ESHOP
+#This application is about a photographer ESHOP
 	
  Two main roles has been added into the application USER_ROLE, and USER_ADMIN.
  There are three main categories of the products seperated by the names of Landscape, Animals, or People.
